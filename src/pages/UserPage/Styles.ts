@@ -7,6 +7,18 @@ export const Container = styled.div`
     align-items: center;
     height: 100vh;
     background-color: #f9f9f9;
+    overflow-y: auto;
+
+    @media (max-width: 430px) {
+        height: auto;
+        padding: 10px;
+        background-color: #ffffff;
+    }
+
+    @media (max-height: 932px) { 
+        height: auto;
+        padding: 15px;
+    }
 `;
 
 export const TopWrapper = styled.div`
@@ -16,22 +28,59 @@ export const TopWrapper = styled.div`
     width: 100%;
     padding: 0 20px;
     margin-top: 20px;
-    position: relative; 
+    position: relative;
+
+    @media (max-width: 768px) {
+        flex-wrap: nowrap; 
+        gap: 5px; 
+    }
+
+    @media (max-width: 480px) {
+        flex-wrap: nowrap; 
+        gap: 0px;
+        justify-content: center; 
+    }
 `;
 
+
 export const DottedLine = styled.div`
-    width: 338px;
-    border-bottom: 1.5px dashed #bbbbbb; 
+    width: 100%;
+    max-width: 338px; 
+    border-bottom: 1.5px dashed #bbbbbb;
     position: absolute;
     bottom: -10px; 
     left: 50%; 
     transform: translateX(-50%);
+
+    @media (max-width: 768px) {
+        max-width: 338px; 
+    }
+
+    @media (max-width: 480px) {
+        max-width: 330px; 
+    }
 `;
+
 
 export const LeftButtons = styled.div`
     display: flex;
-    gap: 10px;
+    gap: 10px; 
     margin-right: 13px;
+    flex-wrap: nowrap; 
+    justify-content: space-between; 
+
+    @media (max-width: 768px) {
+        justify-content: flex-start; 
+    }
+
+    @media (max-width: 480px) {
+        justify-content: center; 
+        gap: 5px; 
+    }
+`;
+
+export const RightButtons = styled(LeftButtons)`
+    margin-left: 13px;
 `;
 
 export const CenterIcon = styled.div`
@@ -45,15 +94,9 @@ export const CenterIcon = styled.div`
     }
 `;
 
-export const RightButtons = styled.div`
-    display: flex;
-    gap: 10px;
-    margin-left: 13px;
-`;
-
 export const Button = styled.button`
-    width: 65px;
-    height: 29px;
+    width: 70px;
+    height: 34px;
     font-size: 14px;
     text-align: center;
     background-color: ${COLORS.WhiteSmoke}; 
@@ -65,7 +108,20 @@ export const Button = styled.button`
     &:hover {
         background-color: #a4c8f0; 
     }
+
+    @media (max-width: 768px) {
+        width: 65px;
+        height: 29px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+        width: 60px;
+        height: 24px;
+        font-size: 10px;
+    }
 `;
+
 
 export const PButtonWrapper = styled.div`
     position: relative; 
@@ -128,6 +184,14 @@ export const PotatoWrapper = styled.div`
     align-items: center;
     margin-top: 40px; 
     text-align: center; 
+
+    @media (max-width: 768px) {
+        margin-top: 30px;
+    }
+
+    @media (max-width: 480px) {
+        margin-top: 20px;
+    }
 `;
 
 export const PotatoText = styled.div`
@@ -138,7 +202,18 @@ export const PotatoText = styled.div`
     border-radius: 20px;
     padding: 10px 20px;
     margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
 `;
+
 
 export const PotatoImageContainer = styled.div`
     width: 237px;
@@ -179,13 +254,25 @@ export const LevelText = styled.div`
 `;
 
 export const ProgressBarContainer = styled.div`
-    width: 80%; 
-    max-width: 300px;
+    width: 100%;
+    max-width: 338px; 
+    min-width: 250px;
     height: 10px;
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+
+    @media (max-width: 768px) {
+        max-width: 318px; 
+        height: 8px;
+    }
+
+    @media (max-width: 480px) {
+        max-width: 310px; 
+        min-width: 250px; 
+        height: 6px;
+    }
 `;
 
 export const ProgressBarFill = styled.div<{ progress: number }>`
@@ -195,13 +282,28 @@ export const ProgressBarFill = styled.div<{ progress: number }>`
     transition: width 0.3s ease-in-out; 
 `;
 
+
 export const BoxContainer = styled.div`
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     margin-top: 20px;
     width: 320px;
-    height: auto;
+
+    @media (max-width: 768px) {
+        width: 330px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+        width: 320px;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const Box = styled.div`
@@ -213,6 +315,11 @@ export const Box = styled.div`
     border-radius: 8px;
     padding: 17px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 12px 15px;
+    }
 `;
 
 export const BoxLabel = styled.span`
@@ -253,5 +360,16 @@ export const GraphWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+        max-width: 90%;
+        height: 300px;
+    }
+
+    @media (max-width: 480px) {
+        max-width: 100%;
+        height: 250px;
+    }
 `;
+
 
