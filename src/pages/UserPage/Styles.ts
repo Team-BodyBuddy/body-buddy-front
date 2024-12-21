@@ -6,18 +6,19 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
     background-color: #f9f9f9;
     overflow-y: auto;
 
     @media (max-width: 430px) {
         height: auto;
-        padding: 10px;
         background-color: #ffffff;
     }
 
     @media (max-height: 932px) { 
-        height: auto;
-        padding: 15px;
+        max-height: calc(100vh - 10px);
     }
 `;
 
