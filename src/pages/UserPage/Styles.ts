@@ -9,6 +9,9 @@ export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
     max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: #f9f9f9;
     overflow-y: auto;
 
