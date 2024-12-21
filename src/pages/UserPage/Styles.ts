@@ -354,8 +354,8 @@ export const BoxTrend = styled.div<{ trend: "up" | "down" }>`
 
 export const GraphWrapper = styled.div`
     margin-top: 20px;
-    width: 100%;
-    max-width: 600px; 
+    width: 318px;
+    max-width: 320px; 
     height: 400px; 
     background-color: #f9f9f9;
     padding: 20px;
@@ -366,7 +366,7 @@ export const GraphWrapper = styled.div`
     align-items: center;
 
     @media (max-width: 768px) {
-        max-width: 90%;
+        max-width: 100%;
         height: 300px;
     }
 
