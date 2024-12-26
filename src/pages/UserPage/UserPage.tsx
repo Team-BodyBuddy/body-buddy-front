@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./Styles";
 import { HomeIcon, PotatoImage } from "../../components/icons";
 import { FluxContext } from "../../stores/FluxContext";
 import TrendGraph from "../../components/TrendGraph"; 
 
+type Tab = '운동관리' | '랭킹' | '홈' | '마이' | '바디버디';
+
 const UserPage: React.FC = () => {
+    const [activeTab, setActiveTab] = useState<Tab>('운동관리');
     const context = useContext(FluxContext);
 
     if (!context) {
@@ -22,27 +25,44 @@ const UserPage: React.FC = () => {
         return trend === "up" || trend === "down" ? trend : "up"; 
     };
 
+    const handleTabClick = (tab: Tab) => {
+        setActiveTab(tab);
+    };
+
+
 
     console.log("State in TrendGraph:", state);
 
     return (
         <S.Container>
             <S.TopWrapper>
-                <S.LeftButtons>
-                    <S.Button>운동관리</S.Button>
-                    <S.Button>랭킹</S.Button>
-                </S.LeftButtons>
-
+                <S.Button
+                    $active={activeTab === '운동관리'}
+                    onClick={() => handleTabClick('운동관리')}
+                >
+                    운동관리
+                </S.Button>
+                <S.Button
+                    $active={activeTab === '랭킹'}
+                    onClick={() => handleTabClick('랭킹')}
+                >
+                    랭킹
+                </S.Button>
                 <S.CenterIcon>
-                    <HomeIcon />
+                    <HomeIcon onClick={() => handleTabClick('홈')} />
                 </S.CenterIcon>
-
-                <S.RightButtons>
-                    <S.Button>마이</S.Button>
-                    <S.Button>바디버디</S.Button>
-                </S.RightButtons>
-
-                <S.DottedLine />
+                <S.Button
+                    $active={activeTab === '마이'}
+                    onClick={() => handleTabClick('마이')}
+                >
+                    마이
+                </S.Button>
+                <S.Button
+                    $active={activeTab === '바디버디'}
+                    onClick={() => handleTabClick('바디버디')}
+                >
+                    바디버디
+                </S.Button>
             </S.TopWrapper>
 
             <S.Wrapper>
@@ -65,7 +85,7 @@ const UserPage: React.FC = () => {
             <S.LevelWrapper>
                 <S.LevelText>Lv. {level}</S.LevelText>
                 <S.ProgressBarContainer>
-                    <S.ProgressBarFill progress={progress} />
+                    <S.ProgressBarFill $progress={progress} />
                 </S.ProgressBarContainer>
             </S.LevelWrapper>
 
@@ -75,12 +95,12 @@ const UserPage: React.FC = () => {
                 <S.Box>
                     <S.BoxLabel>{metabolicRate.label}</S.BoxLabel>
                     <S.BoxValue>{metabolicRate.value}</S.BoxValue>
-                    <S.BoxTrend trend={getTrend(metabolicRate.trend)} />
+                    <S.BoxTrend $trend={getTrend(metabolicRate.trend)} />
                 </S.Box>
                 <S.Box>
                     <S.BoxLabel>{weight.label}</S.BoxLabel>
                     <S.BoxValue>{weight.value}</S.BoxValue>
-                    <S.BoxTrend trend={getTrend(weight.trend)} />
+                    <S.BoxTrend $trend={getTrend(weight.trend)} />
                 </S.Box>
             </S.BoxContainer>
 

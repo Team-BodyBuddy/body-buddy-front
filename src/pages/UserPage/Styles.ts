@@ -27,102 +27,72 @@ export const Container = styled.div`
 
 export const TopWrapper = styled.div`
     display: flex;
-    justify-content: center; 
-    align-items: center;
+    align-items: bottom;
     width: 100%;
-    padding: 0 20px;
+    padding: 0;
     margin-top: 20px;
     position: relative;
+    background-color: #f8f8f8;
 
     @media (max-width: 768px) {
-        flex-wrap: nowrap; 
-        gap: 5px; 
+        margin-top: 10px;
     }
 
     @media (max-width: 480px) {
-        flex-wrap: nowrap; 
-        gap: 0px;
-        justify-content: center; 
+        margin-top: 5px;
     }
 `;
 
+export const Button = styled.button<{ $active?: boolean }>`
+    flex-grow: 1;
+    height: 40px;
+    font-size: 16px;
+    font-height: 500;
+    text-align: center;
+    background-color: ${COLORS.WhiteSmoke};
+    border: none;
+    border-bottom: ${(props) =>
+        props.$active ? '3px solid black' : '2px solid transparent'};
+    font-weight: ${(props) => (props.$active ? 'bold' : 'normal')};
+    cursor: pointer;
+    transition: border-bottom 0.3s;
 
-export const DottedLine = styled.div`
-    width: 100%;
-    max-width: 338px; 
-    border-bottom: 1.5px dashed #bbbbbb;
-    position: absolute;
-    bottom: -10px; 
-    left: 50%; 
-    transform: translateX(-50%);
+    &:hover {
+        background-color: #e0e0e0;
+    }
 
     @media (max-width: 768px) {
-        max-width: 338px; 
+        font-size: 14px;
     }
 
     @media (max-width: 480px) {
-        max-width: 330px; 
+        font-size: 12px;
     }
-`;
-
-
-export const LeftButtons = styled.div`
-    display: flex;
-    gap: 10px; 
-    margin-right: 13px;
-    flex-wrap: nowrap; 
-    justify-content: space-between; 
-
-    @media (max-width: 768px) {
-        justify-content: flex-start; 
-    }
-
-    @media (max-width: 480px) {
-        justify-content: center; 
-        gap: 5px; 
-    }
-`;
-
-export const RightButtons = styled(LeftButtons)`
-    margin-left: 13px;
 `;
 
 export const CenterIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
 
     svg {
-        width: 40px;
-        height: 40px;
-    }
-`;
-
-export const Button = styled.button`
-    width: 70px;
-    height: 34px;
-    font-size: 14px;
-    text-align: center;
-    background-color: ${COLORS.WhiteSmoke}; 
-    border: 1px solid ${COLORS.LightGray}; 
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-        background-color: #a4c8f0; 
+        width: 30px;
+        height: 30px;
     }
 
     @media (max-width: 768px) {
-        width: 65px;
-        height: 29px;
-        font-size: 12px;
+        svg {
+            width: 25px;
+            height: 25px;
+        }
     }
 
     @media (max-width: 480px) {
-        width: 60px;
-        height: 24px;
-        font-size: 10px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 `;
 
@@ -279,8 +249,8 @@ export const ProgressBarContainer = styled.div`
     }
 `;
 
-export const ProgressBarFill = styled.div<{ progress: number }>`
-    width: ${({ progress }) => progress}%; 
+export const ProgressBarFill = styled.div<{ $progress: number }>`
+    width: ${({ $progress }) => $progress}%; 
     height: 100%;
     background-color: #FF9500; 
     transition: width 0.3s ease-in-out; 
@@ -338,16 +308,16 @@ export const BoxValue = styled.span`
     color: #555;
 `;
 
-export const BoxTrend = styled.div<{ trend: "up" | "down" }>`
+export const BoxTrend = styled.div<{ $trend: "up" | "down" }>`
     width: 20px;
     height: 20px;
-    background-color: ${({ trend }) => (trend === "up" ? "#4caf50" : "#f44336")};
-    mask: ${({ trend }) =>
-        trend === "up" ? "url('/path/to/up-arrow.svg')" : "url('/path/to/down-arrow.svg')"};
+    background-color: ${({ $trend }) => ($trend === "up" ? "#4caf50" : "#f44336")};
+    mask: ${({ $trend }) =>
+        $trend === "up" ? "url('/path/to/up-arrow.svg')" : "url('/path/to/down-arrow.svg')"};
     mask-size: contain;
     mask-repeat: no-repeat;
-    -webkit-mask: ${({ trend }) =>
-        trend === "up" ? "url('/path/to/up-arrow.svg')" : "url('/path/to/down-arrow.svg')"};
+    -webkit-mask: ${({ $trend }) =>
+        $trend === "up" ? "url('/path/to/up-arrow.svg')" : "url('/path/to/down-arrow.svg')"};
     -webkit-mask-size: contain;
     -webkit-mask-repeat: no-repeat;
 `;
