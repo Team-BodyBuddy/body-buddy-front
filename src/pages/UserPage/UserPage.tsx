@@ -44,7 +44,7 @@ const UserPage: React.FC = () => {
                 </S.Button>
                 <S.Button
                     $active={activeTab === '랭킹'}
-                    onClick={() => handleTabClick('랭킹')}
+                    onClick={() => handleTabClick('랭킹')} 
                 >
                     랭킹
                 </S.Button>
