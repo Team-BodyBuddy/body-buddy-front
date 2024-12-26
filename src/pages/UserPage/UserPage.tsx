@@ -52,7 +52,7 @@ const UserPage: React.FC = () => {
                     <HomeIcon onClick={() => handleTabClick('홈')} />
                 </S.CenterIcon>
                 <S.Button
-                    $active={activeTab === '마이'}
+                    $active={activeTab === '마이'} 
                     onClick={() => handleTabClick('마이')}
                 >
                     마이
