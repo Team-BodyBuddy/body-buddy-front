@@ -32,7 +32,8 @@ export const TopWrapper = styled.div`
     padding: 0;
     margin-top: 20px;
     position: relative;
-    background-color: #f8f8f8;
+    background-color: transparent;
+    border-bottom: 1px solid #E8E8E8;
 
     @media (max-width: 768px) {
         margin-top: 10px;
@@ -46,10 +47,9 @@ export const TopWrapper = styled.div`
 export const Button = styled.button<{ $active?: boolean }>`
     flex-grow: 1;
     height: 40px;
-    font-size: 16px;
-    font-height: 500;
+    font-size: 13px;
     text-align: center;
-    background-color: ${COLORS.WhiteSmoke};
+    background-color: transparent;
     border: none;
     border-bottom: ${(props) =>
         props.$active ? '3px solid black' : '2px solid transparent'};
@@ -58,15 +58,11 @@ export const Button = styled.button<{ $active?: boolean }>`
     transition: border-bottom 0.3s;
 
     &:hover {
-        background-color: #e0e0e0;
-    }
-
-    @media (max-width: 768px) {
-        font-size: 14px;
+        background-color: transparent;
     }
 
     @media (max-width: 480px) {
-        font-size: 12px;
+        font-size: 13px;
     }
 `;
 
@@ -95,6 +91,7 @@ export const CenterIcon = styled.div`
         }
     }
 `;
+// 탑 내비
 
 
 export const PButtonWrapper = styled.div`
@@ -119,7 +116,7 @@ export const PButton = styled.button`
     font-size: 16px;
     font-weight: bold;
     color: #FFFFFF; 
-    background-color: #FF9500; 
+    background-color: #40AD00; 
     border: 1px solid #DEDEDE;
     border-radius: 50%;
     display: flex;
@@ -138,10 +135,33 @@ export const PButtonText = styled.span`
     margin-left: auto;
 `;
 
-export const SButton = styled(PButton)`
-    color: #000000; 
-    position: static; 
+export const SButton = styled.button<{ $active: boolean }>`
+    background-color: ${({ $active }) => ($active ? "#40AD00" : "#F6F6F6")}; /* 눌렸을 때(#40AD00), 기본(#D1D1D1) */
+    color: ${({ $active }) => ($active ? "#FFFFFF" : "#BABABA")}; 
+    border: 2px solid ${({ $active }) => ($active ? "#2E7D00" : "#BABABA")};
+    width: 40px; /* 너비 */
+    height: 40px; /* 높이 */
+    border-radius: 50%; /* 동그라미 모양 */
+    cursor: pointer;
+    display: flex; /* 아이콘 정렬을 위한 flex */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease; /* 부드러운 전환 효과 */
+    font-size: 24px; /* 아이콘 크기 조절 */
+    padding: 0; /* 내부 여백 제거 */
 `;
+
+export const ContentWrapper = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* 스크롤 가능 */
+    padding: 20px; /* 여백 */
+    background-color: #f9f9f9; /* 기본 배경색 */
+`;
+////
 
 export const Wrapper = styled.div`
     display: flex;
@@ -150,13 +170,16 @@ export const Wrapper = styled.div`
     width: 100%;
     padding: 0 50px; 
     margin-top: 30px;
+    margin-bottom: 20px;
 `;
+//
 
 export const PotatoWrapper = styled.div`
     display: flex;
     flex-direction: column; 
     align-items: center;
-    margin-top: 40px; 
+    margin-top: 50px; 
+    margin-bottom: 40px;
     text-align: center; 
 
     @media (max-width: 768px) {
@@ -172,22 +195,21 @@ export const PotatoText = styled.div`
     font-size: 16px;
     font-weight: bold;
     color: ${COLORS.WhiteSmoke};
-    background-color: #FF9500;
-    border-radius: 20px;
-    padding: 10px 20px;
+    background-color: #40AD00; /* 배경색 */
+    border: 2px solid #2E7D00; /* 보더 색상 */
+    border-radius: 50px;
+    width: 154px; /* 고정된 너비 */
+    height: 47px; /* 고정된 높이 */
+    display: flex; /* 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 0; /* 패딩 제거, 고정된 크기에 맞추기 */
     margin-bottom: 10px;
 
-    @media (max-width: 768px) {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-
     @media (max-width: 480px) {
-        font-size: 12px;
-        padding: 5px 10px;
+        font-size: 16px;
     }
 `;
-
 
 export const PotatoImageContainer = styled.div`
     width: 237px;
@@ -195,7 +217,7 @@ export const PotatoImageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 40px;
     overflow: hidden; 
 `;
 
@@ -252,7 +274,7 @@ export const ProgressBarContainer = styled.div`
 export const ProgressBarFill = styled.div<{ $progress: number }>`
     width: ${({ $progress }) => $progress}%; 
     height: 100%;
-    background-color: #FF9500; 
+    background-color: #40AD00; 
     transition: width 0.3s ease-in-out; 
 `;
 
@@ -285,7 +307,7 @@ export const Box = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
-    border: 1px solid #FFDAA6;
+    border: 1px solid #D1D1D1;
     border-radius: 8px;
     padding: 17px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

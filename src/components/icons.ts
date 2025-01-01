@@ -1,7 +1,7 @@
-import { ReactComponent as HomeButton } from "../assets/icons/Home_button.svg";
+import { TiHomeOutline } from "react-icons/ti";
+import { BsCart2 } from "react-icons/bs";
 import { ReactComponent as Character} from "../assets/icons/potato_char.svg";
-import { ReactComponent as MainCart } from "../assets/icons/main_cart.svg";
 
-export const HomeIcon = HomeButton; 
+export const HomeIcon = TiHomeOutline ; 
 export const PotatoImage = Character;
-export const Cart = MainCart;
+export const Cart = BsCart2;
