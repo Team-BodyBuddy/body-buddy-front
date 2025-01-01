@@ -5,7 +5,7 @@ export const LevelWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 30px; 
-    width: 100%;
+    width: 80%; 
 `;
 
 export const LevelText = styled.div`
@@ -17,8 +17,6 @@ export const LevelText = styled.div`
 
 export const ProgressBarContainer = styled.div`
     width: 100%;
-    max-width: 338px; 
-    min-width: 250px;
     height: 10px;
     background-color: #e0e0e0;
     border-radius: 5px;
@@ -26,13 +24,10 @@ export const ProgressBarContainer = styled.div`
     position: relative;
 
     @media (max-width: 768px) {
-        max-width: 318px; 
         height: 8px;
     }
 
     @media (max-width: 480px) {
-        max-width: 310px; 
-        min-width: 250px; 
         height: 6px;
     }
 `;
@@ -44,7 +39,6 @@ export const ProgressBarFill = styled.div<{ $progress: number }>`
     transition: width 0.3s ease-in-out; 
 `;
 
-
 export const BoxContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -52,17 +46,13 @@ export const BoxContainer = styled.div`
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
-    width: 320px;
-
+    width: 100%; 
     @media (max-width: 768px) {
-        width: 330px;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
     }
 
     @media (max-width: 480px) {
-        width: 320px;
         flex-direction: column;
         align-items: center;
     }
@@ -72,8 +62,6 @@ export const Box = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
-    border: 1px solid #D1D1D1;
     border-radius: 8px;
     padding: 17px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -111,31 +99,25 @@ export const BoxTrend = styled.div<{ $trend: "up" | "down" }>`
 `;
 
 export const GraphWrapper = styled.div`
-    margin-top: 20px;
-    width: 318px;
-    max-width: 320px; 
-    height: 400px; 
-    background-color: #f9f9f9;
+    margin-top: 10px;
+    width: 100%; 
+    height: 300px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
 
     @media (max-width: 768px) {
-        max-width: 100%;
         height: 300px;
     }
 
     @media (max-width: 480px) {
-        max-width: 100%;
-        height: 250px;
+        height: 300px;
     }
 `;
 
 export const Button = styled.button<{ $active?: boolean }>`
-    flex-grow: 1;
     height: 40px;
     font-size: 13px;
     text-align: center;

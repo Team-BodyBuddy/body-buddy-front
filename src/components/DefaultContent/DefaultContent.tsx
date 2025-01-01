@@ -1,7 +1,7 @@
 // 레벨, 그래프 컴포넌트
 import React from "react";
 import * as S from "./Styles";
-import TrendGraph from "../../components/TrendGraph";
+import TrendGraph from "../../components/TrendGraph/TrendGraph";
 
 interface DefaultContentProps {
     level: number;
@@ -30,19 +30,6 @@ const DefaultContent: React.FC<DefaultContentProps> = ({
             </S.LevelWrapper>
 
             <S.Button onClick={onProgressIncrement}>경험치</S.Button>
-
-            <S.BoxContainer>
-                <S.Box>
-                    <S.BoxLabel>{metabolicRate.label}</S.BoxLabel>
-                    <S.BoxValue>{metabolicRate.value}</S.BoxValue>
-                    <S.BoxTrend $trend={getTrend(metabolicRate.trend)} />
-                </S.Box>
-                <S.Box>
-                    <S.BoxLabel>{weight.label}</S.BoxLabel>
-                    <S.BoxValue>{weight.value}</S.BoxValue>
-                    <S.BoxTrend $trend={getTrend(weight.trend)} />
-                </S.Box>
-            </S.BoxContainer>
 
             <S.GraphWrapper>
                 <TrendGraph />

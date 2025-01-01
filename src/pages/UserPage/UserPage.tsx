@@ -36,23 +36,27 @@ const UserPage: React.FC = () => {
     return (
         <S.Container>
             <TopNavigation activeTab={activeTab} onTabClick={setActiveTab} />
-            <HeaderControls
-                points={points}
-                isCategoryActive={isCategoryActive}
-                onCategoryToggle={handleCategoryToggle}
-            />
-            <PotatoSection />
-            {isCategoryActive ? (
-                <CategoryContent />
-            ) : (
-                <DefaultContent
-                    level={level}
-                    progress={progress}
-                    metabolicRate={metabolicRate}
-                    weight={weight}
-                    onProgressIncrement={handleProgressIncrement}
-                    getTrend={getTrend}
-                />
+            {activeTab === '홈' && (
+                <>
+                    <HeaderControls
+                        points={points}
+                        isCategoryActive={isCategoryActive}
+                        onCategoryToggle={handleCategoryToggle}
+                    />
+                    <PotatoSection />
+                    {isCategoryActive ? (
+                        <CategoryContent />
+                    ) : (
+                        <DefaultContent
+                            level={level}
+                            progress={progress}
+                            metabolicRate={metabolicRate}
+                            weight={weight}
+                            onProgressIncrement={handleProgressIncrement}
+                            getTrend={getTrend}
+                        />
+                    )}
+                </>
             )}
         </S.Container>
     );

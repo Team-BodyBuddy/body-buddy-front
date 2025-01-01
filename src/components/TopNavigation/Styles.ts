@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TopWrapper = styled.div`
     display: flex;
-    align-items: bottom;
+    align-items: center;
     width: 100%;
     padding: 0;
     margin-top: 20px;
@@ -46,27 +46,9 @@ export const CenterIcon = styled.div<{ $active?: boolean }>`
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    font-size: 22px;
     height: 100%;
     border-bottom: ${(props) => (props.$active ? "3px solid black" : "3px solid transparent")};
     cursor: pointer;
     transition: border-bottom 0.3s; 
-
-    svg {
-        width: 30px;
-        height: 30px;
-    }
-
-    @media (max-width: 768px) {
-        svg {
-            width: 25px;
-            height: 25px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        svg {
-            width: 20px;
-            height: 20px;
-        }
-    }
 `;
