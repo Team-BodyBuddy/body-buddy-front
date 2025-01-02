@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: #C7EEEF;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -15,7 +14,6 @@ export const Container = styled.div`
 
     @media (max-width: 430px) {
         height: auto;
-        background-color: #ffffff;
     }
 
     @media (max-height: 932px) { 

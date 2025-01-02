@@ -218,7 +218,7 @@ const UserSignUpPage: React.FC = () => {
                                 lineHeight: '29px',
                                 textAlign: 'left',
                             }}>
-                                <option value="" disabled selected>지역</option>
+                                <option value="">지역</option>
                                 <option value="서울">서울</option>
                                 <option value="경기">경기</option>
                                 <option value="인천">인천</option>
@@ -238,7 +238,7 @@ const UserSignUpPage: React.FC = () => {
                                 lineHeight: '29px',
                                 textAlign: 'left',
                             }}>
-                                <option value="" disabled selected>Gym 선택</option>
+                                <option value="">Gym 선택</option>
                                 <option value="gym1">gym1</option>
                                 <option value="gym2">gym2</option>
                                 <option value="gym3">gym3</option>
