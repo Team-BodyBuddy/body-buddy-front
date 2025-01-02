@@ -5,5 +5,7 @@ export const COLORS = {
   SoftGray : '#D8D8D8',
   Gray : '#787878',
   SoftOrange : '#FFD8A0',
+  DoveGray : '#BFBEBE',
+  Green : '#40AD00',
 };
 

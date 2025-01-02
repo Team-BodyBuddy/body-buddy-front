@@ -7,6 +7,9 @@ import theme from "./styles/theme";
 import { FluxProvider } from "./stores/FluxContext";
 import UserPage from "./pages/UserPage/UserPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import MyPage from "./pages/MyPage/MyPage";
+import ExitPage from "./pages/ExitPage/ExitPage";
+
 
 const App: React.FC = () => {
     return (
@@ -21,6 +24,9 @@ const App: React.FC = () => {
                     <Routes>
                         <Route path="/" element={<UserPage />} />
                         <Route path="/admin" element={<AdminPage />} />
+                        <Route path="/my" element={<MyPage />} />
+                        <Route path="/my/exit" element={<ExitPage />} />
+                        
 
                     </Routes>
                 </Router>
