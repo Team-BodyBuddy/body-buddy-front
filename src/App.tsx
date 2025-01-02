@@ -6,7 +6,6 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 import { FluxProvider } from "./stores/FluxContext";
 import UserPage from "./pages/UserPage/UserPage";
-import RankingBodyBudyPage from "./pages/RankingPage/RankingBodyBudyPage";
 import UserMyPage from "./pages/UserMyPage/UserMyPage";
 import RankingPage from "./pages/RankingPage/RankingPage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
@@ -25,7 +24,6 @@ const App: React.FC = () => {
                 >
                     <Routes>
                         <Route path="/" element={<UserPage />} />
-                        <Route path="/ranking" element={<RankingBodyBudyPage/>}/>
                         <Route path="/ranking" element={<RankingPage />} />
                         <Route path="/exercise" element={<ExercisePage />} />
                         <Route path="/userMyPage" element={<UserMyPage />} />
