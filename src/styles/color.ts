@@ -3,6 +3,7 @@ export const COLORS = {
   WhiteSmoke: '#F5F5F5',
   LightGray: '#C5C5C5',
   SoftGray : '#D8D8D8',
+  LineGray: '#E8E8E8',
   Gray : '#787878',
   SoftOrange : '#FFD8A0',
   DoveGray : '#BFBEBE',

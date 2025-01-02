@@ -1,17 +1,92 @@
 import React from "react";
 import TopNavigation from "../../components/TopNavigation/TopNavigation";
+import * as S from "./Styles";
+import { useState,useEffect } from "react";
+import {RankingElement} from "../../components/ranking/Ranking";
+import RankingList from "../../components/ranking/RankingList";
+import { myScore,bodybudyData,gymData,myGym } from "../../mocks/rank-mock";
+import NoGymMessage from "../../components/ranking/NoGymMessage";
+
+enum Tab {
+    BodyBudy = "bodybudy",
+    Gym = "gym",
+}
+
 
 const RankingPage: React.FC = () => {
     const handleTabClick = (tab: string) => {
       console.log(`${tab} 탭 클릭됨`);
     };
+
+    const [activeTab, setActiveTab] = useState<Tab>(Tab.BodyBudy);
+        const [rankingData,setRankingData]=useState<any[]>(bodybudyData);
+        const [gym, setGym]=useState(myGym.name);
+    
+        useEffect(() => {
+            console.log("gym 값이 변경되었습니다:", gym);
+            setGym(myGym.name);
+        }, [gym]);
+    
+    
+        const handleTabChange = (tab: Tab) => {
+            setActiveTab(tab);
+            //탭에 맞는 데이터로 변경
+            if(tab===Tab.BodyBudy){
+                setRankingData(bodybudyData);
+            }
+            else if(tab===Tab.Gym){
+                setRankingData(gymData);
+            }
+        };
+    
+        console.log("화면");
+
     return (
         <>
             <TopNavigation activeTab="랭킹"  onTabClick={handleTabClick}/>
-            <div>
-                <h1>랭킹 페이지</h1>
-                <p>랭킹 데이터를 표시하는 콘텐츠를 여기에 추가하세요.</p>
-            </div>
+                <S.ContentContainer>
+                    <S.Buttons>
+                        <S.Button 
+                        $active={activeTab===Tab.BodyBudy}
+                        onClick={()=>handleTabChange(Tab.BodyBudy)}>
+                            바디버디 리그
+                        </S.Button>
+
+                        <S.Button
+                        $active={activeTab===Tab.Gym}
+                        onClick={()=>handleTabChange(Tab.Gym)}>
+                            GYM 리그
+                        </S.Button>
+                    </S.Buttons>
+                
+                    {activeTab===Tab.Gym?(
+                        gym===""?(
+                            <NoGymMessage/>
+                        ) : (
+                            <>
+                                <S.Box>
+                                    <S.GymInfo >{`${gym}`}</S.GymInfo>
+                                </S.Box>
+                                <S.Box>
+                                    <RankingElement data={myScore} />
+                                </S.Box>
+                                <S.BoxList>
+                                    <RankingList rankingData={rankingData}/>
+                                </S.BoxList>
+                            </>
+                        )
+                    ) : (
+                        <>
+                            <S.Box>
+                                <RankingElement data={myScore} />
+                            </S.Box>
+                            <S.BoxList>
+                                <RankingList rankingData={rankingData}/>
+                            </S.BoxList>
+                        </>
+                    )}
+                    
+                </S.ContentContainer>
         </>
     );
 };

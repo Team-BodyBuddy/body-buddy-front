@@ -6,8 +6,13 @@ import EditInfo from "../../components/EditInfo/EditInfo";
 //import FooterActions from "../../components/FooterActions/FooterActions";
 import Nickname from "../../components/Nickname/Nickname";
 import UserInfo from "../../components/UserInfo/UserInfo";
+import TopNavigation from "../../components/TopNavigation/TopNavigation";
 
 const MyPage: React.FC = () => {
+    const handleTabClick = (tab: string) => {
+        console.log(`${tab} 탭 클릭됨`);
+    };
+    
     const navigate = useNavigate();
 
     const handleExitClick = () => {
@@ -16,6 +21,7 @@ const MyPage: React.FC = () => {
 
     return (
         <S.Container>
+            <TopNavigation activeTab="랭킹"  onTabClick={handleTabClick}/>
             <Nickname />
             <UserInfo />
             <EditInfo />
