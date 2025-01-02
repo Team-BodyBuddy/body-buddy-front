@@ -26,7 +26,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ activeTab, onTabClick }) 
                 navigate('/');
                 break;
             case '마이':
-                navigate('/userMyPage');
+                navigate('/my');
                 break;
             case '바디버디':
                 navigate('/bodybuddy');

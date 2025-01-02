@@ -3,6 +3,7 @@ import { BsCart2 } from "react-icons/bs";
 import { RiLightbulbFlashLine } from "react-icons/ri";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { ReactComponent as Character} from "../assets/icons/potato_char.svg";
+import { ReactComponent as EditRectangle } from "../assets/icons/edit_rectangle.svg";
 import { ReactComponent as Profile } from "../assets/icons/default_profile.svg";
 import { ReactComponent as GHealth } from "../assets/icons/Green_health.svg";
 import { ReactComponent as BodyBoddy } from "../assets/icons/BODY BUDDY.svg";
@@ -12,8 +13,8 @@ import { ReactComponent as CheckMark2 } from "../assets/icons/checkMark-circle-g
 import { ReactComponent as Line } from "../assets/icons/line.svg";
 import { ReactComponent as Title } from "../assets/icons/titleGroup.svg";
 import { ReactComponent as Select } from "../assets/icons/select.svg";
-
 export const PotatoImage = Character;
+export const Edit = EditRectangle;
 export const Logo = BodyBoddy;
 export const LeftArrow = Arrow;
 export const CheckButton1 = CheckMark1;
