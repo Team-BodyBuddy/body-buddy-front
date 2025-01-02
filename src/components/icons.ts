@@ -22,7 +22,6 @@ export const LineGreen = Line;
 export const TitleLoading = Title;
 export const ArrowDown = Select;
 export const HomeIcon = TiHomeOutline ; 
-export const PotatoImage = Character;
 export const DefaultProfile=Profile;
 export const GreenHealth=GHealth;
 export const Cart = BsCart2;

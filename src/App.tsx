@@ -6,7 +6,6 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 import { FluxProvider } from "./stores/FluxContext";
 import UserPage from "./pages/UserPage/UserPage";
-import AdminPage from "./pages/AdminPage/AdminPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import FindIdPage from "./pages/FindIdPage/FindIdPage";
 import FindPasswordPage from "./pages/FindPasswordPage/FindPasswordPage";
@@ -31,7 +30,6 @@ const App: React.FC = () => {
                 >
                     <Routes>
                         <Route path="/" element={<UserPage />} />
-                        <Route path="/admin" element={<AdminPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/findId" element={<FindIdPage />} />
                         <Route path="/findPassword" element={<FindPasswordPage />} />
