@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 100vw;
         height: 100vh;
         font-size: 16px;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     #root {
