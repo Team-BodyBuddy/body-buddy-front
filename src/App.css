@@ -28,44 +28,10 @@
   color: #61dafb;
 }
 
-@font-face {
-  font-family: 'Pretendard';
-  src: url('./assets/fonts/Pretendard-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('pretendard/dist/web/static/pretendard.css');
 
-@font-face {
-  font-family: 'Pretendard';
-  src: url('./assets/fonts/Pretendard-Bold.otf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('./assets/fonts/Pretendard-SemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('./assets/fonts/Pretendard-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('./assets/fonts/Pretendard-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-body {
-  font-family: 'Pretendard', sans-serif !important;
-  font-weight: normal;
+body, button {
+  font-family: 'Pretendard', sans-serif ;
 }
 
 @keyframes App-logo-spin {
