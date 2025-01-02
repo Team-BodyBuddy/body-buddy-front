@@ -2,10 +2,10 @@ import React from "react";
 import TopNavigation from "../../components/TopNavigation/TopNavigation";
 import * as S from "./Styles";
 import { useState,useEffect } from "react";
-import {RankingElement} from "../../components/ranking/Ranking";
-import RankingList from "../../components/ranking/RankingList";
+import {RankingElement} from "../../components/Ranking/Ranking";
+import RankingList from "../../components/Ranking/RankingList";
 import { myScore,bodybudyData,gymData,myGym } from "../../mocks/rank-mock";
-import NoGymMessage from "../../components/ranking/NoGymMessage";
+import NoGymMessage from "../../components/Ranking/NoGymMessage";
 
 enum Tab {
     BodyBudy = "bodybudy",
@@ -15,7 +15,7 @@ enum Tab {
 
 const RankingPage: React.FC = () => {
     const handleTabClick = (tab: string) => {
-      console.log(`${tab} 탭 클릭됨`);
+        console.log(`${tab} 탭 클릭됨`);
     };
 
     const [activeTab, setActiveTab] = useState<Tab>(Tab.BodyBudy);
