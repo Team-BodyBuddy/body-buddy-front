@@ -13,6 +13,12 @@ import { ReactComponent as CheckMark2 } from "../assets/icons/checkMark-circle-g
 import { ReactComponent as Line } from "../assets/icons/line.svg";
 import { ReactComponent as Title } from "../assets/icons/titleGroup.svg";
 import { ReactComponent as Select } from "../assets/icons/select.svg";
+import {ReactComponent as TodoIcon1} from "../assets/icons/TodoIcon-on.svg";
+import {ReactComponent as TodoIcon2} from "../assets/icons/TodoIcon-off.svg";
+import {ReactComponent as CheckGreen} from "../assets/icons/check-button-green.svg";
+import {ReactComponent as CheckGray} from "../assets/icons/check-button-gray.svg";
+import {ReactComponent as RemoveGray} from "../assets/icons/remove-gray.svg";
+
 export const PotatoImage = Character;
 export const Edit = EditRectangle;
 export const Logo = BodyBoddy;
@@ -28,4 +34,8 @@ export const GreenHealth=GHealth;
 export const Cart = BsCart2;
 export const Bulb = RiLightbulbFlashLine; 
 export const Back = IoChevronBackOutline;
-
+export const TodoIconOn=TodoIcon1;
+export const TodoIconOff=TodoIcon2;
+export const CheckButtonGray=CheckGray;
+export const CheckButtonGreen=CheckGreen;
+export const RemoveTodoButton=RemoveGray;
