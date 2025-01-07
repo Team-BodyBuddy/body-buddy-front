@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as S from "./Styles";
 import TopNavigation from "../../components/TopNavigation/TopNavigation";
 import MemberElement from "../../components/MemberListSection/MemberList";
 import { bodybudyData } from "../../mocks/rank-mock";
@@ -9,12 +9,12 @@ const TrainerMainPage:React.FC=()=>{
     };
 
     return(
-        <>
+        <S.Container>
             <TopNavigation activeTab="홈"  onTabClick={handleTabClick}/>
-            <S.Container>
+            <S.ListWrapper>
                 <MemberElement members={bodybudyData}/>
-            </S.Container>
-        </>
+            </S.ListWrapper>
+        </S.Container>
     )
 }
 
