@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const PageLink = styled.div<{textColor?: string}>`
-    color: ${(props) => props.textColor};
+export const PageLink = styled.div<{$textcolor?: string}>`
+    color: ${(props) => props.$textcolor};
     text-align: center;
 
     &.findIdPassword { // 아이디/비번 찾기 글자 위치

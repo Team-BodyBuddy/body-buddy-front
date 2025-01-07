@@ -4,12 +4,12 @@ import * as S from "./Styles";
 
 interface NextButtonProps{
     onClick: () => void;
-    bgColor?: string;
+    $bgcolor?: string;
     children: React.ReactNode;
 }
 
-const NextButton: React.FC<NextButtonProps> = ({onClick, bgColor, children}) => {
-    return <S.NextButton onClick={onClick} bgColor={bgColor}>{children}</S.NextButton>;
+const NextButton: React.FC<NextButtonProps> = ({onClick, $bgcolor, children}) => {
+    return <S.NextButton onClick={onClick} $bgcolor={$bgcolor}>{children}</S.NextButton>;
 };
 
 export default NextButton;

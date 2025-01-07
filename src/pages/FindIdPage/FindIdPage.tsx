@@ -1,24 +1,31 @@
 // 아이디 찾기 페이지
-// import React, { useContext, useState } from "react";
 import * as S from "./Styles";
-import { LeftArrow } from "../../components/icons";
+import { useNavigate } from "react-router-dom";
+import BackButton from "../../components/BackButton/BackButton";
+import PageLink from "../../components/PageLink/PageLink";
 
 const FindIdPage: React.FC = () => {
+    const navigate = useNavigate();
 
     return (
         <S.Container>
             <S.TopContainer>
-                <S.TopBar>
-                    <S.Icon><LeftArrow></LeftArrow></S.Icon>
-                    <S.Title>아이디/비밀번호 찾기</S.Title>
-                    <S.Icon></S.Icon>
-                </S.TopBar>
+                <S.Icon><BackButton onClick={() => navigate(-1)} /></S.Icon>
+                <S.Title>아이디/비밀번호 찾기</S.Title>
             </S.TopContainer>
 
             <S.FindOptions>
                 <S.OptionsWrapper>
-                    <S.ID>아이디 찾기</S.ID>
-                    <S.Password>비밀번호 찾기</S.Password>
+                    <PageLink 
+                        $textcolor="#40AD00" 
+                        text="아이디 찾기" 
+                        to="/findId"
+                        className="findId"></PageLink>
+                    <PageLink 
+                        $textcolor="#818181" 
+                        text="비밀번호 찾기" 
+                        to="/findPassword"
+                        className="findPassword"></PageLink>
                 </S.OptionsWrapper>
                 <S.LineWrapper></S.LineWrapper>
             </S.FindOptions>

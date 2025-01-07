@@ -4,13 +4,13 @@ import * as S from "./Styles";
 import { useNavigate } from "react-router-dom";
 
 interface PageLinkProps{
-    textColor?: string;
+    $textcolor?: string;
     text: string;
     to: string;
     className?: string;
 }
 
-const PageLink: React.FC<PageLinkProps> = ({textColor, text, to, className}) => {
+const PageLink: React.FC<PageLinkProps> = ({$textcolor, text, to, className}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -19,7 +19,7 @@ const PageLink: React.FC<PageLinkProps> = ({textColor, text, to, className}) => 
 
     return <S.PageLink 
                 onClick={handleClick} 
-                textColor={textColor}
+                $textcolor={$textcolor}
                 className={className}>{text}</S.PageLink>;
 };
 
