@@ -10,14 +10,16 @@ export const Title = styled.div`
     font-weight: bold;
     margin-bottom: 10px;
     margin-left: 22px;
+    
 ;`
 
 export const MemberList = styled.div`
     display: flex;
     gap: 10px;
-    overflow-x: auto;
-    padding: 10px;
-    margin-left: 10px;
+    justify-content:space-between;
+    overflow-y: auto;
+    flex-wrap: wrap;
+    margin: 20px;
 
     &::-webkit-scrollbar {
         height: 6px;
@@ -36,13 +38,11 @@ export const MemberList = styled.div`
 export const MemberCard = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: #f9f9f9;
     border-radius: 10px;
-    width: 100px;
-    height: 130px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 96px;
+    height: 150px;
+    gap:5px;
     flex-shrink: 0;
 ;`
 
@@ -54,13 +54,25 @@ export const MemberIcon = styled.div`
     margin-bottom: 12px;
 ;`
 
+export const MemberProfileWrapper=styled.div`
+    width: 100%;
+    height: 70%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius: 9px;
+    background-color: #EFEFEF;
+`
+
 export const MemberName = styled.div`
-    font-size: 14px;
-    font-weight: bold;
+    margin-top:5%;
+    font-size: 13px;
+    font-weight: 500;
     color: #333;
 ;`
 
 export const MemberLevel = styled.div`
-    font-size: 12px;
-    color: #666;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
 ;`
