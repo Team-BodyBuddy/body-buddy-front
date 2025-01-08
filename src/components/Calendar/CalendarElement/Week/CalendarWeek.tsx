@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./Styles";
-import { isSameMonth, isToday, format } from "date-fns";
+import { isSameMonth, isToday } from "date-fns";
 import CalendarDate from "../Date/CalendarDate";
 
 interface WeekRowProps {
