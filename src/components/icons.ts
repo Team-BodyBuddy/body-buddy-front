@@ -13,6 +13,8 @@ import { ReactComponent as CheckMark2 } from "../assets/icons/checkMark-circle-g
 import { ReactComponent as Line } from "../assets/icons/line.svg";
 import { ReactComponent as Title } from "../assets/icons/titleGroup.svg";
 import { ReactComponent as Select } from "../assets/icons/select.svg";
+import { ReactComponent as Logout } from "../assets/icons/LogoutLogo.svg";
+import { ReactComponent as Exit } from "../assets/icons/ExitLogo.svg";
 export const PotatoImage = Character;
 export const Edit = EditRectangle;
 export const Logo = BodyBoddy;
@@ -28,4 +30,6 @@ export const GreenHealth=GHealth;
 export const Cart = BsCart2;
 export const Bulb = RiLightbulbFlashLine; 
 export const Back = IoChevronBackOutline;
+export const ExitLogo = Exit;
+export const LogoutLogo = Logout;
 

@@ -1,7 +1,7 @@
 //마이페이지 : 사는곳, 몸무게
 import React from "react";
 import * as S from "./Styles";
-import { Edit } from "../../components/icons";
+import { Edit } from "../../icons";
 
 const EditInfo: React.FC = () => {
     return <S.Container>
