@@ -4,30 +4,36 @@ import { COLORS } from "../../styles/color";
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    gap: 20px;
     border: 1px solid ${COLORS.LightGray}; 
-    border-radius: 14px; 
-    padding : 20px 0px;
-`
-export const Title = styled.h1`
-    margin: 0;
-    font-size: 2rem;
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 400;
-    color: #333;
+    border-radius: 16px;
+    padding: 14px 20px;
 `
 
 export const Img= styled.div`
-    flex-grow: 1; 
-    text-align: center;
-    
-`
-export const Name= styled.p`
-    flex-grow: 3;
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    background-color: ${COLORS.SoftGray};
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    svg{
+        width:60%;
+        height:60%;
+    }
 `
-export const Lv= styled.p`
-    flex-grow: 1;
-
+export const Name= styled.div`
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
 `
