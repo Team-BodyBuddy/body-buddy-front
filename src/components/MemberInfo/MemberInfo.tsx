@@ -2,13 +2,15 @@
 import * as S from "./Styles";
 import { DefaultProfile } from "../icons";
 
-const MemberInfo:React.FC=()=>{
-    return(
-        <S.Container>
-            <S.Img><DefaultProfile /></S.Img>
+const MemberInfo: React.FC<{ onClick: () => void }> = ({ onClick }) => {
+    return (
+        <S.Container onClick={onClick}>
+            <S.Img>
+                <DefaultProfile />
+            </S.Img>
             <S.Name>이름</S.Name>
         </S.Container>
-    )
-}
+    );
+};
 
 export default MemberInfo;
