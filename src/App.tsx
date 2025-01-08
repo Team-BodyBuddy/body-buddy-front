@@ -18,8 +18,12 @@ import RankingPage from "./pages/RankingPage/RankingPage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
 import BodyBuddyPage from "./pages/BodyBuddyPage/BodyBuddyPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
+<<<<<<< Updated upstream
 import TrainerMainPage from "./pages/TrainerMainPage/TrainerMainPage";
 import TrainerMemberPage from "./pages/TrainerMemberPage/TrainerMemberPage";
+=======
+import TrainerPortfolio from "./pages/TrainerPortfolio/TrainerPortfolio";
+>>>>>>> Stashed changes
 
 const App: React.FC = () => {
     return (
@@ -45,8 +49,13 @@ const App: React.FC = () => {
                         <Route path="/my/exit" element={<ExitPage />} />
                         <Route path="/bodybuddy" element={<BodyBuddyPage />} />
                         <Route path="/portfolio" element={<PortfolioPage />} />
+<<<<<<< Updated upstream
                         <Route path="/trainer" element={<TrainerMainPage/>}/>
                         <Route path="/trainer/member" element={<TrainerMemberPage/>}/>
+=======
+                        <Route path="/trainer/portfolio" element={<TrainerPortfolio />} />
+
+>>>>>>> Stashed changes
                     </Routes>
                 </Router>
             </ThemeProvider>
