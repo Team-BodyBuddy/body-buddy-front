@@ -234,7 +234,7 @@ const TrainerSignUpPage: React.FC = () => {
                 </S.Detail2>
 
                 <S.NextContainer>
-                    <NextButton onClick={() => {}} $bgcolor="#00B4EA">다음</NextButton>
+                    <NextButton onClick={() => {navigate("/loading");}} $bgcolor="#00B4EA">다음</NextButton>
                 </S.NextContainer>
             </S.Container3>
         </S.Container>

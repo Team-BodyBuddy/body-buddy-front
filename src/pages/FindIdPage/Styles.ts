@@ -4,7 +4,7 @@ import styled from "styled-components";
 // align-items: center; /* 수직 가운데 정렬 */
 
 export const Container = styled.div`
-    background-color: #C7EEEF;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     height: 100vh;

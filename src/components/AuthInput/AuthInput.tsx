@@ -6,13 +6,15 @@ interface AuthInputProps{
     placeholder: string;
     errorMessage?: string;
     type?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AuthInput: React.FC<AuthInputProps> = ({ label, placeholder, errorMessage, type = "text"},) => {
+const AuthInput: React.FC<AuthInputProps> = ({ label, placeholder, errorMessage, type = "text", value, onChange }) => {
     return(
         <InputContainer>
             <Text>{label}{errorMessage && <Alert>{errorMessage}</Alert>}</Text>
-            <Input placeholder={placeholder} type={type} />
+            <Input placeholder={placeholder} type={type} value={value} onChange={onChange} />
         </InputContainer>
     )       
 }

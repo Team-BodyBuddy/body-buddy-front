@@ -1,5 +1,6 @@
 // 로그인 페이지
-// import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
 import { Logo } from "../../components/icons";
 import NextButton from "../../components/NextButton/NextButton";
@@ -7,6 +8,24 @@ import AuthInput from "../../components/AuthInput/AuthInput";
 import PageLink from "../../components/PageLink/PageLink";
 
 const LoginPage: React.FC = () => {
+    const navigate = useNavigate();
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleLogin = () => {
+        const userId = "id1234";
+        const userPassword = "pass1234";
+    
+        console.log("ID:", id);
+        console.log("Password:", password);
+        
+        if (id === userId && password === userPassword) {
+          navigate("/loading");
+        } else {
+          setErrorMessage("*아이디 또는 비밀번호가 일치하지 않습니다.");
+        }
+      };
 
     return (
         <S.Container>
@@ -17,18 +36,28 @@ const LoginPage: React.FC = () => {
 
             <S.CenterContainer>
                 <form>
-                    <AuthInput 
+                    <AuthInput
                         label="아이디"
                         placeholder="아이디를 입력해 주세요"
-                        errorMessage="*아이디 혹은 비밀번호가 일치하지 않습니다."
+                        errorMessage={errorMessage}
+                        value={id}
+                        onChange={(e) => {
+                            setId(e.target.value);
+                            setErrorMessage("");
+                        }}
                     />
-                    <AuthInput 
+                    <AuthInput
                         label="비밀번호"
                         placeholder="비밀번호를 입력해 주세요"
                         type="password"
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setErrorMessage("");
+                        }}
                     />
                 </form>
-                <NextButton onClick={() => {}} $bgcolor="#40AD00">로그인</NextButton>
+                <NextButton onClick={handleLogin} $bgcolor="#40AD00">로그인</NextButton>
             </S.CenterContainer>
 
             <PageLink 
@@ -36,7 +65,7 @@ const LoginPage: React.FC = () => {
                 text="아이디 찾기 / 비밀번호 찾기" 
                 to="/findId"
                 className="findIdPassword"></PageLink>
-            
+
             <PageLink 
                 $textcolor="#40AD00" 
                 text="회원 가입" 

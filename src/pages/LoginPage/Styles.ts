@@ -40,3 +40,14 @@ export const CenterContainer = styled.div`
     width: 80%; 
     height: 251px;
 `;
+
+export const ErrorMessage = styled.span`
+    font-family: Pretendard;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.13px;
+    color: #FF4040;
+    position:relative;
+    top:15px;
+    left:155px;
+`;

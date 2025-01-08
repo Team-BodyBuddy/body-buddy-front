@@ -253,7 +253,7 @@ const UserSignUpPage: React.FC = () => {
                 </S.Detail2>
 
                 <S.NextContainer>
-                    <NextButton onClick={() => {}} $bgcolor="#40AD00">다음</NextButton>
+                    <NextButton onClick={() => {navigate("/loading");}} $bgcolor="#40AD00">다음</NextButton>
                 </S.NextContainer>
             </S.Container3>
         </S.Container>
