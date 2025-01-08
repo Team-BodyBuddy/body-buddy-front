@@ -19,6 +19,7 @@ import ExercisePage from "./pages/ExercisePage/ExercisePage";
 import BodyBuddyPage from "./pages/BodyBuddyPage/BodyBuddyPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import TrainerMainPage from "./pages/TrainerMainPage/TrainerMainPage";
+import TrainerMemberPage from "./pages/TrainerMemberPage/TrainerMemberPage";
 
 const App: React.FC = () => {
     return (
@@ -45,6 +46,7 @@ const App: React.FC = () => {
                         <Route path="/bodybuddy" element={<BodyBuddyPage />} />
                         <Route path="/portfolio" element={<PortfolioPage />} />
                         <Route path="/trainer" element={<TrainerMainPage/>}/>
+                        <Route path="/trainer/member" element={<TrainerMemberPage/>}/>
                     </Routes>
                 </Router>
             </ThemeProvider>
