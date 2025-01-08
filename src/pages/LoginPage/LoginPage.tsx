@@ -40,8 +40,8 @@ const LoginPage: React.FC = () => {
             <PageLink 
                 $textcolor="#40AD00" 
                 text="회원 가입" 
-                to="/userSignup"
-                className="userSignup"></PageLink>
+                to="/trainerSignup"
+                className="Signup"></PageLink>
         </S.Container>
     );
 };

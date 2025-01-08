@@ -10,7 +10,7 @@ const FindIdPage: React.FC = () => {
     return (
         <S.Container>
             <S.TopContainer>
-                <S.Icon><BackButton onClick={() => navigate(-1)} /></S.Icon>
+                <S.Icon><BackButton onClick={() => navigate("/login")} /></S.Icon>
                 <S.Title>아이디/비밀번호 찾기</S.Title>
             </S.TopContainer>
 

@@ -8,7 +8,7 @@ export const PageLink = styled.div<{$textcolor?: string}>`
         margin-top: 15px;
     }
     
-    &.userSignup { // 회원가입 글자 위치치
+    &.Signup { // 회원가입 글자 위치
         position: absolute;
         bottom: 20px;
         left: 50%;

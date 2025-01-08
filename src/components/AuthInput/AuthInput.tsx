@@ -1,4 +1,4 @@
-//아이디,비밀번호 입력 부분
+//로그인 페이지 아이디,비밀번호 입력 부분
 import styled from "styled-components"
 
 interface AuthInputProps{
