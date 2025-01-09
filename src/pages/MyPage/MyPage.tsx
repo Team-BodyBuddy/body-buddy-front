@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
-import Buttons from "../../components/Buttons/Buttons";
-import EditInfo from "../../components/EditInfo/EditInfo";
-//import FooterActions from "../../components/FooterActions/FooterActions";
-import Nickname from "../../components/Nickname/Nickname";
-import UserInfo from "../../components/UserInfo/UserInfo";
+import Buttons from "../../components/MyPage/Buttons/Buttons";
+import EditInfo from "../../components/MyPage/EditInfo/EditInfo";
+import Nickname from "../../components/MyPage/Nickname/Nickname";
+import UserInfo from "../../components/MyPage/UserInfo/UserInfo";
 import TopNavigation from "../../components/TopNavigation/TopNavigation";
 
 const MyPage: React.FC = () => {
@@ -17,11 +16,11 @@ const MyPage: React.FC = () => {
 
     const handleExitClick = () => {
         navigate("/my/exit");
-    };
+};
 
     return (
         <S.Container>
-            <TopNavigation activeTab="랭킹"  onTabClick={handleTabClick}/>
+            <TopNavigation activeTab="마이"  onTabClick={handleTabClick}/>
             <Nickname />
             <UserInfo />
             <EditInfo />

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../styles/color";
+import { COLORS } from "../../../styles/color";
 
 
     //필요한거: 세로 정렬 , 가운데 정렬

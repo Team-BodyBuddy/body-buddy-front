@@ -12,6 +12,8 @@ import { ReactComponent as CheckMark2 } from "../assets/icons/checkMark-circle-g
 import { ReactComponent as CheckMark3 } from "../assets/icons/checkMark-circle-blue.svg";
 import { ReactComponent as Title } from "../assets/icons/titleGroup.svg";
 import { ReactComponent as Select } from "../assets/icons/select.svg";
+import { ReactComponent as Logout } from "../assets/icons/LogoutLogo.svg";
+import { ReactComponent as Exit } from "../assets/icons/ExitLogo.svg";
 import {ReactComponent as TodoIcon1} from "../assets/icons/TodoIcon-on.svg";
 import {ReactComponent as TodoIcon2} from "../assets/icons/TodoIcon-off.svg";
 import {ReactComponent as CheckGreen} from "../assets/icons/check-button-green.svg";
@@ -32,6 +34,8 @@ export const GreenHealth=GHealth;
 export const Cart = BsCart2;
 export const Bulb = RiLightbulbFlashLine; 
 export const Back = IoChevronBackOutline;
+export const ExitLogo = Exit;
+export const LogoutLogo = Logout;
 export const TodoIconOn=TodoIcon1;
 export const TodoIconOff=TodoIcon2;
 export const CheckButtonGray=CheckGray;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BackButton = styled.button`
   position: absolute;
   left: 25px;
-  top: 70px;
+  top: 25px;
   background: none;
   border: none;
   cursor: pointer;
