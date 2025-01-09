@@ -4,7 +4,7 @@ import styled from "styled-components";
 // align-items: center; /* 수직 가운데 정렬 */
 
 export const Container = styled.div`
-    background-color: #C7EEEF;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -31,21 +31,10 @@ export const TopContainer = styled.div`
     margin-bottom:2rem;
 `;
 
-export const TopBar = styled.div`
-    display:flex;
-    flex-direction: row;
-    gap: 20%; 
-    margin-left: 10px;
-    margin-right: 10px;
-
-    @media (max-width: 375px) {
-        gap: 19%;
-    }
-`;
-
-export const Icon = styled.div`
-    width:7%;
-    height:7%;
+export const Icon = styled.span`
+    position: relative;
+    top:-66px;
+    left:0px;
 `;
 
 export const Title = styled.div`
@@ -87,15 +76,6 @@ export const LineWrapper = styled.span`
     border-bottom : 1px solid #40AD00;
     margin-left:2rem;
     margin-right:2rem;
-`;
-
-export const ID = styled.span`
-    color: #40AD00;
-`;
-
-export const Password = styled.span`
-    color: #818181;
-
 `;
 
 export const ContentWrapper = styled.div`
