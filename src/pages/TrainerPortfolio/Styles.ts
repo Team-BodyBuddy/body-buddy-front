@@ -21,41 +21,45 @@ export const ProfileImageLarge = styled.div`
 `;
 
 export const ProfileName = styled.div`
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 800;
 `;
 
 export const EditableSection = styled.div`
     margin-bottom: 16px;
     background-color: #fff;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 15px; 
+    display: flex;
+    flex-direction: column; 
+    gap: 16px; 
 `;
 
 export const SectionHeader = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    align-items: center; /* 세로 중앙 정렬 */
-    justify-content: space-between; /* 각 요소를 좌우로 배치 */
-    margin-bottom: 12px;
+    gap: 10px;
 
     &:last-child {
-        margin-bottom: 0;
+    margin-bottom: 0;
     }
 `;
 
+
 export const SectionTitle = styled.span`
-    flex: 1; /* 나머지 공간 차지 */
+    flex: 1; 
     font-size: 14px;
     color: #888;
-  text-align: left; /* 왼쪽 정렬 */
+    text-align: left; 
 `;
 
 export const SectionContent = styled.span`
-    flex: 1.5; 
-    font-size: 16px;
-    font-weight: bold;
+    flex: 1.8; 
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
     text-align: left; 
     color: #000;
 `;
@@ -73,6 +77,7 @@ export const EditIcon = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
 
     &::before {
         content: "✏️";
