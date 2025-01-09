@@ -14,10 +14,6 @@ const TrainerPortfolio: React.FC = () => {
     // 테스트용 데이터
     const aboutItems = Array.from({ length: 10 }, (_, index) => `포트폴리오 수정하기 ${index + 1}`);
 
-    const handleMemberInfoClick = () => {
-        console.log("MemberInfo 클릭됨");
-    };
-
     return (
         <>
             <TopNavigation 
