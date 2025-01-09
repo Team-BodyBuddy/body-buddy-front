@@ -35,47 +35,19 @@ export const Title = styled.div`
     margin: 22px 0px 0px 33px;
 `;
 
-
-
 export const CenterContainer = styled.div`
     margin: 63px 0px 0px 36px;
     width: 80%; 
     height: 251px;
 `;
 
-export const InputContainer = styled.div`
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap:17px;
-    margin-bottom: 17px;
-`;
-
-export const Text = styled.div`
-    font-weight: 600;
-    font-size: 14px;
-`;
-
-export const Input = styled.div`
-    text-align: center;
-`;
-
-export const Button = styled.div`
-
-`;
-
-
-
-export const Find = styled.div`
-    color: #979797;
-    text-align: center;
-    margin-top: 3%;
-`;
-
-export const Signup = styled.div`
-    color: #40AD00;
-    position: fixed;
-    bottom: calc(5vh); 
-    left: 50%; 
-    transform: translateX(-50%); 
+export const ErrorMessage = styled.span`
+    font-family: Pretendard;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.13px;
+    color: #FF4040;
+    position:relative;
+    top:15px;
+    left:155px;
 `;
