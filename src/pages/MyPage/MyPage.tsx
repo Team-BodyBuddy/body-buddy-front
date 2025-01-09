@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
 import Buttons from "../../components/MyPage/Buttons/Buttons";
 import EditInfo from "../../components/MyPage/EditInfo/EditInfo";
-//import FooterActions from "../../components/FooterActions/FooterActions";
 import Nickname from "../../components/MyPage/Nickname/Nickname";
 import UserInfo from "../../components/MyPage/UserInfo/UserInfo";
 import TopNavigation from "../../components/TopNavigation/TopNavigation";
@@ -17,11 +16,11 @@ const MyPage: React.FC = () => {
 
     const handleExitClick = () => {
         navigate("/my/exit");
-    };
+};
 
     return (
         <S.Container>
-            <TopNavigation activeTab="랭킹"  onTabClick={handleTabClick}/>
+            <TopNavigation activeTab="마이"  onTabClick={handleTabClick}/>
             <Nickname />
             <UserInfo />
             <EditInfo />

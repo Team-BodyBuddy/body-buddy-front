@@ -26,7 +26,7 @@ export const Overlay = styled.div<{ isVisible: boolean }>`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 적용
     z-index: 999;
-    display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
+    display: ${({ isVisible }) => (isVisible ? "block" : "none")};
 `;
 
 export const ToastContainer = styled.div<{ isVisible: boolean }>`
@@ -39,8 +39,8 @@ export const ToastContainer = styled.div<{ isVisible: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; 
-    height: 292px; 
+    width: 100%;
+    height: 292px;
     animation: ${({ isVisible }) => (isVisible ? slideUp : slideDown)} 0.5s forwards;
 `;
 
