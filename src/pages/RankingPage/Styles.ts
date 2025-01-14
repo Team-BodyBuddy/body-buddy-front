@@ -75,7 +75,7 @@ export const BoxList = styled.div`
     ::-webkit-scrollbar {
         display: none;
     }
-    max-height: 530px;
+    max-height: 510px;
 `;
 
 export const GymInfo = styled.div`
