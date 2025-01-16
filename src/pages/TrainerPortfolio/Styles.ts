@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DetailContainer = styled.div`
     padding: 16px;
     background-color: #f9f9f9;
+    overflow-y: auto;
 `;
 
 export const ProfileHeader = styled.div`

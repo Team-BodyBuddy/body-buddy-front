@@ -1,5 +1,5 @@
 import React from "react";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
 import * as S from "./Styles";
 
 const UserMyPage: React.FC = () => {

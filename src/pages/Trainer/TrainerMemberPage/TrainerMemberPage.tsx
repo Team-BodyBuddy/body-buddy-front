@@ -1,12 +1,12 @@
 import { useState } from "react";
-import MemberInfo from "../../components/MemberInfo/MemberInfo";
-import TodoElement from "../../components/Todo/TodoElement";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
-import { todoData } from "../../mocks/todo-mock";
+import MemberInfo from "../../../components/MemberInfo/MemberInfo";
+import TodoElement from "../../../components/Todo/TodoElement";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
+import { todoData } from "../../../mocks/todo-mock";
 import * as S from "./Styles";
-import GraphModal from "../../components/Modal/GraphModal/GraphModal";
-import TrendGraph from "../../components/TrendGraph/TrendGraph";
-import Calendar from "../../components/Calendar/Calendar";
+import GraphModal from "../../../components/Modal/GraphModal/GraphModal";
+import TrendGraph from "../../../components/TrendGraph/TrendGraph";
+import Calendar from "../../../components/Calendar/Calendar";
 
 const TrainerMemberPage: React.FC = () => {
     const handleTabClick = (tab: string) => {

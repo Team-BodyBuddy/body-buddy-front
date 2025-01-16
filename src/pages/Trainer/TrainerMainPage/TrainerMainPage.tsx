@@ -1,7 +1,7 @@
 import * as S from "./Styles";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
-import MemberElement from "../../components/MemberListSection/MemberList";
-import { bodybudyData } from "../../mocks/rank-mock";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
+import MemberElement from "../../../components/MemberListSection/MemberList";
+import { bodybudyData } from "../../../mocks/rank-mock";
 
 const TrainerMainPage:React.FC=()=>{
     const handleTabClick = (tab: string) => {

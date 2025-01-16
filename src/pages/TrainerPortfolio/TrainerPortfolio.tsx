@@ -20,7 +20,6 @@ const PortfolioPage: React.FC = () => {
                 activeTab="바디버디"
                 onTabClick={(tab) => console.log(`${tab} 탭 클릭됨`)}  />
             <S.DetailContainer>
-                {/* Component 13: 지역/키-몸무게 수정 영역 */}
                 <S.ProfileHeader>
                     <S.ProfileImageLarge />
                     <S.ProfileName>김건강(27세, 남)</S.ProfileName>
@@ -42,7 +41,6 @@ const PortfolioPage: React.FC = () => {
                     </S.EditableSection>
                 )}
 
-                {/* Component 11: 포트폴리오 수정 영역 */}
                 {isEditingList ? (
                     <EditableList items={aboutItems} onItemClick={() => setIsEditingList(false)} />
                 ) : (
