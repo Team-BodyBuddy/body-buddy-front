@@ -19,6 +19,8 @@ import {ReactComponent as TodoIcon2} from "../assets/icons/TodoIcon-off.svg";
 import {ReactComponent as CheckGreen} from "../assets/icons/check-button-green.svg";
 import {ReactComponent as CheckGray} from "../assets/icons/check-button-gray.svg";
 import {ReactComponent as RemoveGray} from "../assets/icons/remove-gray.svg";
+import { ReactComponent as CheckIcon } from "../assets/icons/check_icon.svg";
+import { ReactComponent as CheckShape } from "../assets/icons/check_shape.svg";
 
 export const PotatoImage = Character;
 export const Edit = EditRectangle;
@@ -41,3 +43,5 @@ export const TodoIconOff=TodoIcon2;
 export const CheckButtonGray=CheckGray;
 export const CheckButtonGreen=CheckGreen;
 export const RemoveTodoButton=RemoveGray;
+export const CheckPort = CheckIcon;
+export const BigCheckMark = CheckShape;
