@@ -1,8 +1,35 @@
 import styled from "styled-components";
 
+export const HeaderGroup = styled.div`
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+`;
+
+export const Label = styled.label`
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 5px;
+  color: #979797 !important;
+`;
+
+export const CloseButton = styled.button`
+  background-color: #4caf50;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  margin-right: -12px;
+  margin-top: -4px;
+  justify-content: center;
+`;
+
 export const FormContainer = styled.form`
   background-color: #fff;
-  border-radius: 15px;
+  border-radius: 11px;
   border: 1px solid #C5C5C5;
   padding: 20px; 
   max-width: 400px; 
@@ -12,6 +39,7 @@ export const FormContainer = styled.form`
   gap: 20px;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 11px;
 `;
 
 export const FormGroup = styled.div`
@@ -29,12 +57,6 @@ export const FormGroup = styled.div`
   }
 `;
 
-export const Label = styled.label`
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-`;
-
 export const Select = styled.select`
   flex: 1;
   height: 40px;
@@ -43,7 +65,7 @@ export const Select = styled.select`
   border: none; 
   border-radius: 12px; 
   background-color: #ffffff;
-  color: #555;
+  color: #979797;
   border: 1px solid #C5C5C5;
   appearance: none; 
   cursor: pointer;
@@ -79,30 +101,5 @@ export const Row = styled.div`
   gap: 12px; 
   justify-content: flex-start;
   align-items: center; 
-`;
-
-export const CloseButton = styled.button`
-  position: relative; 
-  margin-left: auto;
-  width: 32px;
-  height: 32px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 50%; 
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #45a047; /* 호버 시 어두운 초록색 */
-  }
-
-  &:focus {
-    outline: none;
-  }
 `;
 

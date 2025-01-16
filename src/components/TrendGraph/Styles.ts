@@ -44,12 +44,12 @@ export const TextCard = styled.div`
 export const GraphCard = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
     width: 100%;
     border: 1.2px solid #d1d1d1;
     background-color: #f6f6f6;
     border-radius: 10px;
-    padding: 20px 20px;
+    padding: 0px 40px;
 `;
 
 export const GraphHeader = styled.div`
@@ -57,12 +57,12 @@ export const GraphHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
     color: #333;
 `;
 
 export const GraphWrapper = styled.div`
-    height: 100px;
+    height: 60px;
     width: 100%;
     overflow: hidden;
 `;
@@ -84,7 +84,7 @@ export const GraphSection = styled.div`
 
 export const GraphValue = styled.span`
     font-size: 14px;
-    color: #333333;
+    color: #333;
     font-weight: bold;
     display: flex;
     justify-content: center;

@@ -2,28 +2,46 @@ import styled from "styled-components";
 
 export const ListContainer = styled.div`
     padding: 16px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 11px;
+    border: 1px solid #c5c5c5;
 `;
 
 export const Title = styled.h3`
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 15px;
+`;
+
+export const HeaderGroup = styled.div`
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+`;
+
+export const CloseButton = styled.button`
+    background-color: #4caf50;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const ItemList = styled.ul`
     list-style: none;
-    padding: 0;
+    padding: 12px 0px;
 `;
 
-export const Item = styled.li`
-    padding: 8px 12px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 8px;
+export const Item = styled.li<{ $isSelected: boolean }>`
+    border: none;
+    margin-bottom: 10px;
+    color: #616161;
+    background-color: ${({ $isSelected }) => ($isSelected ? "#bdbdbd" : "#fff")};
+    font-size: 13px;
     cursor: pointer;
     &:hover {
         background-color: #f0f0f0;
