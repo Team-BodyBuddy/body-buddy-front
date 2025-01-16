@@ -2,10 +2,10 @@ import React from "react";
 import TopNavigation from "../../../components/TopNavigation/TopNavigation";
 import * as S from "./Styles";
 import { useState, useEffect } from "react";
-import { RankingElement } from "../../components/Ranking/Ranking";
-import RankingList from "../../components/Ranking/RankingList";
-import { myScore, bodybudyData, gymData, myGym } from "../../mocks/rank-mock";
-import NoGymMessage from "../../components/Ranking/NoGymMessage";
+import { RankingElement } from "../../../components/Ranking/Ranking";
+import RankingList from "../../../components/Ranking/RankingList";
+import { myScore, bodybudyData, gymData, myGym } from "../../../mocks/rank-mock";
+import NoGymMessage from "../../../components/Ranking/NoGymMessage";
 
 enum Tab {
     BodyBudy = "bodybudy",
