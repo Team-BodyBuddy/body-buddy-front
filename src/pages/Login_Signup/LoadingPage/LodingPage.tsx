@@ -1,5 +1,5 @@
 import * as S from "./Styles";
-import { TitleLoading } from "../../components/icons";
+import { TitleLoading } from "../../../components/icons";
 
 const LoadingPage: React.FC = () => {
 

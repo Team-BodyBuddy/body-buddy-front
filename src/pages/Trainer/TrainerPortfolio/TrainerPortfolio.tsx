@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
-import BadgeSection from "../../components/BadgeSection/BadgeSection";
-import EditableList from "../../components/EditableList/EditableList"; // Component 11
-import EditRegionAndSize from "../../components/EditForm/EditForm"; // Component 13
-import MemberListSection from "../../components/MemberListSection/MemberListSection";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
+import BadgeSection from "../../../components/BadgeSection/BadgeSection";
+import EditableList from "../../../components/EditableList/EditableList"; // Component 11
+import EditRegionAndSize from "../../../components/EditForm/EditForm"; // Component 13
+import MemberListSection from "../../../components/MemberListSection/MemberListSection";
 import * as S from "./Styles";
 
 const TrainerPortfolio: React.FC = () => {

@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
-import { Logo } from "../../components/icons";
-import NextButton from "../../components/NextButton/NextButton";
-import AuthInput from "../../components/AuthInput/AuthInput";
-import PageLink from "../../components/PageLink/PageLink";
+import { Logo } from "../../../components/icons";
+import NextButton from "../../../components/NextButton/NextButton";
+import AuthInput from "../../../components/AuthInput/AuthInput";
+import PageLink from "../../../components/PageLink/PageLink";
+import axios from 'axios';
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
@@ -31,6 +32,11 @@ const LoginPage: React.FC = () => {
         <S.Container>
             <S.Intro>
                 <S.IntroText>당신의 가장 가까운 친구,</S.IntroText>
+                <button onClick={() => {
+                    axios.get('http://10.1.14.26:8080')
+                    .then((data: any) => {console.log(data) })
+                    .catch(() => { console.log('요청 실패하셨습니다') })
+                }}>버튼</button>
                 <S.Title><Logo></Logo></S.Title>
             </S.Intro>
 

@@ -1,16 +1,16 @@
 //유저 회원가입 페이지
 import React, { useState } from "react";
 import * as S from "./Styles";
-import BackButton from "../../components/BackButton/BackButton";
-import SelectBox from "../../components/SelectBox/SelectBox";
-import NicknameInput from "../../components/NicknameInput/NicknameInput";
-import UserInfoInput from "../../components/UserInfoInput/UserInfoInput";
+import BackButton from "../../../components/BackButton/BackButton";
+import SelectBox from "../../../components/SelectBox/SelectBox";
+import NicknameInput from "../../../components/NicknameInput/NicknameInput";
+import UserInfoInput from "../../../components/UserInfoInput/UserInfoInput";
 import { useNavigate } from "react-router-dom";
-import { CheckButton1 } from "../../components/icons";
-import { CheckButton2 } from "../../components/icons";
-import PageLink from "../../components/PageLink/PageLink";
-import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import NextButton from "../../components/NextButton/NextButton";
+import { CheckButton1 } from "../../../components/icons";
+import { CheckButton2 } from "../../../components/icons";
+import PageLink from "../../../components/PageLink/PageLink";
+import PasswordInput from "../../../components/PasswordInput/PasswordInput";
+import NextButton from "../../../components/NextButton/NextButton";
 
 const UserSignUpPage: React.FC = () => {
     const navigate = useNavigate();

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import * as S from "./Styles";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
-import HeaderControls from "../../components/HeaderControls/HeaderControls";
-import PotatoSection from "../../components/PopatoSection/PotatoSection";
-import CategoryContent from "../../components/BodyStore/BodyStore";
-import DefaultContent from "../../components/DefaultContent/DefaultContent";
-import { FluxContext } from "../../stores/FluxContext";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
+import HeaderControls from "../../../components/HeaderControls/HeaderControls";
+import PotatoSection from "../../../components/PopatoSection/PotatoSection";
+import CategoryContent from "../../../components/BodyStore/BodyStore";
+import DefaultContent from "../../../components/DefaultContent/DefaultContent";
+import { FluxContext } from "../../../zustand/stores/FluxContext";
 
 type Tab = '운동관리' | '랭킹' | '홈' | '마이' | '바디버디';
 

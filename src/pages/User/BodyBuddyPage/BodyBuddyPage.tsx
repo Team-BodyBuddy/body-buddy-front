@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
-import FilterSection from "../../components/FilterSection/FilterSection";
-import ListSection from "../../components/ListSection/ListSection";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
+import FilterSection from "../../../components/FilterSection/FilterSection";
+import ListSection from "../../../components/ListSection/ListSection";
 import * as S from "./Styles";
 
 const BodyBuddyPage: React.FC = () => {

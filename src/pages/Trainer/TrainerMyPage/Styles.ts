@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../styles/color";
+import { COLORS } from "../../../styles/color";
 
 export const Title = styled.h1`
     margin: 0;
@@ -25,3 +25,9 @@ export const Text = styled.p`
     color: ${COLORS.LightGray}; 
     margin : 30px 0 0 0;
 `;
+
+export const Img= styled.div`
+    flex-grow: 1; 
+    text-align: center;
+    
+`

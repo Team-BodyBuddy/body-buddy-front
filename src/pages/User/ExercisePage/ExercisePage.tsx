@@ -1,5 +1,5 @@
 import React from "react";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
 
 const ExercisePage: React.FC = () => {
     const handleTabClick = (tab: string) => {

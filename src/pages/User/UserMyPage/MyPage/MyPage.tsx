@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
-import Buttons from "../../components/MyPage/Buttons/Buttons";
-import EditInfo from "../../components/MyPage/EditInfo/EditInfo";
-import Nickname from "../../components/MyPage/Nickname/Nickname";
-import UserInfo from "../../components/MyPage/UserInfo/UserInfo";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
+import Buttons from "../../../../components/MyPage/Buttons/Buttons";
+import EditInfo from "../../../../components/MyPage/EditInfo/EditInfo";
+import Nickname from "../../../../components/MyPage/Nickname/Nickname";
+import UserInfo from "../../../../components/MyPage/UserInfo/UserInfo";
+import TopNavigation from "../../../../components/TopNavigation/TopNavigation";
 
 const MyPage: React.FC = () => {
     const handleTabClick = (tab: string) => {

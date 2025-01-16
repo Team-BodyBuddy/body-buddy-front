@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TopNavigation from "../../components/TopNavigation/TopNavigation";
-import AboutSection from "../../components/AboutSection/AboutSection";
-import BadgeSection from "../../components/BadgeSection/BadgeSection";
-import MemberListSection from "../../components/MemberListSection/MemberListSection";
-import FileUploadSection from "../../components/FileUploadSection/FileUploadSection";
-import BackButton from "../../components/BackButton/BackButton";
+import TopNavigation from "../../../components/TopNavigation/TopNavigation";
+import AboutSection from "../../../components/AboutSection/AboutSection";
+import BadgeSection from "../../../components/BadgeSection/BadgeSection";
+import MemberListSection from "../../../components/MemberListSection/MemberListSection";
+import FileUploadSection from "../../../components/FileUploadSection/FileUploadSection";
+import BackButton from "../../../components/BackButton/BackButton";
 import * as S from "./Styles";
 
 const PortfolioPage: React.FC = () => {
@@ -38,7 +38,7 @@ const PortfolioPage: React.FC = () => {
                     aboutItems={aboutItems.map((item, index) => (
                         <S.ClickableItem
                             key={index}
-                            onClick={() => setShowFileUpload(true)} // 클릭 시 파일 업로드 UI 표시
+                            onClick={() => setShowFileUpload(true)} 
                         >
                             {item}
         </S.ClickableItem>
