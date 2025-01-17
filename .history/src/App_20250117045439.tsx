@@ -21,15 +21,13 @@ import PortfolioPage from "./pages/User/PortfolioPage/PortfolioPage";
 import TrainerMainPage from "./pages/Trainer/TrainerMainPage/TrainerMainPage";
 import TrainerMemberPage from "./pages/Trainer/TrainerMemberPage/TrainerMemberPage";
 import TrainerPortfolio from "./pages/Trainer/TrainerPortfolio/TrainerPortfolio";
-import TrainerMyPage from "./pages/Trainer/TrainerMyPage/TrainerMyPage";
 
 const App: React.FC = () => {
     return (
         <FluxProvider>
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
-                <Router
-                    future={{
+                <Router future={{
                         v7_startTransition: true,
                         v7_relativeSplatPath: true,
                     }}
@@ -48,10 +46,9 @@ const App: React.FC = () => {
                         <Route path="/my/exit" element={<ExitPage />} />
                         <Route path="/bodybuddy" element={<BodyBuddyPage />} />
                         <Route path="/portfolio" element={<PortfolioPage />} />
-                        <Route path="/trainer" element={<TrainerMainPage />} />
-                        <Route path="/trainer/member" element={<TrainerMemberPage />} />
+                        <Route path="/trainer" element={<TrainerMainPage/>}/>
+                        <Route path="/trainer/member" element={<TrainerMemberPage/>}/>
                         <Route path="/trainer/portfolio" element={<TrainerPortfolio />} />
-                        <Route path="/trainer/my" element={<TrainerMyPage />} />
                     </Routes>
                 </Router>
             </ThemeProvider>

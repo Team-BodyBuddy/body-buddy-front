@@ -12,15 +12,16 @@ export const GlobalStyles = createGlobalStyle`
         height: 100vh;
         font-size: 16px;
         overflow-y: auto;
+        background-color: #fff;
     }
 
     #root {
-        width: 430px; /* iPhone 16 너비 */
-        height: 932px; /* iPhone 16 높이 */
+        width: 430px;
+        height: 932px; 
         margin: auto;
         background-color: ${(props) => props.theme.background};
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 15px; /* iPhone 둥근 모서리 */
+        border-radius: 15px;
         overflow: hidden;
     }
 `;
