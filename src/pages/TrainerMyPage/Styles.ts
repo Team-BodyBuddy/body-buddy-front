@@ -9,27 +9,25 @@ export const Title = styled.h1`
     color: #333;
 `;
 
+    //필요한거: 세로 정렬 , 가운데 정렬, 아이템 간격
 export const Container = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    border: 1px solid ${COLORS.LightGray}; 
-    border-radius: 14px; 
-    padding : 20px 0px;
-    width : 90% ;
+    height: 100vh;
+    padding :  0 ;
+    gap: 10px;
 `
+
+export const Text = styled.p`
+    font-size: 13px; 
+    color: ${COLORS.LightGray}; 
+    margin : 30px 0 0 0;
+`;
+
 export const Img= styled.div`
     flex-grow: 1; 
     text-align: center;
     
 `
-export const Name= styled.p`
-    flex-grow: 3;
-
-`
-export const Lv= styled.p`
-    flex-grow: 1;
-
-`
-

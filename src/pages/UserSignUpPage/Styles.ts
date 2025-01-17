@@ -22,6 +22,7 @@ export const Container = styled.div`
 `;
 
 export const TopContainer = styled.div`
+    position: sticky;
     margin-top:3rem;
     margin-bottom:2rem;
 `;
@@ -29,19 +30,13 @@ export const TopContainer = styled.div`
 export const TopBar = styled.div`
     display:flex;
     flex-direction: row;
-    gap: 37%; 
-    margin-left: 30px;
-    margin-right: 10px;
-
-    @media (max-width: 375px) {
-        gap: 33%;
-        margin-left: 30px;
-    }
+    justify-content: center;
 `;
 
-export const Icon = styled.div`
-    width:7%;
-    height:7%;
+export const Icon = styled.span`
+    position:relative;
+    top:-97px;
+    left:0px;
 `;
 
 export const Title = styled.div`
@@ -110,6 +105,7 @@ export const Container2 = styled.div`
 export const Container3 = styled.div`
     margin-left:32px;
     margin-right:32px;
+    margin-bottom:150px;
 `;
 
 export const Detail1 = styled.div`
@@ -126,6 +122,10 @@ export const Detail3 = styled.div`
 
 export const Detail4 = styled.div`
     margin-bottom:20px;
+`;
+
+export const NextContainer = styled.div`
+    margin-top:40px;
 `;
 
 export const Header = styled.div`
