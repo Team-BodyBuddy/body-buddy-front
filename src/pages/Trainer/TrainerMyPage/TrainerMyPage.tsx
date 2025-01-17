@@ -1,7 +1,7 @@
 //트레이너 마이페이지
 import * as S from "./Styles";
 import { useNavigate } from "react-router-dom";
-import TrainerRequestModal from "../../components/Modal/TrainerRequestModal/TrainerRequestModal";
+import TrainerRequestModal from "../../../components/Modal/TrainerRequestModal/TrainerRequestModal";
 import { useState } from "react";
 
 const TrainerMyPage: React.FC = () => {

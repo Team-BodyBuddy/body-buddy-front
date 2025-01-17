@@ -7,7 +7,7 @@ const TrainerRequestModal: React.FC<{ onClose: () => void }> = ({ onClose }) => 
 
     const handleRequestClick = () => {
         setIsVisible(false);
-        setTimeout(onClose, 500);
+        setTimeout(onClose, 10);
     };
 
     return (

@@ -1,23 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { COLORS } from "../../../styles/color";
-
-const slideUp = keyframes`
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-`;
-
-const slideDown = keyframes`
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(100%);
-    }
-`;
 
 export const Overlay = styled.div<{ isVisible: boolean }>`
     position: fixed;
@@ -30,13 +12,18 @@ export const Overlay = styled.div<{ isVisible: boolean }>`
 `;
 
 export const RequestModal = styled.div<{ isVisible: boolean }>`
-    transform: translateX(-50%);
-    z-index: 1000;
+    position: fixed;
+    top: 50%; // 화면 중앙에 위치
+    left: 50%; // 화면 중앙에 위치
+    transform: translate(-50%, -50%); // 중앙 정렬
+    width: 100%;
+    max-width: 500px;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: ${({ isVisible }) => (isVisible ? slideUp : slideDown)} 0.5s forwards;
     overflow-y: auto;
+    max-height: 80%; // 모달의 최대 높이 설정
 `;
 
 export const Container = styled.div`
