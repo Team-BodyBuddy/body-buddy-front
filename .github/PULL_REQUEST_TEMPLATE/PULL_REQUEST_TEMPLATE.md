@@ -73,4 +73,3 @@ ex) userPage UI/UX 구현 완료!
     <a href="https://https://velog.io/@minsnail20/posts/">고민균's 벨로그</a> <br/>
     를 통해 확인하실 수 있습니다.
 </p>
-
