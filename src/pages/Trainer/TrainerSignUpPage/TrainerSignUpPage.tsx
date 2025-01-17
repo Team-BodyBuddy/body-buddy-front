@@ -1,15 +1,15 @@
 //트레이너 회원가입 페이지
 import React, { useState } from "react";
 import * as S from "./Styles";
-import BackButton from "../../components/BackButton/BackButton";
-import SelectBox from "../../components/SignUpPage/SelectBox/SelectBox";
-import UserInfoInput from "../../components/SignUpPage/UserInfoInput/UserInfoInput";
+import BackButton from "../../../components/BackButton/BackButton";
+import SelectBox from "../../../components/SignUpPage/SelectBox/SelectBox";
+import UserInfoInput from "../../../components/SignUpPage/UserInfoInput/UserInfoInput";
 import { useNavigate } from "react-router-dom";
-import { CheckButton1 } from "../../components/icons";
-import { CheckButton3 } from "../../components/icons";
-import PageLink from "../../components/SignUpPage/PageLink/PageLink";
-import PasswordInput from "../../components/SignUpPage/PasswordInput/PasswordInput";
-import NextButton from "../../components/SignUpPage/NextButton/NextButton";
+import { CheckButton1 } from "../../../components/icons";
+import { CheckButton3 } from "../../../components/icons";
+import PageLink from "../../../components/SignUpPage/PageLink/PageLink";
+import PasswordInput from "../../../components/SignUpPage/PasswordInput/PasswordInput";
+import NextButton from "../../../components/SignUpPage/NextButton/NextButton";
 
 const TrainerSignUpPage: React.FC = () => {
     const navigate = useNavigate();

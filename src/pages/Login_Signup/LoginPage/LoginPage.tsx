@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
-import { Logo } from "../../components/icons";
-import NextButton from "../../components/SignUpPage/NextButton/NextButton";
-import AuthInput from "../../components/SignUpPage/AuthInput/AuthInput";
-import PageLink from "../../components/SignUpPage/PageLink/PageLink";
+import { Logo } from "../../../components/icons";
+import NextButton from "../../../components/SignUpPage/NextButton/NextButton";
+import AuthInput from "../../../components/SignUpPage/AuthInput/AuthInput";
+import PageLink from "../../../components/SignUpPage/PageLink/PageLink";
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();

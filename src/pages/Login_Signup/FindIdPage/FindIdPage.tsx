@@ -1,8 +1,8 @@
 // 아이디 찾기 페이지
 import * as S from "./Styles";
 import { useNavigate } from "react-router-dom";
-import BackButton from "../../components/BackButton/BackButton";
-import PageLink from "../../components/SignUpPage/PageLink/PageLink";
+import BackButton from "../../../components/BackButton/BackButton";
+import PageLink from "../../../components/SignUpPage/PageLink/PageLink";
 
 const FindIdPage: React.FC = () => {
     const navigate = useNavigate();

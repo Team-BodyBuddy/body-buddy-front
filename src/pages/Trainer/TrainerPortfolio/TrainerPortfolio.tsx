@@ -10,7 +10,7 @@ import { CheckPort } from "../../../components/icons";
 const TrainerPortfolio: React.FC = () => {
     const [isEditingList, setIsEditingList] = useState(false); 
     const [isEditingRegion, setIsEditingRegion] = useState(false); 
-    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    const [selectedItem, setSelectedItem] = useState<string | null>(null); 
 
     // 테스트 데이터터
     const aboutItems = Array.from({ length: 10 }, (_, index) => `포트폴리오 수정하기 ${index + 1}`);
