@@ -16,20 +16,14 @@ const GraphModal: React.FC<GraphModalProps> = ({ onClose, children }) => {
         }
     };
 
-    const handleAnimationEnd = () => {
-        if (isClosing) {
-            // 애니메이션 종료 후 바로 모달 닫기
-            onClose();
-        }
-    };
-
     // 애니메이션이 종료된 후 모달을 닫는 함수를 호출
     useEffect(() => {
         if (isClosing) {
             // 애니메이션이 끝날 때까지 기다린 후 onClose 호출
             const timer = setTimeout(() => {
                 onClose();
-            }, 500); // 애니메이션이 끝난 후 500ms 뒤에 모달 닫기
+                setIsClosing(false);
+            }, 300); // 애니메이션이 끝난 후 500ms 뒤에 모달 닫기
 
             // 컴포넌트 언마운트 시 타이머 정리
             return () => clearTimeout(timer);
@@ -37,7 +31,7 @@ const GraphModal: React.FC<GraphModalProps> = ({ onClose, children }) => {
     }, [isClosing, onClose]);
 
     return (
-        <S.ModalContainer onClick={handleBackgroundClick} $isClosing={isClosing} onAnimationEnd={handleAnimationEnd}>
+        <S.ModalContainer onClick={handleBackgroundClick} $isClosing={isClosing}>
             <S.ModalContent $isClosing={isClosing}>{children}</S.ModalContent>
         </S.ModalContainer>
     );

@@ -1,21 +1,21 @@
 //캘린더 컴포넌트
-import { format, startOfMonth, endOfMonth, startOfWeek, addDays } from "date-fns";
+import { format, startOfMonth, endOfMonth, startOfWeek, addDays, addMonths } from "date-fns";
 import { useState } from "react";
 import CalendarHeader from "./CalendarElement/Header/CalendarHeader";
 import * as S from "./Styles";
 import CalendarWeek from "./CalendarElement/Week/CalendarWeek";
+import { CalendarIcon, CalendarSelect } from "../icons";
 
 const Calendar: React.FC = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
-
+    const [isDrop, setIsDrop] = useState(false);
     const startDate = startOfWeek(startOfMonth(currentDate));
     const endDate = endOfMonth(endOfMonth(currentDate));
 
     // 연도와 월을 하나의 드롭다운에서 선택할 수 있도록 하는 핸들러
-    const handleMonthYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedValue = event.target.value;
-        const [year, month] = selectedValue.split("-").map((val) => parseInt(val, 10));
-        setCurrentDate(new Date(year, month, 1)); // 해당 월로 이동
+    const handleMonthYearChange = (year: number, month: number) => {
+        setCurrentDate(new Date(year, month, 1));
+        setIsDrop(false);
     };
 
     const generateCalendar = () => {
@@ -35,10 +35,12 @@ const Calendar: React.FC = () => {
     };
 
     // 드롭다운에서 선택할 연도와 월의 목록 생성
-    const monthYearOptions = Array.from({ length: 12 }, (_, month) => {
+    const monthYearOptions = Array.from({ length: 24 }, (_, index) => {
+        const optionDate = addMonths(new Date(new Date().getFullYear() - 1, 0, 1), index); // 2년 전부터 시작하여 내년까지
         return {
-            label: format(new Date(currentDate.getFullYear(), month), "yyyy-MM"),
-            value: `${currentDate.getFullYear()}-${month}`,
+            label: format(optionDate, "yyyy-MM"), // 연도-월 포맷
+            year: optionDate.getFullYear(), // 연도 추출
+            month: optionDate.getMonth(), // 월 추출
         };
     });
 
@@ -48,12 +50,26 @@ const Calendar: React.FC = () => {
         <S.Container>
             <S.HeadWrapper>
                 <S.Title>일정</S.Title>
-                <S.Select onChange={handleMonthYearChange}>
-                    {monthYearOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
+                <S.Select $isDrop={isDrop} onClick={() => setIsDrop((prev) => !prev)}>
+                    <CalendarIcon />
+                    {format(currentDate, "yyyy-MM")}
+                    <CalendarSelect />
+                    {isDrop && (
+                        <S.OptionWrapper>
+                            {monthYearOptions.map((option) => (
+                                <S.Option
+                                    key={option.label}
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // 이벤트 버블링 방지
+                                        handleMonthYearChange(option.year, option.month); // 값 변경 및 드롭다운 닫기
+                                    }}
+                                    $isSelected={currentDate.getFullYear() === option.year && currentDate.getMonth() === option.month}
+                                >
+                                    {option.label}
+                                </S.Option>
+                            ))}
+                        </S.OptionWrapper>
+                    )}
                 </S.Select>
             </S.HeadWrapper>
 

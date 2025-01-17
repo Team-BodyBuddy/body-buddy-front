@@ -1,14 +1,6 @@
 import { styled, keyframes, css } from "styled-components";
 
 // open 애니메이션
-const fadeIn = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-`;
 
 const slideIn = keyframes`
     from {
@@ -22,14 +14,6 @@ const slideIn = keyframes`
 `;
 
 //close 애니메이션
-const fadeOut = keyframes`
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity:0;
-    }
-`;
 
 const slideOut = keyframes`
     from {
@@ -52,14 +36,6 @@ export const ModalContainer = styled.div<{ $isClosing: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    animatin: ${({ $isClosing }) =>
-        $isClosing
-            ? css`
-                  ${fadeOut} 0.5s ease-out;
-              `
-            : css`
-                  ${fadeIn} 0.5s ease-in;
-              `}
     z-index: 1000;
 `;
 
