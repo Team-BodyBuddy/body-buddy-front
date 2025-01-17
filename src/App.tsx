@@ -8,6 +8,20 @@ import { FluxProvider } from "./zustand/stores/FluxContext";
 import UserPage from "./pages/User/UserPage/UserPage";
 import MyPage from "./pages/User/UserMyPage/MyPage/MyPage";
 import ExitPage from "./pages/ExitPage/ExitPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import FindIdPage from "./pages/FindIdPage/FindIdPage";
+import FindPasswordPage from "./pages/FindPasswordPage/FindPasswordPage";
+import LoadingPage from "./pages/LoadingPage/LodingPage";
+import TrainerSignUpPage from "./pages/TrainerSignUpPage/TrainerSignUpPage";
+import UserSignUpPage from "./pages/UserSignUpPage/UserSignUpPage";
+import RankingPage from "./pages/RankingPage/RankingPage";
+import ExercisePage from "./pages/ExercisePage/ExercisePage";
+import BodyBuddyPage from "./pages/BodyBuddyPage/BodyBuddyPage";
+import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
+import TrainerMainPage from "./pages/TrainerMainPage/TrainerMainPage";
+import TrainerMemberPage from "./pages/TrainerMemberPage/TrainerMemberPage";
+import TrainerPortfolio from "./pages/TrainerPortfolio/TrainerPortfolio";
+import TrainerMyPage from "./pages/TrainerMyPage/TrainerMyPage";
 import LoginPage from "./pages/Login_Signup/LoginPage/LoginPage";
 import FindIdPage from "./pages/Login_Signup/FindIdPage/FindIdPage";
 import FindPasswordPage from "./pages/Login_Signup/FindPasswordPage/FindPasswordPage";
@@ -21,13 +35,15 @@ import PortfolioPage from "./pages/User/PortfolioPage/PortfolioPage";
 import TrainerMainPage from "./pages/Trainer/TrainerMainPage/TrainerMainPage";
 import TrainerMemberPage from "./pages/Trainer/TrainerMemberPage/TrainerMemberPage";
 import TrainerPortfolio from "./pages/Trainer/TrainerPortfolio/TrainerPortfolio";
+import TrainerMyPage from "./pages/Trainer/TrainerMyPage/TrainerMyPage";
 
 const App: React.FC = () => {
     return (
         <FluxProvider>
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
-                <Router future={{
+                <Router
+                    future={{
                         v7_startTransition: true,
                         v7_relativeSplatPath: true,
                     }}
@@ -46,9 +62,10 @@ const App: React.FC = () => {
                         <Route path="/my/exit" element={<ExitPage />} />
                         <Route path="/bodybuddy" element={<BodyBuddyPage />} />
                         <Route path="/portfolio" element={<PortfolioPage />} />
-                        <Route path="/trainer" element={<TrainerMainPage/>}/>
-                        <Route path="/trainer/member" element={<TrainerMemberPage/>}/>
+                        <Route path="/trainer" element={<TrainerMainPage />} />
+                        <Route path="/trainer/member" element={<TrainerMemberPage />} />
                         <Route path="/trainer/portfolio" element={<TrainerPortfolio />} />
+                        <Route path="/trainer/my" element={<TrainerMyPage />} />
                     </Routes>
                 </Router>
             </ThemeProvider>

@@ -2,11 +2,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Styles";
-import { Logo } from "../../../components/icons";
-import NextButton from "../../../components/NextButton/NextButton";
-import AuthInput from "../../../components/AuthInput/AuthInput";
-import PageLink from "../../../components/PageLink/PageLink";
-import axios from 'axios';
+import { Logo } from "../../components/icons";
+import NextButton from "../../components/SignUpPage/NextButton/NextButton";
+import AuthInput from "../../components/SignUpPage/AuthInput/AuthInput";
+import PageLink from "../../components/SignUpPage/PageLink/PageLink";
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
@@ -17,27 +16,24 @@ const LoginPage: React.FC = () => {
     const handleLogin = () => {
         const userId = "id1234";
         const userPassword = "pass1234";
-    
+
         console.log("ID:", id);
         console.log("Password:", password);
-        
+
         if (id === userId && password === userPassword) {
-          navigate("/loading");
+            navigate("/loading");
         } else {
-          setErrorMessage("*아이디 또는 비밀번호가 일치하지 않습니다.");
+            setErrorMessage("*아이디 또는 비밀번호가 일치하지 않습니다.");
         }
-      };
+    };
 
     return (
         <S.Container>
             <S.Intro>
                 <S.IntroText>당신의 가장 가까운 친구,</S.IntroText>
-                <button onClick={() => {
-                    axios.get('http://10.1.14.26:8080')
-                    .then((data: any) => {console.log(data) })
-                    .catch(() => { console.log('요청 실패하셨습니다') })
-                }}>버튼</button>
-                <S.Title><Logo></Logo></S.Title>
+                <S.Title>
+                    <Logo></Logo>
+                </S.Title>
             </S.Intro>
 
             <S.CenterContainer>
@@ -63,20 +59,14 @@ const LoginPage: React.FC = () => {
                         }}
                     />
                 </form>
-                <NextButton onClick={handleLogin} $bgcolor="#40AD00">로그인</NextButton>
+                <NextButton onClick={handleLogin} $bgcolor="#40AD00">
+                    로그인
+                </NextButton>
             </S.CenterContainer>
 
-            <PageLink 
-                $textcolor="#979797" 
-                text="아이디 찾기 / 비밀번호 찾기" 
-                to="/findId"
-                className="findIdPassword"></PageLink>
+            <PageLink $textcolor="#979797" text="아이디 찾기 / 비밀번호 찾기" to="/findId" className="findIdPassword"></PageLink>
 
-            <PageLink 
-                $textcolor="#40AD00" 
-                text="회원 가입" 
-                to="/trainerSignup"
-                className="Signup"></PageLink>
+            <PageLink $textcolor="#40AD00" text="회원 가입" to="/trainerSignup" className="Signup"></PageLink>
         </S.Container>
     );
 };
