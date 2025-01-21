@@ -37,6 +37,17 @@ export const CenterContainer = styled.div`
     height: 15.6875rem;
 `;
 
+export const LabelContainer = styled.div`
+    padding-bottom: 1rem;
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.044375rem;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+`;
+
 export const ErrorMessage = styled.span`
     font-family: Pretendard;
     font-size: 0.6875rem;

@@ -37,9 +37,9 @@ const LoginPage: React.FC = () => {
             </S.Intro>
 
             <S.CenterContainer>
+                <S.LabelContainer>아이디</S.LabelContainer>
                 <form>
                     <AuthInput
-                        label="아이디"
                         placeholder="아이디를 입력해 주세요"
                         errorMessage={errorMessage}
                         value={id}
@@ -48,8 +48,10 @@ const LoginPage: React.FC = () => {
                             setErrorMessage("");
                         }}
                     />
+                </form>
+                <S.LabelContainer>비밀번호</S.LabelContainer>
+                <form>
                     <AuthInput
-                        label="비밀번호"
                         placeholder="비밀번호를 입력해 주세요"
                         type="password"
                         value={password}

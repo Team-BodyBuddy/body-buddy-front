@@ -5,10 +5,10 @@ import BackButton from "../../../components/BackButton/BackButton";
 import SelectBox from "../../../components/SignUpPage/SelectBox/SelectBox";
 import UserInfoInput from "../../../components/SignUpPage/UserInfoInput/UserInfoInput";
 import { useNavigate } from "react-router-dom";
-import { CheckButton1 } from "../../../components/icons";
 import PageLink from "../../../components/SignUpPage/PageLink/PageLink";
 import PasswordInput from "../../../components/SignUpPage/PasswordInput/PasswordInput";
 import NextButton from "../../../components/SignUpPage/NextButton/NextButton";
+import CheckButton from "../../../components/SignUpPage/CheckButton/CheckButton";
 
 const TrainerSignUpPage: React.FC = () => {
     const navigate = useNavigate();
@@ -156,11 +156,11 @@ const TrainerSignUpPage: React.FC = () => {
             <S.FindOptions>
                 <S.OptionsWrapper>
                     <S.Trainer>
-                        <CheckButton1></CheckButton1>
+                        <CheckButton color="#00B4EA" />
                         트레이너
                     </S.Trainer>
                     <S.User>
-                        <CheckButton1></CheckButton1>
+                        <CheckButton />
                         <PageLink $textcolor="#333333" text=" 회원" to="/userSignup" className="trainerSignup"></PageLink>
                     </S.User>
                 </S.OptionsWrapper>

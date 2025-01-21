@@ -7,7 +7,6 @@ import { ReactComponent as EditRectangle } from "../assets/icons/edit_rectangle.
 import { ReactComponent as Profile } from "../assets/icons/default_profile.svg";
 import { ReactComponent as GHealth } from "../assets/icons/Green_health.svg";
 import { ReactComponent as BodyBoddy } from "../assets/icons/BODY BUDDY.svg";
-import { ReactComponent as CheckMark1 } from "../assets/icons/checkMark-circle-gray.svg";
 import { ReactComponent as Title } from "../assets/icons/titleGroup.svg";
 import { ReactComponent as Select } from "../assets/icons/select.svg";
 import { ReactComponent as CalendarS } from "../assets/icons/calendar-select.svg";
@@ -25,7 +24,6 @@ import { ReactComponent as CheckShape } from "../assets/icons/check_shape.svg";
 export const PotatoImage = Character;
 export const Edit = EditRectangle;
 export const Logo = BodyBoddy;
-export const CheckButton1 = CheckMark1;
 export const TitleLoading = Title;
 export const ArrowDown = Select;
 export const HomeIcon = TiHomeOutline;
