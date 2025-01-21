@@ -7,7 +7,6 @@ import NicknameInput from "../../../components/SignUpPage/NicknameInput/Nickname
 import UserInfoInput from "../../../components/SignUpPage/UserInfoInput/UserInfoInput";
 import { useNavigate } from "react-router-dom";
 import { CheckButton1 } from "../../../components/icons";
-import { CheckButton2 } from "../../../components/icons";
 import PageLink from "../../../components/SignUpPage/PageLink/PageLink";
 import PasswordInput from "../../../components/SignUpPage/PasswordInput/PasswordInput";
 import NextButton from "../../../components/SignUpPage/NextButton/NextButton";
@@ -172,7 +171,7 @@ const UserSignUpPage: React.FC = () => {
                         <PageLink $textcolor="#333333" text=" 트레이너" to="/trainerSignup" className="trainerSignup"></PageLink>
                     </S.Trainer>
                     <S.User>
-                        <CheckButton2></CheckButton2>
+                        <CheckButton1></CheckButton1>
                         회원
                     </S.User>
                 </S.OptionsWrapper>
