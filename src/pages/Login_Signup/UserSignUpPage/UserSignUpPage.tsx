@@ -168,7 +168,10 @@ const UserSignUpPage: React.FC = () => {
                 <S.OptionsWrapper>
                     <S.Trainer>
                         <CheckButton />
-                        <PageLink $textcolor="#333333" text=" 트레이너" to="/trainerSignup" className="trainerSignup"></PageLink>
+                        <PageLink $textcolor="#333333" to="/trainerSignup">
+                            {" "}
+                            트레이너
+                        </PageLink>
                     </S.Trainer>
                     <S.User>
                         <CheckButton color="#40AD00" />

@@ -161,7 +161,10 @@ const TrainerSignUpPage: React.FC = () => {
                     </S.Trainer>
                     <S.User>
                         <CheckButton />
-                        <PageLink $textcolor="#333333" text=" 회원" to="/userSignup" className="trainerSignup"></PageLink>
+                        <PageLink $textcolor="#333333" to="/userSignup">
+                            {" "}
+                            회원
+                        </PageLink>
                     </S.User>
                 </S.OptionsWrapper>
                 <S.LineWrapper></S.LineWrapper>

@@ -66,9 +66,14 @@ const LoginPage: React.FC = () => {
                 </NextButton>
             </S.CenterContainer>
 
-            <PageLink $textcolor="#979797" text="아이디 찾기 / 비밀번호 찾기" to="/findId" className="findIdPassword"></PageLink>
-
-            <PageLink $textcolor="#40AD00" text="회원 가입" to="/trainerSignup" className="Signup"></PageLink>
+            <S.Footer>
+                <PageLink $textcolor="#979797" to="/findId">
+                    아이디 찾기 / 비밀번호 찾기
+                </PageLink>
+                <PageLink $textcolor="#40AD00" to="/trainerSignup">
+                    회원 가입
+                </PageLink>
+            </S.Footer>
         </S.Container>
     );
 };

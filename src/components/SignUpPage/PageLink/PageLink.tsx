@@ -1,26 +1,30 @@
-//글자를 눌렀을 때 해당 페이지로 이동
 import React from "react";
-import * as S from "./Styles";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-interface PageLinkProps{
+interface PageLinkProps {
     $textcolor?: string;
-    text: string;
     to: string;
-    className?: string;
+    children: React.ReactNode;
 }
 
-const PageLink: React.FC<PageLinkProps> = ({$textcolor, text, to, className}) => {
+const StyledLink = styled.div<{ $textcolor?: string }>`
+    color: ${({ $textcolor }) => $textcolor || "#000"};
+    text-align: center;
+`;
+
+const PageLink: React.FC<PageLinkProps> = ({ $textcolor, to, children }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate(to);
-    }
+    };
 
-    return <S.PageLink 
-                onClick={handleClick} 
-                $textcolor={$textcolor}
-                className={className}>{text}</S.PageLink>;
+    return (
+        <StyledLink onClick={handleClick} $textcolor={$textcolor}>
+            {children}
+        </StyledLink>
+    );
 };
 
 export default PageLink;

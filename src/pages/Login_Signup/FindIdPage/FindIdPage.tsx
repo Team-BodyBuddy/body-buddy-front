@@ -18,8 +18,12 @@ const FindIdPage: React.FC = () => {
 
             <S.FindOptions>
                 <S.OptionsWrapper>
-                    <PageLink $textcolor="#40AD00" text="아이디 찾기" to="/findId" className="findId"></PageLink>
-                    <PageLink $textcolor="#818181" text="비밀번호 찾기" to="/findPassword" className="findPassword"></PageLink>
+                    <PageLink $textcolor="#40AD00" to="/findId">
+                        아이디 찾기
+                    </PageLink>
+                    <PageLink $textcolor="#818181" to="/findPassword">
+                        비밀번호 찾기
+                    </PageLink>
                 </S.OptionsWrapper>
                 <S.LineWrapper></S.LineWrapper>
             </S.FindOptions>

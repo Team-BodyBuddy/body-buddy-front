@@ -58,3 +58,10 @@ export const ErrorMessage = styled.span`
     top: 0.9375rem;
     left: 9.6875rem;
 `;
+
+export const Footer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    gap: 5.5rem;
+`;
