@@ -14,4 +14,5 @@ export const DayOfWeek = styled.div`
     font-size: 16px;
     text-align: center;
     width: calc(100% / 7);
+    height: 50px;
 `;
