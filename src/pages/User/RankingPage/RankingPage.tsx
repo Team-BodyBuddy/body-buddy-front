@@ -4,11 +4,24 @@ import * as S from "./Styles";
 import { useState, useEffect } from "react";
 import { RankingElement } from "../../../components/Ranking/Ranking";
 import RankingList from "../../../components/Ranking/RankingList";
-import { myScore, bodybudyData, gymData, myGym } from "../../../mocks/rank-mock";
+import { myScore, myGym } from "../../../mocks/rank-mock";
 import NoGymMessage from "../../../components/Ranking/NoGymMessage";
+import { useQuery } from "@tanstack/react-query";
+import { getRankings, getRankingUser } from "../../../apis/RankingPage/rankingApi";
 
+/*
+"result": {
+    "links": [],
+    "content": [
+      {
+        "rank": 1,
+        "nickname": "string",
+        "rankingScore": 10,
+        "level": 1
+      },
+*/
 enum Tab {
-    BodyBudy = "bodybudy",
+    Global = "global",
     Gym = "gym",
 }
 
@@ -17,8 +30,25 @@ const RankingPage: React.FC = () => {
         console.log(`${tab} 탭 클릭됨`);
     };
 
-    const [activeTab, setActiveTab] = useState<Tab>(Tab.BodyBudy);
-    const [rankingData, setRankingData] = useState<any[]>(bodybudyData);
+    const [activeTab, setActiveTab] = useState<Tab>(Tab.Global);
+
+    const {
+        data: rankingData,
+        isLoading,
+        isError,
+        error,
+    } = useQuery({
+        queryKey: ["rankingData", activeTab],
+        queryFn: () => getRankings(activeTab),
+        retry: 0,
+    });
+
+    const { data: userRankData } = useQuery({
+        queryKey: ["userRank", activeTab],
+        queryFn: () => getRankingUser(activeTab),
+        retry: 0,
+    });
+
     const [gym, setGym] = useState(myGym.name);
     const [isContentLoaded, setIsContentLoaded] = useState(false);
 
@@ -34,22 +64,25 @@ const RankingPage: React.FC = () => {
 
     const handleTabChange = (tab: Tab) => {
         setActiveTab(tab);
-        //탭에 맞는 데이터로 변경
-        if (tab === Tab.BodyBudy) {
-            setRankingData(bodybudyData);
-        } else if (tab === Tab.Gym) {
-            setRankingData(gymData);
-        }
     };
 
     console.log("화면");
+    console.log(rankingData);
+
+    if (isLoading) {
+        return <div>로딩 중...</div>;
+    }
+
+    if (isError) {
+        return <div>에러 ...</div>;
+    }
 
     return (
         <>
             <TopNavigation activeTab="랭킹" onTabClick={handleTabClick} />
             <S.ContentContainer>
                 <S.Buttons>
-                    <S.Button $active={activeTab === Tab.BodyBudy} onClick={() => handleTabChange(Tab.BodyBudy)}>
+                    <S.Button $active={activeTab === Tab.Global} onClick={() => handleTabChange(Tab.Global)}>
                         바디버디 리그
                     </S.Button>
 
@@ -67,10 +100,10 @@ const RankingPage: React.FC = () => {
                                 <S.GymInfo>{`${gym}`}</S.GymInfo>
                             </S.Box>
                             <S.Box>
-                                <RankingElement data={myScore} />
+                                <RankingElement data={userRankData} />
                             </S.Box>
                             <S.BoxList style={{ overflowY: isContentLoaded ? "scroll" : "hidden" }}>
-                                <RankingList rankingData={rankingData} />
+                                <RankingList rankingData={rankingData?.content ?? []} />
                             </S.BoxList>
                         </>
                     )
@@ -80,7 +113,7 @@ const RankingPage: React.FC = () => {
                             <RankingElement data={myScore} />
                         </S.Box>
                         <S.BoxList>
-                            <RankingList rankingData={rankingData} />
+                            <RankingList rankingData={rankingData?.content ?? []} />
                         </S.BoxList>
                     </>
                 )}
