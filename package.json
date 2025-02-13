@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tanstack/react-query": "^5.66.0",
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
     "axios": "^1.7.9",
