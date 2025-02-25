@@ -7,24 +7,22 @@ export const Container = styled.div`
     width: 100vw;
     min-height: 100vh;
     max-height: 100vh;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
     box-sizing: border-box;
     overflow-y: auto;
 
-    @media (max-width: 430px) {
+    @media (max-width: 26.875rem) {
         height: auto;
     }
 
-    @media (max-height: 932px) { 
-        max-height: calc(100vh - 10px);
+    @media (max-height: 58.25rem) {
+        max-height: calc(100vh - 0.625rem);
     }
 `;
 
 export const Logo = styled.div`
     position: relative;
-    width:149px;
-    height:130px;
-    top:341px;
-    left:38px;
+    width: 9.3125rem;
+    height: 8.125rem;
+    top: 21.3125rem;
+    left: 2.375rem;
 `;
