@@ -2,10 +2,8 @@ import React, { createContext, useReducer, Dispatch, ReactNode } from "react";
 import { initialState } from "./initialState";
 import { reducer } from "./reducer";
 
-// 상태 타입 정의
 export type StateType = typeof initialState;
 
-// 액션 타입 정의
 export type ActionType =
     | { type: "INCREMENT_PROGRESS"; payload: number }
     | { type: "SET_LEVEL"; payload: number };
