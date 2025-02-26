@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 // 전체 컨테이너
 export const Container = styled.div`
-    padding: 20px;
+    padding: 1.25rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -14,15 +14,11 @@ export const Container = styled.div`
     margin-bottom: 30px;
     background-color: inherit;
 
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;  
     &::-webkit-scrollbar {
-        width: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #ccc;
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-track {
-        background-color: transparent;
+        display: none; 
     }
 `;
 

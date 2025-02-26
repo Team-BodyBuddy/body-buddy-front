@@ -9,7 +9,7 @@ export const AvatarMock: AvatarInfo = {
             imagePath: "string",
             level: 9007199254740991,
             exp: 9007199254740991,
-            nickname: "string",
+            nickname: "바디버디의 꿈나무",
         }
 };
 
