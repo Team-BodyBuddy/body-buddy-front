@@ -2,14 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import * as S from "./Styles";
 import { useWeightHistory } from "../../react-query/query/useAvatarQuery";
-import {
-  Chart as ChartJS,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-} from "chart.js";
+import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Tooltip } from "chart.js";
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip);
 
