@@ -29,7 +29,7 @@ export type WeightHistory = {
         weight: number;
         muscle: number;
         bodyFat: number;
-    }
+    }[];
 }
 
 export type AvatarInfo = {
