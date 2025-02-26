@@ -2,14 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { getPoints, getAvatarInfo, getInBody, getWeightHistory } from "../../apis/avatar";
 
 export const usePoints = (memberId: number) =>
-  useQuery({
-    queryKey: ["points", memberId],
-    queryFn: () => getPoints(memberId),
-    retry: 0,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-  });
+    useQuery({
+      queryKey: ["points", memberId],
+      queryFn: async () => {
+        const result = await getPoints(memberId);
+        return result; 
+      },
+      retry: 0,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    });
 
 export const useAvatarInfo = (memberId: number) =>
   useQuery({

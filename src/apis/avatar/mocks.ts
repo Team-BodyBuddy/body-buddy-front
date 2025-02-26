@@ -17,23 +17,44 @@ export const WeightMock: WeightHistory = {
     isSuccess: true,
     code: "string",
     message: "string",
-    result:
-        {
-            weight: 0.1,
-            muscle: 0.1,
-            bodyFat: 0.1,
-        }
-} 
-
+    result: [
+      {
+        weight: 0.1,
+        muscle: 0.1,
+        bodyFat: 0.1,
+      },
+      {
+        weight: 0.09,
+        muscle: 0.09,
+        bodyFat: 0.09,
+      },
+      {
+        weight: 0.12,
+        muscle: 0.12,
+        bodyFat: 0.12,
+      },
+      {
+        weight: 0.13,
+        muscle: 0.13,
+        bodyFat: 0.13,
+      },
+      {
+        weight: 0.14,
+        muscle: 0.14,
+        bodyFat: 0.14,
+      },
+    ],
+  };
+  
 export const InBodyMock: InBody = {
     isSuccess: true,
     code: "string",
     message: "string",
     result:
         {
-            weight: 0.1,
-            muscle: 0.1,
-            bodyFat: 0.1,
+            weight: 0.14,
+            muscle: 0.14,
+            bodyFat: 0.14,
             weightStatus: "UP",
             muscleStatus: "UP",
             bodyFatStaus: "UP"
