@@ -15,7 +15,7 @@ export const getPoints = async (memberId:number):Promise<PointsTotal["result"]> 
 
 export const getAvatarInfo = async (memberId:number):Promise<AvatarInfo["result"]> => {
     try{
-        const response = await axiosInstance.get(`/api/mainPage/${memberId}/points/total`);
+        const response = await axiosInstance.get(`/api/mainPage/${memberId}/avatarInfo`);
         console.log(response);
         return response.data.result;
     }catch(error){
@@ -26,7 +26,7 @@ export const getAvatarInfo = async (memberId:number):Promise<AvatarInfo["result"
 
 export const getInBody = async (memberId:number):Promise<InBody["result"]> => {
     try{
-        const response = await axiosInstance.get(`/api/mainPage/${memberId}/points/total`);
+        const response = await axiosInstance.get(`/api/mainPage/${memberId}/inBody`);
         console.log(response);
         return response.data.result;
     }catch(error){
@@ -37,7 +37,7 @@ export const getInBody = async (memberId:number):Promise<InBody["result"]> => {
 
 export const getWeightHistory = async (memberId:number):Promise<WeightHistory["result"]> => {
     try{
-        const response = await axiosInstance.get(`/api/mainPage/${memberId}/points/total`);
+        const response = await axiosInstance.get(`/api/mainPage/${memberId}/inBody/weightHistory`);
         console.log(response);
         return response.data.result;
     }catch(error){
