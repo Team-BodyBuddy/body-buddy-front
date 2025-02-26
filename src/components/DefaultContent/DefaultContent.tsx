@@ -15,7 +15,7 @@ interface DefaultContentProps {
 const MAX_LEVEL = 999;
 const MAX_EXP = 9007199254740991;
 
-const DefaultContent: React.FC<DefaultContentProps> = ({}) => {
+const DefaultContent: React.FC<DefaultContentProps> = () => {
   const [memberId, setMemberId] = useState<number | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const context = useContext(FluxContext);
