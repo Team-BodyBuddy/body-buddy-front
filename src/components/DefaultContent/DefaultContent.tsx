@@ -1,8 +1,8 @@
-// 레벨, 그래프 컴포넌트
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./Styles";
 import TrendGraph from "../../components/TrendGraph/TrendGraph";
 import PointModal from "../../components/Modal/PointModal/PointModal";
+import { FluxContext } from "../../zustand/stores/FluxContext";
 
 interface DefaultContentProps {
     level: number;
@@ -15,10 +15,17 @@ interface DefaultContentProps {
 
 const DefaultContent: React.FC<DefaultContentProps> = ({ level, progress, metabolicRate, weight, onProgressIncrement, getTrend }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const context = useContext(FluxContext);
+    
+        if (!context) {
+            throw new Error("FluxContext must be used within a FluxProvider");
+        }
+    
+        const { state, dispatch } = context;
 
     const handleButtonClick = () => {
-        onProgressIncrement(); // 기존 함수 호출
-        setIsModalVisible(true); // 모달창 열기
+        onProgressIncrement(); 
+        setIsModalVisible(true); 
     };
 
     const handleCloseModal = () => {
@@ -38,7 +45,7 @@ const DefaultContent: React.FC<DefaultContentProps> = ({ level, progress, metabo
             {isModalVisible && <PointModal onClose={handleCloseModal} />}
 
             <S.GraphWrapper>
-                <TrendGraph />
+                <TrendGraph memberId={state.memberId}/>
             </S.GraphWrapper>
         </>
     );
