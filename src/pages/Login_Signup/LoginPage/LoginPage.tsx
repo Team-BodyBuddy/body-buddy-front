@@ -37,9 +37,9 @@ const LoginPage: React.FC = () => {
             </S.Intro>
 
             <S.CenterContainer>
+                <S.LabelContainer>아이디</S.LabelContainer>
                 <form>
                     <AuthInput
-                        label="아이디"
                         placeholder="아이디를 입력해 주세요"
                         errorMessage={errorMessage}
                         value={id}
@@ -48,8 +48,10 @@ const LoginPage: React.FC = () => {
                             setErrorMessage("");
                         }}
                     />
+                </form>
+                <S.LabelContainer>비밀번호</S.LabelContainer>
+                <form>
                     <AuthInput
-                        label="비밀번호"
                         placeholder="비밀번호를 입력해 주세요"
                         type="password"
                         value={password}
@@ -64,9 +66,14 @@ const LoginPage: React.FC = () => {
                 </NextButton>
             </S.CenterContainer>
 
-            <PageLink $textcolor="#979797" text="아이디 찾기 / 비밀번호 찾기" to="/findId" className="findIdPassword"></PageLink>
-
-            <PageLink $textcolor="#40AD00" text="회원 가입" to="/trainerSignup" className="Signup"></PageLink>
+            <S.Footer>
+                <PageLink $textcolor="#979797" to="/findId">
+                    아이디 찾기 / 비밀번호 찾기
+                </PageLink>
+                <PageLink $textcolor="#40AD00" to="/trainerSignup">
+                    회원 가입
+                </PageLink>
+            </S.Footer>
         </S.Container>
     );
 };

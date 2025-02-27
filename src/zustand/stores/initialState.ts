@@ -1,5 +1,5 @@
-// 상태 초기값 타입 
 export const initialState = {
+  memberId: 200,
   level: 4, // 현재 레벨
   progress: 50, // 현재 경험치 게이지 퍼센트
   points: 12765, // 포인트

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import MemberInfo from "../../../components/MemberInfo/MemberInfo";
 import TodoElement from "../../../components/Todo/TodoElement";
 import TopNavigation from "../../../components/TopNavigation/TopNavigation";
@@ -7,6 +7,7 @@ import * as S from "./Styles";
 import GraphModal from "../../../components/Modal/GraphModal/GraphModal";
 import TrendGraph from "../../../components/TrendGraph/TrendGraph";
 import Calendar from "../../../components/Calendar/Calendar";
+import { FluxContext } from "../../../zustand/stores/FluxContext";
 
 const TrainerMemberPage: React.FC = () => {
     const handleTabClick = (tab: string) => {
@@ -14,6 +15,11 @@ const TrainerMemberPage: React.FC = () => {
     };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const context = useContext(FluxContext);
+        if (!context) {
+            throw new Error("FluxContext must be used within a FluxProvider");
+        }
+    const { state } = context;
 
     const handleMemberInfoClick = () => {
         setIsModalOpen(true);
@@ -34,7 +40,7 @@ const TrainerMemberPage: React.FC = () => {
 
             {isModalOpen && (
                 <GraphModal onClose={handleModalClose}>
-                    <TrendGraph />
+                    <TrendGraph memberId={state.memberId}/>
                 </GraphModal>
             )}
         </S.Container>
