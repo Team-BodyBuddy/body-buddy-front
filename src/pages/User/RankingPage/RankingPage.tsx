@@ -110,7 +110,7 @@ const RankingPage: React.FC = () => {
                 ) : (
                     <>
                         <S.Box>
-                            <RankingElement data={myScore} />
+                            <RankingElement data={userRankData} />
                         </S.Box>
                         <S.BoxList>
                             <RankingList rankingData={rankingData?.content ?? []} />
