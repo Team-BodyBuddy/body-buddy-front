@@ -10,8 +10,8 @@ export const RankingElement: React.FC<{ data: any }> = ({ data }) => {
             <Rank>{data.rank}</Rank>
             <LV>{data.level}</LV>
             <Profile $head={false}>{data.profileImg ? <img src={data.profileImg} alt="Profile" /> : null}</Profile>
-            <Name>{data.name}</Name>
-            <Score>{data.score}</Score>
+            <Name>{data.nickname}</Name>
+            <Score>{data.rankingScore}</Score>
         </Container>
     );
 };
