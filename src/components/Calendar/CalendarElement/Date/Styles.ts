@@ -4,6 +4,7 @@ export const DateCell = styled.div<{ $isCurrentMonth: boolean; $isToday: boolean
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: calc(100% / 7);
     height: 50px;
     aspect-ratio: 1/1;
@@ -18,9 +19,9 @@ export const DotWrapper = styled.div`
     gap: 3px;
 `;
 
-export const Dot = styled.div<{ $indicator: string }>`
+export const Dot = styled.div<{ $type: string }>`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: ${({ $indicator }) => ($indicator === "BOTH" ? "purple" : $indicator === "BLUE" ? "blue" : "red")};
+    background-color: ${({ $type }) => ($type === "red" ? "#D7567F" : "#2828CD")};
 `;
