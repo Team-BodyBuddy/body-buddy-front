@@ -1,4 +1,5 @@
 import { AvatarInfo, WeightHistory, InBody, PointsTotal } from "./types";
+import BodyBuddyChar from "../../assets/icons/BodyBuddyChar.svg";
 
 export const AvatarMock: AvatarInfo = {
     isSuccess: true,
@@ -6,7 +7,7 @@ export const AvatarMock: AvatarInfo = {
     message: "string",
     result:
         {
-            imagePath: "string",
+            imagePath: BodyBuddyChar ,
             level: 9007199254740991,
             exp: 9007199254740991,
             nickname: "바디버디의 꿈나무",
