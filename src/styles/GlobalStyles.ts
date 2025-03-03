@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     html, body {
+        min-width: 24.375rem;
         width: 100%;
         font-size: 1rem;
         overflow-y: auto;
@@ -13,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     #root {
-        max-width: 425px;
+        min-width: 24.375rem;
         width: 100%;
         height: 58.25rem; 
         margin: 0 auto;
