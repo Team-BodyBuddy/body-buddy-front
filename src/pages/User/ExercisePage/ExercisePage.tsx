@@ -27,6 +27,15 @@ const ExercisePage: React.FC = () => {
     });
 
     //날짜를 누르면 해당 날짜의 데이터를 가져오기
+    //루틴 데이터
+
+    if (isLoading) {
+        return <div>로딩 중...</div>;
+    }
+
+    if (error) {
+        return <div>Error</div>;
+    }
 
     return (
         <>
