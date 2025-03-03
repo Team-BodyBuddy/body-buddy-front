@@ -13,9 +13,9 @@ interface DateCellProps {
 const CalendarDate: React.FC<DateCellProps> = ({ day, isCurrentMonth, isToday, indicatorType, hasIndicator }) => {
     return (
         <S.DateCell $isCurrentMonth={isCurrentMonth} $isToday={isToday}>
-            {format(day, "d")}
+            <S.Text>{format(day, "d")}</S.Text>
             {indicatorType && hasIndicator && (
-                <div style={{ display: "flex", marginBottom: "30%", gap: "2px" }}>
+                <S.DotWrapper>
                     {indicatorType === "BOTH" ? (
                         <>
                             <S.Dot $type="red" />
@@ -24,7 +24,7 @@ const CalendarDate: React.FC<DateCellProps> = ({ day, isCurrentMonth, isToday, i
                     ) : (
                         <S.Dot $type={indicatorType} />
                     )}
-                </div>
+                </S.DotWrapper>
             )}
         </S.DateCell>
     );
