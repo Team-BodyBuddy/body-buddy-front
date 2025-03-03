@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as S from "./Styles";
-import { useRegions } from "../../react-query/query/useRegions";
+import { useRegions } from "../../react-query/query/gyms/useRegions";
+import { useGyms } from "../../react-query/query/gyms/useGyms";
 
 interface FilterSectionProps {
     selectedRegion: string;
@@ -17,13 +18,15 @@ const FilterSection: React.FC<FilterSectionProps> = ({
 }) => {
     const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false);
     const [isGymDropdownOpen, setIsGymDropdownOpen] = useState(false);
-
     const regionDropdownRef = useRef<HTMLDivElement>(null);
     const gymDropdownRef = useRef<HTMLDivElement>(null);
+    const { data: regions = [], isLoading: isRegionsLoading } = useRegions();
+    const regionOptions = ["지역", ...regions];
+    const { data: gyms = [], isLoading: isGymsLoading } = useGyms(
+        selectedRegion !== "지역" ? selectedRegion : undefined
+    );
 
-    const { data: regions = [], isLoading } = useRegions();
-    const regionOptions = ["지역 선택", ...regions];
-    const gyms = ["Gym 선택", "Gym1", "Gym2", "Gym3", "Gym4", "Gym5"];
+    const gymOptions = ["Gym 선택", ...gyms.map((gym) => gym.name)];
 
     const handleRegionToggle = () => {
         setIsRegionDropdownOpen((prev) => !prev);
@@ -35,7 +38,6 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         setIsRegionDropdownOpen(false);
     };
 
-    // 드롭다운 바깥 클릭 감지 이벤트
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
@@ -67,7 +69,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 </S.RegionButton>
                 {isRegionDropdownOpen && (
                     <S.RegionMenu>
-                        {isLoading ? (
+                        {isRegionsLoading ? (
                             <S.RegionItem>Loading...</S.RegionItem>
                         ) : (
                             regionOptions.map((region) => (
@@ -75,6 +77,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                                     key={region}
                                     onClick={() => {
                                         setSelectedRegion(region);
+                                        setSelectedGym("Gym 선택");
                                         setIsRegionDropdownOpen(false);
                                     }}
                                 >
@@ -93,17 +96,21 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 </S.GymButton>
                 {isGymDropdownOpen && (
                     <S.GymMenu>
-                        {gyms.map((gym) => (
-                            <S.GymItem
-                                key={gym}
-                                onClick={() => {
-                                    setSelectedGym(gym);
-                                    setIsGymDropdownOpen(false);
-                                }}
-                            >
-                                {gym}
-                            </S.GymItem>
-                        ))}
+                        {isGymsLoading ? (
+                            <S.GymItem>Loading...</S.GymItem>
+                        ) : (
+                            gymOptions.map((gym) => (
+                                <S.GymItem
+                                    key={gym}
+                                    onClick={() => {
+                                        setSelectedGym(gym);
+                                        setIsGymDropdownOpen(false);
+                                    }}
+                                >
+                                    {gym}
+                                </S.GymItem>
+                            ))
+                        )}
                     </S.GymMenu>
                 )}
             </S.GymDropdown>
