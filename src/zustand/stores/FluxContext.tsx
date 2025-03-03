@@ -8,7 +8,6 @@ export type ActionType =
     | { type: "INCREMENT_PROGRESS"; payload: number }
     | { type: "SET_LEVEL"; payload: number };
 
-// Flux 컨텍스트 타입 정의
 interface FluxContextType {
     state: StateType;
     dispatch: Dispatch<ActionType>;

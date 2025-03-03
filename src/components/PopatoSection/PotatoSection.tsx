@@ -20,7 +20,7 @@ const PotatoSection: React.FC = () => {
     }
   }, [state.memberId]);
 
-  const { data: avatarInfo, isLoading, isError } = useAvatarInfo(memberId || 0);
+  const { data: avatarInfo, isLoading, isError } = useAvatarInfo(memberId || 200);
 
   const truncateNickname = (nickname: string, maxLength: number) => {
     return nickname.length > maxLength ? nickname.slice(0, maxLength) + ".." : nickname;
