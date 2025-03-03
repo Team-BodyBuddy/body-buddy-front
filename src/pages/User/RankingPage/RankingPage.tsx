@@ -4,7 +4,7 @@ import * as S from "./Styles";
 import { useState, useEffect } from "react";
 import { RankingElement } from "../../../components/Ranking/Ranking";
 import RankingList from "../../../components/Ranking/RankingList";
-import { myScore, myGym } from "../../../mocks/rank-mock";
+import { myGym } from "../../../mocks/rank-mock";
 import NoGymMessage from "../../../components/Ranking/NoGymMessage";
 import { useQuery } from "@tanstack/react-query";
 import { getRankings, getRankingUser } from "../../../apis/RankingPage/rankingApi";
@@ -35,7 +35,6 @@ const RankingPage: React.FC = () => {
     const {
         data: rankingData,
         isLoading,
-        isError,
         error,
     } = useQuery({
         queryKey: ["rankingData", activeTab],
@@ -73,8 +72,8 @@ const RankingPage: React.FC = () => {
         return <div>로딩 중...</div>;
     }
 
-    if (isError) {
-        return <div>에러 ...</div>;
+    if (error) {
+        return <div>Error</div>;
     }
 
     return (
