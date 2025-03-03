@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as S from "./Styles";
+import { useRegions } from "../../react-query/query/gyms/useRegions";
+import { useGyms } from "../../react-query/query/gyms/useGyms";
 
 interface FilterSectionProps {
     selectedRegion: string;
@@ -14,64 +16,101 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     selectedGym,
     setSelectedGym,
 }) => {
-    const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false); 
-    const [isGymDropdownOpen, setIsGymDropdownOpen] = useState(false); 
+    const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false);
+    const [isGymDropdownOpen, setIsGymDropdownOpen] = useState(false);
+    const regionDropdownRef = useRef<HTMLDivElement>(null);
+    const gymDropdownRef = useRef<HTMLDivElement>(null);
+    const { data: regions = [], isLoading: isRegionsLoading } = useRegions();
+    const regionOptions = ["지역", ...regions];
+    const { data: gyms = [], isLoading: isGymsLoading } = useGyms(
+        selectedRegion !== "지역" ? selectedRegion : undefined
+    );
 
-    const regions = ["지역", "서울", "강남구", "마포구", "종로구"];
-    const gyms = ["Gym 선택", "Gym1", "Gym2", "Gym3", "Gym4", "Gym5"];
+    const gymOptions = ["Gym 선택", ...gyms.map((gym) => gym.name)];
 
     const handleRegionToggle = () => {
         setIsRegionDropdownOpen((prev) => !prev);
-        setIsGymDropdownOpen(false); // 다른 드롭다운 닫기
+        setIsGymDropdownOpen(false);
     };
 
     const handleGymToggle = () => {
-        setIsGymDropdownOpen((prev) => !prev); 
-        setIsRegionDropdownOpen(false); // 다른 드롭다운 닫기
+        setIsGymDropdownOpen((prev) => !prev);
+        setIsRegionDropdownOpen(false);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                regionDropdownRef.current &&
+                !regionDropdownRef.current.contains(event.target as Node)
+            ) {
+                setIsRegionDropdownOpen(false);
+            }
+            if (
+                gymDropdownRef.current &&
+                !gymDropdownRef.current.contains(event.target as Node)
+            ) {
+                setIsGymDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <S.FilterContainer>
-            <S.RegionDropdown>
+            <S.RegionDropdown ref={regionDropdownRef}>
                 <S.RegionButton onClick={handleRegionToggle}>
                     {selectedRegion}
-                    <S.DropdownIcon /> 
+                    <S.DropdownIcon />
                 </S.RegionButton>
                 {isRegionDropdownOpen && (
                     <S.RegionMenu>
-                        {regions.map((region) => (
-                            <S.RegionItem
-                                key={region}
-                                onClick={() => {
-                                    setSelectedRegion(region);
-                                    setIsRegionDropdownOpen(false);
-                                }}
-                            >
-                                {region}
-                            </S.RegionItem>
-                        ))}
+                        {isRegionsLoading ? (
+                            <S.RegionItem>Loading...</S.RegionItem>
+                        ) : (
+                            regionOptions.map((region) => (
+                                <S.RegionItem
+                                    key={region}
+                                    onClick={() => {
+                                        setSelectedRegion(region);
+                                        setSelectedGym("Gym 선택");
+                                        setIsRegionDropdownOpen(false);
+                                    }}
+                                >
+                                    {region}
+                                </S.RegionItem>
+                            ))
+                        )}
                     </S.RegionMenu>
                 )}
             </S.RegionDropdown>
 
-            <S.GymDropdown>
+            <S.GymDropdown ref={gymDropdownRef}>
                 <S.GymButton onClick={handleGymToggle}>
                     {selectedGym}
-                    <S.DropdownIcon /> 
+                    <S.DropdownIcon />
                 </S.GymButton>
                 {isGymDropdownOpen && (
                     <S.GymMenu>
-                        {gyms.map((gym) => (
-                            <S.GymItem
-                                key={gym}
-                                onClick={() => {
-                                    setSelectedGym(gym);
-                                    setIsGymDropdownOpen(false); // 선택 후 닫기
-                                }}
-                            >
-                                {gym}
-                            </S.GymItem>
-                        ))}
+                        {isGymsLoading ? (
+                            <S.GymItem>Loading...</S.GymItem>
+                        ) : (
+                            gymOptions.map((gym) => (
+                                <S.GymItem
+                                    key={gym}
+                                    onClick={() => {
+                                        setSelectedGym(gym);
+                                        setIsGymDropdownOpen(false);
+                                    }}
+                                >
+                                    {gym}
+                                </S.GymItem>
+                            ))
+                        )}
                     </S.GymMenu>
                 )}
             </S.GymDropdown>

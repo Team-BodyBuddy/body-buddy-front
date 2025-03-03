@@ -1,31 +1,21 @@
 import styled from "styled-components";
 
 export const ContentWrapper = styled.div`
-    flex: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow-y: auto; 
-    padding: 20px; 
-    background-color: #f9f9f9; 
-
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    
-    &::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Edge */
-    }
+    background-color: #f9f9f9;
+    overflow-x: hidden;
 `;
 
 export const BodyStoreContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
+    overflow: hidden;
 `;
 
-// 탭 헤더
 export const TabHeader = styled.div`
     display: flex;
     justify-content: space-around;
@@ -33,70 +23,83 @@ export const TabHeader = styled.div`
     border-bottom: 1px solid #ddd;
     background-color: transparent;
     height: 50px;
-    padding: 0;
-    max-width: 90%;
-    margin: 0 auto; 
+    margin: 0 auto;
+    padding: 0 0.25rem;
     width: 100%;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    overflow: hidden;
+    max-width: 90%;
 `;
 
-
 export const TabButton = styled.button<{ $active: boolean }>`
-    padding: 16px;
-    font-size: 13px;
+    padding: 1rem;
+    font-size: 0.813rem;
     border: none;
     border-bottom: ${({ $active }) => ($active ? "2px solid black" : "2px solid transparent")};
-    background-color: transparent; 
+    background-color: transparent;
     color: ${({ $active }) => ($active ? "#000" : "#B0B0B0")}; 
     cursor: pointer;
-    transition: border-bottom 0.2s ease, color 0.2s ease; 
-    height: 100%; 
+    transition: border-bottom 0.2s ease, color 0.2s ease;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-        color: #000; 
+        color: #000;
     }
 `;
 
-// 탭 콘텐츠 영역
 export const TabContent = styled.div`
-    flex: 1;
+    flex-grow: 1;
     overflow-y: auto;
-    padding: 20px;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 6.25rem); 
+    padding: 1.25rem;
+
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent; 
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: transparent; 
+    }
 `;
 
-// 4열 n행 그리드 컨테이너
 export const GridContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 10px;
-    width: 100%; 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.625rem;
+    width: 100%;
+    min-height: auto;
+    overflow: hidden;
 `;
 
-// 그리드 아이템
 export const GridItem = styled.div`
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px; 
-    border-radius: 5px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    height: 75px;
-    width: 100%;
+    font-size: 0.875rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 5rem;
+    width: 5rem;
+    max-width: 100%;
     position: relative;
 
     .icon {
-        width: 40px; 
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         position: absolute;
-        top: 50%;
-        left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0.7;
     }
 `;
-

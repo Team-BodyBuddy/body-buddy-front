@@ -27,7 +27,7 @@ const DefaultContent: React.FC<DefaultContentProps> = () => {
     if (state.memberId) setMemberId(state.memberId);
   }, [state.memberId]);
 
-  const { data: avatarInfo, isLoading, isError } = useAvatarInfo(memberId || 0);
+  const { data: avatarInfo, isLoading, isError } = useAvatarInfo(memberId || 200);
 
   const handleLevelClick = () => {
     setIsModalVisible(true);

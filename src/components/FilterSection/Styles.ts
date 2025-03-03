@@ -12,12 +12,12 @@ export const FilterContainer = styled.div`
 
 export const RegionDropdown = styled.div`
     position: relative;
-    width: 139px;
+    width: 8.75rem;
 `;
 
 export const GymDropdown = styled.div`
     position: relative;
-    width: 215px;
+    width: 13.5rem;
 `;
 
 export const RegionButton = styled.button`
@@ -49,7 +49,7 @@ export const RegionMenu = styled.div`
     border: 1px solid #ddd;
     border-radius: 7px;
     box-shadow: none;
-    max-height: 150px;
+    max-height: 24rem;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -62,14 +62,14 @@ export const RegionMenu = styled.div`
     }
 
     &::-webkit-scrollbar-track {
-        background: transparent; /* 투명한 스크롤 트랙 */
+        background: transparent; 
     }
 `;
 
 export const GymMenu = styled(RegionMenu)``;
 
 export const RegionItem = styled.div`
-    padding: 10px;
+    padding: 1rem;
     font-size: 15px;
     color: black;
     cursor: pointer;
@@ -82,7 +82,6 @@ export const RegionItem = styled.div`
 export const GymItem = styled(RegionItem)``;
 
 export const DropdownIcon = styled.div`
-
     width: 0;
     height: 0;
     border-left: 4px solid transparent; /* 좌우 값 */

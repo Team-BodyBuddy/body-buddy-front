@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     #root {
-        max-width: 425px;
+        max-width: 24.375rem;
         width: 100%;
         height: 58.25rem; 
         margin: 0 auto;
