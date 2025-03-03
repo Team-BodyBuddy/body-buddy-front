@@ -1,40 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import * as S from "./Styles";
-import PopUp from "../PopUp/PopUp"; // 팝업 컴포넌트 가져오기
-import PointsPopUp from "../PointsPopUp/PointsPopUp";
+import PopUp from "../PopUp/PopUp";
+import PointsPopUp from "../PointsPopUp/PointsPopUp"; 
+import { useItemCategories } from "../../react-query/query/useItemQuery";
+import { usePurchaseItemMutation } from "../../react-query/mutation/useItemMutation/usePurchaseMutation";
+import { FluxContext } from "../../zustand/stores/FluxContext"; 
 
 type Tab = "카테고리1" | "카테고리2" | "카테고리3" | "카테고리4";
 
 const BodyStore: React.FC = () => {
+    const fluxContext = useContext(FluxContext);
+    if (!fluxContext) {
+        throw new Error("BodyStore must be used within a FluxProvider");
+    }
+    const { state } = fluxContext;
+    const memberId = state.memberId;
+
     const [activeTab, setActiveTab] = useState<Tab>("카테고리1");
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-    const [isPointsPopupVisible, setIsPointsPopupVisible] = useState(false);
+    const [isPointsPopupVisible, setIsPointsPopupVisible] = useState(false); 
+    const [selectedItem, setSelectedItem] = useState<{ id: number; name: string; price: number } | null>(null);
 
-    const handleTabClick = (tab: Tab): void => {
-        setActiveTab(tab);
+    const purchaseMutation = usePurchaseItemMutation();
+    const { data, isLoading } = useItemCategories(memberId);
+
+    if (isLoading) return <div>아이템을 불러오는 중...</div>;
+
+    const handleGridItemClick = (itemId: number, itemName: string, itemPrice: number): void => {
+        setSelectedItem({ id: itemId, name: itemName, price: itemPrice });
+        setIsPopupVisible(true); 
     };
 
-    const handleGridItemClick = (): void => {
-        setIsPopupVisible(true); // 팝업 표시
-    };
+    const handlePurchase = () => {
+        if (!selectedItem) return;
 
-    const handlePopupOption = (): void => {
-        setIsPopupVisible(false); // 현재 팝업 닫기
-    };
-
-    const handleOpenPointsPopup = (): void => {
-        setIsPointsPopupVisible(true); // 포인트 부족 팝업 표시
-    };
-
-    const handleClosePointsPopup = (): void => {
-        setIsPointsPopupVisible(false); // 포인트 부족 팝업 닫기
-    };
-
-    const handleOptionSelect = (option: "yes" | "no"): void => {
-        handlePopupOption(); // 현재 팝업 닫기
-        if (option === "yes") {
-            handleOpenPointsPopup(); // "예" 클릭 시 포인트 부족 팝업 표시
-        }
+        purchaseMutation.mutate(
+            { memberId, itemId: selectedItem.id },
+            {
+                onSuccess: (data) => {
+                    console.log(data);
+                    setIsPopupVisible(false);
+                    setIsPointsPopupVisible(true); 
+                },
+                onError: (error) => {
+                    console.error(error);
+                },
+            }
+        );
     };
 
     return (
@@ -42,43 +54,43 @@ const BodyStore: React.FC = () => {
             <S.BodyStoreContainer>
                 <S.TabHeader>
                     {["카테고리1", "카테고리2", "카테고리3", "카테고리4"].map((tab) => (
-                        <S.TabButton
-                            key={tab}
-                            $active={activeTab === tab}
-                            onClick={() => handleTabClick(tab as Tab)}
-                        >
+                        <S.TabButton key={tab} $active={activeTab === tab} onClick={() => setActiveTab(tab as Tab)}>
                             {tab}
                         </S.TabButton>
                     ))}
                 </S.TabHeader>
 
-                {/* 탭 콘텐츠 */}
                 <S.TabContent>
                     <S.GridContainer>
-                        {Array.from({ length: 20 }).map((_, index) => (
+                        {data?.result.map((item) => (
                             <S.GridItem
-                                key={`${activeTab}-${index}`}
-                                onClick={handleGridItemClick}
+                                key={item.id}
+                                onClick={() => handleGridItemClick(item.id, item.name, item.price)}
+                                style={{
+                                    backgroundColor: item.status === "ACTIVE" ? "#d4edda" : "#f8d7da",
+                                    cursor: "pointer",
+                                }}
                             >
-                                {activeTab} Item {index + 1}
+                                <img src={item.imagePath} alt={item.name} width={40} height={40} />
+                                <div>{item.name}</div>
+                                <div>{item.price}P</div>
                             </S.GridItem>
                         ))}
                     </S.GridContainer>
                 </S.TabContent>
             </S.BodyStoreContainer>
 
-            {/* 첫 번째 팝업 */}
             <PopUp
                 isVisible={isPopupVisible}
                 onClose={() => setIsPopupVisible(false)}
-                onOptionSelect={handleOptionSelect}
+                onOptionSelect={handlePurchase}
             />
 
-            {/* 포인트 부족 팝업 */}
             <PointsPopUp
                 isVisible={isPointsPopupVisible}
-                onClose={handleClosePointsPopup}
+                onClose={() => setIsPointsPopupVisible(false)}
             />
+
         </S.ContentWrapper>
     );
 };
