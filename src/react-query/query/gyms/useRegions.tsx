@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchRegions } from "../../apis/gyms";
+import { fetchRegions } from "../../../apis/gyms";
 
 export const useRegions = () => {
     return useQuery({
