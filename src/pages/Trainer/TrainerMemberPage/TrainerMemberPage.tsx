@@ -6,7 +6,7 @@ import { todoData } from "../../../mocks/todo-mock";
 import * as S from "./Styles";
 import GraphModal from "../../../components/Modal/GraphModal/GraphModal";
 import TrendGraph from "../../../components/TrendGraph/TrendGraph";
-import Calendar from "../../../components/Calendar/Calendar";
+//import Calendar from "../../../components/Calendar/Calendar";
 import { FluxContext } from "../../../zustand/stores/FluxContext";
 
 const TrainerMemberPage: React.FC = () => {
@@ -34,7 +34,7 @@ const TrainerMemberPage: React.FC = () => {
             <TopNavigation activeTab="홈" onTabClick={handleTabClick} />
             <S.ContentWrapper>
                 <MemberInfo onClick={handleMemberInfoClick} />
-                <Calendar calendarData={[]} />
+                {/* <Calendar calendarData={[]} /> */}
                 <TodoElement data={todoData} />
             </S.ContentWrapper>
 
