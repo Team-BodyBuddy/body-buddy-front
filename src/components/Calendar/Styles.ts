@@ -25,7 +25,6 @@ export const Select = styled.div<{ $isDrop: boolean }>`
     border: none;
     border-radius: 4px;
     outline: none;
-    width: 35%;
     position: relative;
     display: flex;
     justify-content: space-between;

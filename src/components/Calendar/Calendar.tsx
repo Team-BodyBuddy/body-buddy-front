@@ -5,8 +5,13 @@ import CalendarHeader from "./CalendarElement/Header/CalendarHeader";
 import * as S from "./Styles";
 import CalendarWeek from "./CalendarElement/Week/CalendarWeek";
 import { CalendarIcon, CalendarSelect } from "../icons";
+import { MonthData } from "../../entity/CalendarEntity";
 
-const Calendar: React.FC = () => {
+interface CalendarProps {
+    calendarData: MonthData[] | undefined;
+}
+
+const Calendar: React.FC<CalendarProps> = ({ calendarData = [] }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [isDrop, setIsDrop] = useState(false);
     const startDate = startOfWeek(startOfMonth(currentDate));
@@ -77,7 +82,7 @@ const Calendar: React.FC = () => {
                 <CalendarHeader />
 
                 {weeks.map((week, weekIndex) => (
-                    <CalendarWeek key={weekIndex} week={week} currentDate={currentDate} />
+                    <CalendarWeek key={weekIndex} week={week} currentDate={currentDate} calendarData={calendarData} />
                 ))}
             </S.DateWrapper>
         </S.Container>

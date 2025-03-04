@@ -6,12 +6,26 @@ interface DateCellProps {
     day: Date;
     isCurrentMonth: boolean;
     isToday: boolean;
+    indicatorType?: string;
+    hasIndicator: boolean;
 }
 
-const CalendarDate: React.FC<DateCellProps> = ({ day, isCurrentMonth, isToday }) => {
+const CalendarDate: React.FC<DateCellProps> = ({ day, isCurrentMonth, isToday, indicatorType, hasIndicator }) => {
     return (
         <S.DateCell $isCurrentMonth={isCurrentMonth} $isToday={isToday}>
-            {format(day, "d")}
+            <S.Text>{format(day, "d")}</S.Text>
+            {indicatorType && hasIndicator && (
+                <S.DotWrapper>
+                    {indicatorType === "BOTH" ? (
+                        <>
+                            <S.Dot $type="red" />
+                            <S.Dot $type="blue" />
+                        </>
+                    ) : (
+                        <S.Dot $type={indicatorType} />
+                    )}
+                </S.DotWrapper>
+            )}
         </S.DateCell>
     );
 };

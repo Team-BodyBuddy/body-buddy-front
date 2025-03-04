@@ -16,9 +16,9 @@ const TrainerMemberPage: React.FC = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const context = useContext(FluxContext);
-        if (!context) {
-            throw new Error("FluxContext must be used within a FluxProvider");
-        }
+    if (!context) {
+        throw new Error("FluxContext must be used within a FluxProvider");
+    }
     const { state } = context;
 
     const handleMemberInfoClick = () => {
@@ -34,13 +34,13 @@ const TrainerMemberPage: React.FC = () => {
             <TopNavigation activeTab="홈" onTabClick={handleTabClick} />
             <S.ContentWrapper>
                 <MemberInfo onClick={handleMemberInfoClick} />
-                <Calendar />
+                <Calendar calendarData={[]} />
                 <TodoElement data={todoData} />
             </S.ContentWrapper>
 
             {isModalOpen && (
                 <GraphModal onClose={handleModalClose}>
-                    <TrendGraph memberId={state.memberId}/>
+                    <TrendGraph memberId={state.memberId} />
                 </GraphModal>
             )}
         </S.Container>
