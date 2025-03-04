@@ -4,30 +4,18 @@ import * as S from "./Styles";
 import Calendar from "../../../components/Calendar/Calendar";
 import TodoElement from "../../../components/Todo/TodoElement";
 import { todoData } from "../../../mocks/todo-mock";
-import { useQuery } from "@tanstack/react-query";
-import { getMonthData } from "../../../apis/Calendar/calendarApi";
 import { format } from "date-fns";
+import TodayScore from "../../../components/TodayScore/TodayScore";
+import { useMonthData, useSubmitTodayScore } from "./useExerciseHooks";
 
 const ExercisePage: React.FC = () => {
+    const memberId = 10; // 임시 memberId
+    const { selectedDate, userMonthData, isLoading, error, handleMonthClick, handleDateClick } = useMonthData(memberId);
+    const { handleSubmitDayScore } = useSubmitTodayScore();
+
     const handleTabClick = (tab: string) => {
         console.log(`${tab} 탭 클릭됨`);
     };
-
-    const currentMonth = format(new Date(), "yyyy-MM");
-
-    //첫 화면 렌더링 시 해당 달의 데이터를 가져와야 함
-    const {
-        data: userMonthData,
-        isLoading,
-        error,
-    } = useQuery({
-        queryKey: ["monthData", currentMonth],
-        queryFn: () => getMonthData(10, currentMonth),
-        retry: 0,
-    });
-
-    //날짜를 누르면 해당 날짜의 데이터를 가져오기
-    //루틴 데이터
 
     if (isLoading) {
         return <div>로딩 중...</div>;
@@ -42,8 +30,9 @@ const ExercisePage: React.FC = () => {
             <TopNavigation activeTab="운동관리" onTabClick={handleTabClick} />
             <S.Container>
                 <S.ContentWrapper>
-                    <Calendar calendarData={userMonthData} />
+                    <Calendar calendarData={userMonthData} onDateClick={handleDateClick} onMonthClick={handleMonthClick} currentDate={selectedDate} />
                     <TodoElement data={todoData} />
+                    <TodayScore onClick={handleSubmitDayScore} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
                 </S.ContentWrapper>
             </S.Container>
         </>

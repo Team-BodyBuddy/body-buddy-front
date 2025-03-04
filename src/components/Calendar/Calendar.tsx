@@ -9,18 +9,22 @@ import { MonthData } from "../../entity/CalendarEntity";
 
 interface CalendarProps {
     calendarData: MonthData[] | undefined;
+    onDateClick: (date: Date) => void;
+    onMonthClick: (date: Date) => void;
+    currentDate: Date;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ calendarData = [] }) => {
-    const [currentDate, setCurrentDate] = useState(new Date());
+const Calendar: React.FC<CalendarProps> = ({ calendarData = [], onDateClick, onMonthClick, currentDate }) => {
     const [isDrop, setIsDrop] = useState(false);
     const startDate = startOfWeek(startOfMonth(currentDate));
     const endDate = endOfMonth(endOfMonth(currentDate));
 
     // 연도와 월을 하나의 드롭다운에서 선택할 수 있도록 하는 핸들러
     const handleMonthYearChange = (year: number, month: number) => {
-        setCurrentDate(new Date(year, month, 1));
+        const newDate = new Date(year, month, 1);
+        //console.log(currentDate);
         setIsDrop(false);
+        onMonthClick(newDate);
     };
 
     const generateCalendar = () => {
@@ -82,7 +86,7 @@ const Calendar: React.FC<CalendarProps> = ({ calendarData = [] }) => {
                 <CalendarHeader />
 
                 {weeks.map((week, weekIndex) => (
-                    <CalendarWeek key={weekIndex} week={week} currentDate={currentDate} calendarData={calendarData} />
+                    <CalendarWeek key={weekIndex} week={week} currentDate={currentDate} calendarData={calendarData} onDateClick={onDateClick} />
                 ))}
             </S.DateWrapper>
         </S.Container>

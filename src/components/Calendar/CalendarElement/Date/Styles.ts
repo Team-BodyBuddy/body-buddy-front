@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DateCell = styled.div<{ $isCurrentMonth: boolean; $isToday: boolean }>`
+export const DateCell = styled.div<{ $isCurrentMonth: boolean; $isToday: boolean; $isSelected: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,12 @@ export const DateCell = styled.div<{ $isCurrentMonth: boolean; $isToday: boolean
     height: 50px;
     aspect-ratio: 1/1;
     font-weight: ${({ $isToday }) => ($isToday ? "700" : "500")};
-    color: ${({ $isCurrentMonth }) => ($isCurrentMonth ? "#333333" : "#B2B2B2")};
+    color: ${({ $isToday, $isCurrentMonth, $isSelected }) => {
+        if ($isSelected) return "white"; // 선택된 오늘 날짜는 흰색
+        if ($isToday) return "green"; // 오늘 날짜는 초록색
+        return $isCurrentMonth ? "#333333" : "#B2B2B2"; // 현재 월이면 어두운 색, 아니면 연한 회색
+    }};
+    background-color: ${({ $isSelected }) => ($isSelected ? "#8FBC8F" : "inherit")};
 `;
 
 export const Text = styled.div`
