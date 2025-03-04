@@ -20,6 +20,9 @@ import { ReactComponent as CheckGray } from "../assets/icons/check-button-gray.s
 import { ReactComponent as RemoveGray } from "../assets/icons/remove-gray.svg";
 import { ReactComponent as CheckIcon } from "../assets/icons/check_icon.svg";
 import { ReactComponent as CheckShape } from "../assets/icons/check_shape.svg";
+import { ReactComponent as Today_first } from "../assets/icons/today-bad.svg";
+import { ReactComponent as Today_second } from "../assets/icons/today-so.svg";
+import { ReactComponent as Today_third } from "../assets/icons/today-good.svg";
 
 export const PotatoImage = Character;
 export const Edit = EditRectangle;
@@ -43,3 +46,6 @@ export const CheckButtonGreen = CheckGreen;
 export const RemoveTodoButton = RemoveGray;
 export const CheckPort = CheckIcon;
 export const BigCheckMark = CheckShape;
+export const TodayBad = Today_first;
+export const TodaySo = Today_second;
+export const TodayGood = Today_third;
