@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./Styles";
-import { Bulb } from "../icons"; // Bulb 아이콘 가져오기
+import { Bulb } from "../icons"; 
 
 interface BadgeSectionProps {
     badges: string[];
