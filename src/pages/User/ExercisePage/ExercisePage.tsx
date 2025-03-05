@@ -26,15 +26,14 @@ const ExercisePage: React.FC = () => {
     return (
         <>
             <TopNavigation activeTab="운동관리" onTabClick={handleTabClick} />
-            <S.Container>
-                <S.ContentWrapper>
-                    <Calendar calendarData={userMonthData} onDateClick={handleDateClick} onMonthClick={handleMonthClick} currentDate={selectedDate} />
-                    <TodoElement data={todoData} />
-                    <RoutineInput color="rgba(37, 99, 235, 1)" label={{ key: "ROUTINE", value: "운동" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
-                    <RoutineInput color="rgba(249, 115, 22, 1)" label={{ key: "CLASS", value: "수업" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
-                    <TodayScore onClick={handleSubmitDayScore} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
-                </S.ContentWrapper>
-            </S.Container>
+
+            <S.ContentWrapper>
+                <Calendar calendarData={userMonthData} onDateClick={handleDateClick} onMonthClick={handleMonthClick} currentDate={selectedDate} />
+                <TodoElement data={todoData} />
+                <RoutineInput color="rgba(37, 99, 235, 1)" label={{ key: "ROUTINE", value: "운동" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
+                <RoutineInput color="rgba(249, 115, 22, 1)" label={{ key: "CLASS", value: "수업" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
+                <TodayScore onClick={handleSubmitDayScore} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
+            </S.ContentWrapper>
         </>
     );
 };
