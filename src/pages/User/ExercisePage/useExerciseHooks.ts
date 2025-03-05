@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { getMonthData } from "../../../apis/Calendar/calendarApi";
 import { postDayScore } from "../../../apis/TodayScore/todayScoreApi";
+import { postRoutine } from "../../../apis/Routine/routineApi";
 
 export const useMonthData = (memberId: number) => {
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -60,4 +61,25 @@ export const useSubmitTodayScore = () => {
     };
 
     return { submitTodayScore, handleSubmitDayScore };
+};
+
+export const useRoutine = () => {
+    const queryClient = useQueryClient();
+    const mutation = useMutation({
+        mutationFn: postRoutine,
+        onSuccess: (data, variables) => {
+            console.log("Routine added successfully:", data);
+            // ✅ 루틴 추가 성공 시 해당 월의 데이터 다시 불러오기
+            queryClient.invalidateQueries({ queryKey: ["monthData", variables.date.substring(0, 7)] });
+        },
+        onError: (error: any) => {
+            console.error("Error adding routine:", error);
+        },
+    });
+
+    const handleRoutineSubmit = (routineData: { memberId: number; date: string; routineType: string; name: string }) => {
+        mutation.mutate(routineData);
+    };
+
+    return { handleRoutineSubmit };
 };
