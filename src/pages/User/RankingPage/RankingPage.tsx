@@ -4,7 +4,7 @@ import * as S from "./Styles";
 import { useState, useEffect } from "react";
 import { RankingElement } from "../../../components/Ranking/Ranking";
 import RankingList from "../../../components/Ranking/RankingList";
-import { bodybudyData, myGym } from "../../../mocks/rank-mock";
+import { bodybudyData, myGym, myScore } from "../../../mocks/rank-mock";
 import NoGymMessage from "../../../components/Ranking/NoGymMessage";
 import { useQuery } from "@tanstack/react-query";
 import { getRankings, getRankingUser } from "../../../apis/RankingPage/rankingApi";
@@ -42,7 +42,7 @@ const RankingPage: React.FC = () => {
         retry: 0,
     });
 
-    const { data: userRankData } = useQuery({
+    const { data: userRankData = myScore } = useQuery({
         queryKey: ["userRank", activeTab],
         queryFn: () => getRankingUser(activeTab),
         retry: 0,

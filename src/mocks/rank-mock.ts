@@ -131,8 +131,8 @@ export const gymData = [
 export const myScore = {
     rank: 185,
     level: 25,
-    name: "닉네임",
-    score: 48,
+    nickname: "닉네임",
+    rankingScore: 48,
 };
 
 export const myGym = {
