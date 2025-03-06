@@ -19,13 +19,17 @@ const CalendarDate: React.FC<DateCellProps> = ({ day, isCurrentMonth, isToday, i
             <S.Text>{format(day, "d")}</S.Text>
             {indicatorType && hasIndicator && (
                 <S.DotWrapper>
-                    {indicatorType === "BOTH" ? (
+                    {indicatorType !== "NONE" && (
                         <>
-                            <S.Dot $type="RED" />
-                            <S.Dot $type="BLUE" />
+                            {indicatorType === "BOTH" ? (
+                                <>
+                                    <S.Dot $type="RED" />
+                                    <S.Dot $type="BLUE" />
+                                </>
+                            ) : (
+                                <S.Dot $type={indicatorType} />
+                            )}
                         </>
-                    ) : (
-                        <S.Dot $type={indicatorType} />
                     )}
                 </S.DotWrapper>
             )}
