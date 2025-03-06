@@ -6,6 +6,8 @@ interface TodoData {
     title: string;
     type: string;
     done: boolean;
+    onRemove: () => void;
+    onToggle: () => void;
 }
 
 const TodoElement: React.FC<{ data: TodoData }> = ({ data }) => {
