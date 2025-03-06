@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { getMonthData } from "../../../apis/Calendar/calendarApi";
 import { postDayScore } from "../../../apis/TodayScore/todayScoreApi";
-import { getRoutineData, postRoutine } from "../../../apis/Routine/routineApi";
+import { getRoutineData, postRoutine, removeRoutine, toggleRoutine } from "../../../apis/Routine/routineApi";
 
 export const useMonthData = (memberId: number) => {
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -67,7 +67,7 @@ export const useRoutine = (memberId: number, date: string) => {
     const queryClient = useQueryClient();
 
     // 루틴 등록 api
-    const mutation = useMutation({
+    const addRoutineMutation = useMutation({
         mutationFn: postRoutine,
         onSuccess: (variables) => {
             // ✅ 루틴 추가 성공 시 해당 월의 데이터 다시 불러오기
@@ -80,7 +80,7 @@ export const useRoutine = (memberId: number, date: string) => {
     });
 
     const handleRoutineSubmit = (routineData: { memberId: number; date: string; routineType: string; name: string }) => {
-        mutation.mutate(routineData);
+        addRoutineMutation.mutate(routineData);
     };
 
     //루틴 조회 api
@@ -95,8 +95,33 @@ export const useRoutine = (memberId: number, date: string) => {
     });
 
     //루틴 토글 api
+    const toggleRoutineMutation = useMutation({
+        mutationFn: toggleRoutine,
+        onError: (error: any) => {
+            console.error("Error toggle routine:", error);
+        },
+    });
+
+    const handleRoutineToggle = (routineId: number) => {
+        toggleRoutineMutation.mutate(routineId);
+    };
 
     //루틴 삭제 api
+    const removeRoutineMutation = useMutation({
+        mutationFn: removeRoutine,
+        onSuccess: (variables) => {
+            // ✅ 루틴 제거 성공 시 해당 월의 데이터 다시 불러오기
+            queryClient.invalidateQueries({ queryKey: ["monthData", variables.date.substring(0, 7)] });
+            queryClient.invalidateQueries({ queryKey: ["routineData", variables.date] });
+        },
+        onError: (error: any) => {
+            console.error("Error removing routine:", error);
+        },
+    });
 
-    return { handleRoutineSubmit, userRoutineData, error, isLoading };
+    const handleRoutineRemove = (routineData: { memberId: number; date: string; routineType: string; name: string }) => {
+        removeRoutineMutation.mutate(routineData);
+    };
+
+    return { handleRoutineSubmit, handleRoutineRemove, handleRoutineToggle, userRoutineData, error, isLoading };
 };
