@@ -1,20 +1,31 @@
 import { useState } from "react";
 import { CheckButtonGray, CheckButtonGreen, RemoveTodoButton, TodoIconOff, TodoIconOn } from "../icons";
 import * as S from "./Styles";
+import { RoutineItem } from "../../entity/RoutineEntity";
 
 interface TodoData {
-    title: string;
-    type: string;
-    done: boolean;
-    onRemove: () => void;
-    onToggle: () => void;
+    data: RoutineItem;
+    onRemove: (routineData: { memberId: number; date: string; routineType: string; name: string }) => void;
+    onToggle: (routineId: number) => void;
 }
 
 const TodoElement: React.FC<{ data: TodoData }> = ({ data }) => {
-    const [done, setDone] = useState<boolean>(data.done);
+    const [done, setDone] = useState<boolean>(!data.data.completed);
+
+    const handleRemove = () => {
+        const routineData = {
+            memberId: data.data.memberId,
+            date: data.data.date,
+            routineType: data.data.type,
+            name: data.data.name,
+        };
+        console.log(routineData);
+        data.onRemove(routineData);
+    };
 
     const handleDone = () => {
         setDone(!done);
+        data.onToggle(data.data.id);
     };
 
     return (
@@ -22,8 +33,8 @@ const TodoElement: React.FC<{ data: TodoData }> = ({ data }) => {
             <S.LeftWrapper>
                 {done === false ? <TodoIconOn /> : <TodoIconOff />}
                 <S.ContentWrapper>
-                    <S.Title>{data.title}</S.Title>
-                    <S.Type>{data.type}</S.Type>
+                    <S.Title>{data.data.name}</S.Title>
+                    <S.Type>{data.data.type === "ROUTINE" ? "루틴" : "수업"}</S.Type>
                 </S.ContentWrapper>
             </S.LeftWrapper>
             <S.ButtonWrapper>
@@ -32,7 +43,7 @@ const TodoElement: React.FC<{ data: TodoData }> = ({ data }) => {
                 ) : (
                     <>
                         <CheckButtonGray onClick={handleDone} />
-                        <RemoveTodoButton />
+                        <RemoveTodoButton onClick={handleRemove} />
                     </>
                 )}
             </S.ButtonWrapper>

@@ -12,7 +12,7 @@ const ExercisePage: React.FC = () => {
     const memberId = 10; // 임시 memberId
     const { selectedDate, userMonthData, isLoading, handleMonthClick, handleDateClick } = useMonthData(memberId);
     const { handleSubmitDayScore } = useSubmitTodayScore();
-    const { handleRoutineSubmit, userRoutineData } = useRoutine(memberId, format(selectedDate, "yyyy-MM-dd"));
+    const { handleRoutineSubmit, handleRoutineRemove, handleRoutineToggle, userRoutineData } = useRoutine(memberId, format(selectedDate, "yyyy-MM-dd"));
 
     const handleTabClick = (tab: string) => {
         console.log(`${tab} 탭 클릭됨`);
@@ -32,15 +32,13 @@ const ExercisePage: React.FC = () => {
                     <TodoElement
                         key={routine.id}
                         data={{
-                            title: routine.name,
-                            type: routine.type === "ROUTINE" ? "루틴" : "수업",
-                            done: routine.completed,
-                            onToggle: () => console.log(`루틴 ${routine.id} 토글`),
-                            onRemove: () => console.log(`루틴 ${routine.id} 삭제`),
+                            data: routine,
+                            onToggle: handleRoutineToggle,
+                            onRemove: handleRoutineRemove,
                         }}
                     />
                 ))}
-                <RoutineInput color="rgba(37, 99, 235, 1)" label={{ key: "ROUTINE", value: "운동" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
+                <RoutineInput color="rgba(37, 99, 235, 1)" label={{ key: "ROUTINE", value: "루틴" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
                 <RoutineInput color="rgba(249, 115, 22, 1)" label={{ key: "CLASS", value: "수업" }} onSubmit={handleRoutineSubmit} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
                 <TodayScore onClick={handleSubmitDayScore} memberId={memberId} date={format(selectedDate, "yyyy-MM-dd")} />
             </S.ContentWrapper>
