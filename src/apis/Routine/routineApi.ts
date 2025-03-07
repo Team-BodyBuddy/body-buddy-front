@@ -38,11 +38,16 @@ export const getRoutineData = async (memberId: number, date: string) => {
 };
 
 export const toggleRoutine = async (routineId: number) => {
-    const response = await axiosInstance.patch(`/api/routine/${routineId}/toggle`, {
-        headers: {
-            Authorization: `Bearer ${TempToken}`,
-        },
-    });
+    console.log(`${TempToken}`);
+    const response = await axiosInstance.patch(
+        `/api/routine/${routineId}/toggle`,
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${TempToken}`,
+            },
+        }
+    );
 
     return response.data.result;
 };
