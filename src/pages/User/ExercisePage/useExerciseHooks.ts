@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { getMonthData } from "../../../apis/Calendar/calendarApi";
@@ -34,6 +34,15 @@ export const useMonthData = (memberId: number) => {
         enabled: !!currentMonth,
     });
 
+    // ✅ indicatorMap 생성 (해당 날짜에 indicator가 있는지 여부를 저장)
+    const indicatorMap = useMemo(() => {
+        if (!userMonthData) return {};
+        return userMonthData.reduce((acc, day) => {
+            acc[day.date] = day.indicatorType !== "NONE"; // indicator가 "NONE"이 아니면 true
+            return acc;
+        }, {} as Record<string, boolean>);
+    }, [userMonthData]);
+
     return {
         selectedDate,
         currentMonth,
@@ -42,6 +51,7 @@ export const useMonthData = (memberId: number) => {
         error,
         handleMonthClick,
         handleDateClick,
+        indicatorMap,
     };
 };
 
@@ -63,8 +73,10 @@ export const useSubmitTodayScore = () => {
     return { submitTodayScore, handleSubmitDayScore };
 };
 
-export const useRoutine = (memberId: number, date: string) => {
+export const useRoutine = (memberId: number, date: string, indicatorMap: Record<string, boolean>) => {
     const queryClient = useQueryClient();
+    // ✅ 해당 날짜에 indicator가 있는 경우에만 요청 실행
+    const shouldFetchRoutine = indicatorMap[date] ?? false;
 
     // 루틴 등록 api
     const addRoutineMutation = useMutation({
@@ -92,6 +104,7 @@ export const useRoutine = (memberId: number, date: string) => {
         queryKey: ["routineData", date],
         queryFn: () => getRoutineData(memberId, date),
         retry: 0,
+        enabled: shouldFetchRoutine,
     });
 
     //루틴 토글 api

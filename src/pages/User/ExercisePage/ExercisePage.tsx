@@ -10,9 +10,9 @@ import RoutineInput from "../../../components/RoutineInput/RoutineInput";
 
 const ExercisePage: React.FC = () => {
     const memberId = 10; // 임시 memberId
-    const { selectedDate, userMonthData, isLoading, handleMonthClick, handleDateClick } = useMonthData(memberId);
+    const { selectedDate, userMonthData, isLoading, handleMonthClick, handleDateClick, indicatorMap } = useMonthData(memberId);
     const { handleSubmitDayScore } = useSubmitTodayScore();
-    const { handleRoutineSubmit, handleRoutineRemove, handleRoutineToggle, userRoutineData } = useRoutine(memberId, format(selectedDate, "yyyy-MM-dd"));
+    const { handleRoutineSubmit, handleRoutineRemove, handleRoutineToggle, userRoutineData } = useRoutine(memberId, format(selectedDate, "yyyy-MM-dd"), indicatorMap);
 
     const handleTabClick = (tab: string) => {
         console.log(`${tab} 탭 클릭됨`);
