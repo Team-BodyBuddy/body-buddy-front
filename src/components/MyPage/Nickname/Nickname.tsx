@@ -2,12 +2,19 @@
 import React from "react";
 import * as S from "./Styles";
 
-const Nickname: React.FC = () => {
-    return <S.Container>
-        <S.Img>이미지</S.Img>
-        <S.Name>닉네임</S.Name>
-        <S.Lv>LV</S.Lv>
-    </S.Container>;
+interface NicknameProps {
+    nickname: string;
+    avatarLevel: number;
+}
+
+const Nickname: React.FC<NicknameProps> = ({ nickname, avatarLevel }) => {
+    return (
+        <S.Container>
+            <S.Img>이미지</S.Img>
+            <S.Name>{nickname}</S.Name>
+            <S.Lv>LV {avatarLevel}</S.Lv>
+        </S.Container>
+    );
 };
 
 export default Nickname;

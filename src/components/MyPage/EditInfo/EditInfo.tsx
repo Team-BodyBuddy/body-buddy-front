@@ -1,16 +1,20 @@
-//마이페이지 : 사는곳, 몸무게
 import React from "react";
 import * as S from "./Styles";
 import { Edit } from "../../icons";
 
-const EditInfo: React.FC = () => {
+interface EditInfoProps {
+    region: string;
+    heightweight: string;
+}
+
+const EditInfo: React.FC<EditInfoProps> = ({ region, heightweight }) => {
     return (
         <S.Container>
-            <S.Contents>지역</S.Contents>
+            <S.Contents>지역: {region}</S.Contents>
             <S.Btn>
-                <Edit></Edit>
+                <Edit />
             </S.Btn>
-            <S.Contents>키/몸무게</S.Contents>
+            <S.Contents>키/몸무게: {heightweight}</S.Contents>
         </S.Container>
     );
 };
