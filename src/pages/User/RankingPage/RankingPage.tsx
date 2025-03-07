@@ -4,7 +4,7 @@ import * as S from "./Styles";
 import { useState, useEffect } from "react";
 import { RankingElement } from "../../../components/Ranking/Ranking";
 import RankingList from "../../../components/Ranking/RankingList";
-import { myGym } from "../../../mocks/rank-mock";
+import { bodybudyData, myGym, myScore } from "../../../mocks/rank-mock";
 import NoGymMessage from "../../../components/Ranking/NoGymMessage";
 import { useQuery } from "@tanstack/react-query";
 import { getRankings, getRankingUser } from "../../../apis/RankingPage/rankingApi";
@@ -33,7 +33,7 @@ const RankingPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<Tab>(Tab.Global);
 
     const {
-        data: rankingData,
+        data: rankingData = { content: bodybudyData },
         isLoading,
         error,
     } = useQuery({
@@ -42,7 +42,7 @@ const RankingPage: React.FC = () => {
         retry: 0,
     });
 
-    const { data: userRankData } = useQuery({
+    const { data: userRankData = myScore } = useQuery({
         queryKey: ["userRank", activeTab],
         queryFn: () => getRankingUser(activeTab),
         retry: 0,
@@ -57,7 +57,6 @@ const RankingPage: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        console.log("gym 값이 변경되었습니다:", gym);
         setGym(myGym.name);
     }, [gym]);
 
@@ -65,15 +64,12 @@ const RankingPage: React.FC = () => {
         setActiveTab(tab);
     };
 
-    console.log("화면");
-    console.log(rankingData);
-
     if (isLoading) {
         return <div>로딩 중...</div>;
     }
 
     if (error) {
-        return <div>Error</div>;
+        console.warn("랭킹 데이터를 불러오지 못해 목데이터를 사용합니다.");
     }
 
     return (
