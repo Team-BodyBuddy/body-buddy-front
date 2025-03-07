@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import MemberInfo from "../../../components/MemberInfo/MemberInfo";
-import TodoElement from "../../../components/Todo/TodoElement";
+//import TodoElement from "../../../components/Todo/TodoElement";
 import TopNavigation from "../../../components/TopNavigation/TopNavigation";
-import { todoData } from "../../../mocks/todo-mock";
+//import { todoData } from "../../../mocks/todo-mock";
 import * as S from "./Styles";
 import GraphModal from "../../../components/Modal/GraphModal/GraphModal";
 import TrendGraph from "../../../components/TrendGraph/TrendGraph";
@@ -35,7 +35,7 @@ const TrainerMemberPage: React.FC = () => {
             <S.ContentWrapper>
                 <MemberInfo onClick={handleMemberInfoClick} />
                 {/* <Calendar calendarData={[]} /> */}
-                <TodoElement data={todoData} />
+                {/* <TodoElement data={todoData} /> */}
             </S.ContentWrapper>
 
             {isModalOpen && (

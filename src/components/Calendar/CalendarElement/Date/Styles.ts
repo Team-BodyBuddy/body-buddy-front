@@ -34,5 +34,5 @@ export const Dot = styled.div<{ $type: string }>`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: ${({ $type }) => ($type === "red" ? "rgba(249, 115, 22, 1)" : "rgba(37, 99, 235, 1)")};
+    background-color: ${({ $type }) => ($type === "RED" ? "rgba(249, 115, 22, 1)" : "rgba(37, 99, 235, 1)")};
 `;
