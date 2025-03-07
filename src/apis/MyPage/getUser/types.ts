@@ -7,7 +7,7 @@ export type getUser = {
         nickname: string;
         avatarLevel: number;
         realName: string;
-        gender: string;
+        gender: "MALE" | "FEMALE";
         birthday: string;
         region: string;
         gymName: string;
