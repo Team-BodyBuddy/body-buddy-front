@@ -70,13 +70,18 @@ const TrainerSignUpPage: React.FC = () => {
   //   "gymId": 9007199254740991
   // }
 
+  // 서버로 보내는 api 정보들, 자료형 맞게 변환 필요
   const UserBirthday = `${selectedYear}-${String(selectedMonth).padStart(
     2,
     "0"
   )}-${String(selectedDate).padStart(2, "0")}`;
-
   const UserHeight = Number(height);
   const UserWeight = Number(weight);
+  const GymID = Number(gymId);
+  //   console.log("UserBirthday 타입:", typeof UserBirthday);
+  //   console.log("UserHeight 타입:", typeof UserHeight);
+  //   console.log("UserWeight 타입:", typeof UserWeight);
+  //   console.log("GymID 타입:", typeof GymID);
 
   console.log("====================================");
   console.log("성별 = " + selectedGender);
