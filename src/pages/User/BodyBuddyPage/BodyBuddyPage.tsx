@@ -14,8 +14,8 @@ const BodyBuddyPage: React.FC = () => {
         console.log(`${tab} 탭 클릭됨`);
     };
 
-    const handleListItemClick = () => {
-        navigate("/portfolio");
+    const handleListItemClick = (trainerId: number) => {
+        navigate(`/portfolio/${trainerId}`);
     };
 
     return (
@@ -30,7 +30,7 @@ const BodyBuddyPage: React.FC = () => {
                 setSelectedGym={setSelectedGym}
             />
 
-            <ListSection onListItemClick={handleListItemClick} />
+            <ListSection onListItemClick={handleListItemClick} /> 
         </S.Container>
       </>
     );
