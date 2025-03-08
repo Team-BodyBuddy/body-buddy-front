@@ -3,7 +3,7 @@ import * as S from "./Styles";
 import { Back } from "../../components/icons"
 
 interface BackButtonProps {
-  onClick: () => void; // 뒤로가기 동작
+  onClick: () => void; 
 }
 
 const BackButton: React.FC<BackButtonProps> = ({ onClick }) => {

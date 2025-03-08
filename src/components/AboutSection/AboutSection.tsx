@@ -8,7 +8,7 @@ interface AboutSectionProps {
 const AboutSection: React.FC<AboutSectionProps> = ({ aboutItems }) => {
     return (
         <S.AboutContainer>
-            <S.SectionTitle>약력</S.SectionTitle>
+            <S.SectionTitle>포트폴리오</S.SectionTitle>
             <S.AboutContent>
                 {aboutItems.map((item, index) => (
                     <S.AboutItem key={index}>{item}</S.AboutItem>

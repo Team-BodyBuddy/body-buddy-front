@@ -45,6 +45,11 @@ export const AboutContent = styled.div`
 `;
 
 export const AboutItem = styled.div`
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #333;
+    padding-bottom: 0.625rem;
+    
+    &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+    }
 `;
