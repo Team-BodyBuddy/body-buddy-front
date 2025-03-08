@@ -11,6 +11,7 @@ import NextButton from "../../../components/SignUpPage/NextButton/NextButton";
 import CheckButton from "../../../components/SignUpPage/CheckButton/CheckButton";
 import { mockGyms, mockRegions } from "../../../apis/gyms/mocks";
 import { set } from "date-fns";
+import { TrainerSignUp } from "../../../apis/SignUp/signupApi";
 
 const TrainerSignUpPage: React.FC = () => {
   const navigate = useNavigate();
@@ -136,6 +137,28 @@ const TrainerSignUpPage: React.FC = () => {
 
   const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWeight(e.target.value);
+  };
+
+  const handleSignUp = async () => {
+    try {
+      const result = await TrainerSignUp({
+        loginId: id,
+        password: password,
+        confirmPassword: confirmPassword,
+        realName: realName,
+        gender: selectedGender,
+        birthday: UserBirthday,
+        height: UserHeight,
+        weight: UserWeight,
+        region: selectedCity,
+        gymId: GymID,
+      });
+      console.log("SignUp Result:", result);
+      // 회원가입 성공 시 처리
+    } catch (error) {
+      console.error("SignUp Error:", error);
+      // 회원가입 실패 시 처리
+    }
   };
 
   const genderOptions = [
@@ -382,12 +405,7 @@ const TrainerSignUpPage: React.FC = () => {
         </S.Detail2>
 
         <S.NextContainer>
-          <NextButton
-            onClick={() => {
-              navigate("/loading");
-            }}
-            $bgcolor="#00B4EA"
-          >
+          <NextButton onClick={handleSignUp} $bgcolor="#00B4EA">
             다음
           </NextButton>
         </S.NextContainer>
