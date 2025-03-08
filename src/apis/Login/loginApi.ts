@@ -1,0 +1,29 @@
+import { ApiResponse } from "../../entity/ApiResponse";
+import axiosInstance from "../axiosInstance";
+
+const TempToken = process.env.REACT_APP_TEMP_TOKEN;
+
+// 로그인
+export const Login = async (loginId: string, password: string) => {
+  try {
+    const response = await axiosInstance.post(
+      "https://body-buddy.aoimiu.com/auth/login",
+      {
+        loginId: loginId,
+        password: password,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${TempToken}`,
+        },
+      }
+    );
+    console.log(response.data.result);
+    return response.data.result;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export {};
