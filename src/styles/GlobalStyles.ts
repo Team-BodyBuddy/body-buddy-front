@@ -15,11 +15,13 @@ export const GlobalStyles = createGlobalStyle`
     #root {
         max-width: 24.375rem;
         width: 100%;
-        height: 58.25rem; 
+        min-height: 100%; 
+        height: auto; 
         margin: 0 auto;
         background-color: ${(props) => props.theme.background};
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
-        overflow: hidden;
+        overflow-y: auto; 
     }
 `;
+

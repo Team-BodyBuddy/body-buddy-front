@@ -14,7 +14,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ activeTab, onTabClick }) 
     const navigate = useNavigate();
 
     const handleTabClick = (tab: Tab) => {
-        onTabClick(tab); // 부모 컴포넌트로 클릭된 탭 전달
+        onTabClick(tab);
         switch (tab) {
             case '운동관리':
                 navigate('/exercise');

@@ -21,7 +21,7 @@ export const TopWrapper = styled.div`
 
 export const Button = styled.button<{ $active?: boolean }>`
     flex-grow: 1;
-    height: 40px;
+    height: 2.5rem;
     font-size: 13px;
     text-align: center;
     background-color: transparent;
@@ -47,7 +47,7 @@ export const CenterIcon = styled.div<{ $active?: boolean }>`
     justify-content: center;
     flex-grow: 1;
     font-size: 22px;
-    height: 100%;
+    height: 2.5rem;
     border-bottom: ${(props) => (props.$active ? "3px solid black" : "3px solid transparent")};
     cursor: pointer;
     transition: border-bottom 0.3s; 

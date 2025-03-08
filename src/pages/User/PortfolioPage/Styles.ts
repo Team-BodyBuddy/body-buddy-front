@@ -5,6 +5,7 @@ export const DetailContainer = styled.div`
     flex-direction: column;
     padding: 20px;
     margin: 15px 0 10px;
+    overflow-y: auto; 
 `;
 
 export const ProfileHeader = styled.div`
