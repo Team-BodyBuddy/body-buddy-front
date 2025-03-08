@@ -23,10 +23,11 @@ const TrainerSignUpPage: React.FC = () => {
   const [selectedGym, setSelectedGym] = useState("");
   const [realName, setRealName] = useState("");
   const [id, setId] = useState("");
-  const [region, setRegion] = useState("");
   const [gymId, setgymId] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [gymOptions, setGymOptions] = useState<
     { value: string; label: string }[]
   >([]);
@@ -58,14 +59,14 @@ const TrainerSignUpPage: React.FC = () => {
 
   // 헬스장 관련 api도 있음
   // {
-  //   완료 "loginId": "string",
+  //   "loginId": "string",
   //   "password": "NA%@8d2D58&L",
   //   "confirmPassword": "string",
-  //   완료 "realName": "string",
-  //   완료 "gender": "MALE",
-  //   완료 "birthday": "2025-03-07",
-  //   완료 "height": 0.1,
-  //   완료 "weight": 0.1,
+  //   "realName": "string",
+  //   "gender": "MALE",
+  //   "birthday": "2025-03-07",
+  //   "height": 0.1,
+  //   "weight": 0.1,
   //   "region": "GANGNAM",
   //   "gymId": 9007199254740991
   // }
@@ -93,6 +94,8 @@ const TrainerSignUpPage: React.FC = () => {
   console.log("gymId = " + gymId);
   console.log("키 = " + height);
   console.log("몸무게 = " + weight);
+  console.log("Password:", password);
+  console.log("Confirm Password:", confirmPassword);
 
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGender(e.target.value);
@@ -326,7 +329,12 @@ const TrainerSignUpPage: React.FC = () => {
           </S.Header>
           <S.Content>
             <S.PasswordContent>
-              <PasswordInput />
+              <PasswordInput
+                password={password}
+                setPassword={setPassword}
+                confirmPassword={confirmPassword}
+                setConfirmPassword={setConfirmPassword}
+              />
             </S.PasswordContent>
           </S.Content>
         </S.Detail2>

@@ -3,6 +3,11 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 interface PasswordInputProps {
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  confirmPassword: string;
+  setConfirmPassword: React.Dispatch<React.SetStateAction<string>>;
+
   minLength?: number;
   maxLength?: number;
   requiresSpecialChar?: boolean;
@@ -11,14 +16,17 @@ interface PasswordInputProps {
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
+  password,
+  setPassword,
+  confirmPassword,
+  setConfirmPassword,
+
   minLength = 8,
   maxLength = 12,
   requiresSpecialChar = true,
   requiresNumber = true,
   placeholder,
 }) => {
-  const [password, setPassword] = useState(""); //비번생성
-  const [confirmPassword, setConfirmPassword] = useState(""); //비번재확인
   const [specialCharMessage, setSpecialCharMessage] = useState(""); //특수문자 확인
   const [checkPasswordMessage, setCheckPasswordMessage] = useState(""); //비번일치 확인
 
@@ -56,22 +64,12 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
     requiresNumber,
   ]);
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setConfirmPassword(e.target.value);
-  };
-
   return (
     <Form>
       <Input
         type="password"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="8-12자, 영문, 특수문자, 숫자 포함"
         autoComplete="new-password"
       />
@@ -80,7 +78,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
       <Input
         type="password"
         value={confirmPassword}
-        onChange={handleConfirmPasswordChange}
+        onChange={(e) => setConfirmPassword(e.target.value)}
         placeholder="비밀번호 확인"
         autoComplete="new-password"
       />
