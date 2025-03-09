@@ -18,7 +18,7 @@ export const TrainerSignUp = async (data: {
 }) => {
   try {
     const response = await axiosInstance.post(
-      "https://body-buddy.aoimiu.com/auth/trainers/signup",
+      "/auth/trainers/signup",
       {
         loginId: data.loginId,
         password: data.password,
@@ -62,7 +62,7 @@ export const UserSignUp = async (data: {
 }) => {
   try {
     const response = await axiosInstance.post(
-      "https://body-buddy.aoimiu.com/auth/members/signup",
+      "/auth/members/signup",
       {
         loginId: data.loginId,
         password: data.password,

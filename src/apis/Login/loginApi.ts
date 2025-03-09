@@ -7,7 +7,7 @@ const TempToken = process.env.REACT_APP_TEMP_TOKEN;
 export const Login = async (loginId: string, password: string) => {
   try {
     const response = await axiosInstance.post(
-      "https://body-buddy.aoimiu.com/auth/login",
+      "/auth/login",
       {
         loginId: loginId,
         password: password,
