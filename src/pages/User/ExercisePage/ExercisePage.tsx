@@ -5,12 +5,14 @@ import Calendar from "../../../components/Calendar/Calendar";
 import TodoElement from "../../../components/Todo/TodoElement";
 import { format } from "date-fns";
 import TodayScore from "../../../components/TodayScore/TodayScore";
-import { useMonthData, useRoutine, useSubmitTodayScore } from "./useExerciseHooks";
 import RoutineInput from "../../../components/RoutineInput/RoutineInput";
+import { useMonth } from "../../../react-query/hooks/useMonth";
+import { useSubmitTodayScore } from "../../../react-query/hooks/useSubmitTodayScore";
+import { useRoutine } from "../../../react-query/hooks/useRoutine";
 
 const ExercisePage: React.FC = () => {
     const memberId = 10; // 임시 memberId
-    const { selectedDate, userMonthData, isLoading, handleMonthClick, handleDateClick, indicatorMap } = useMonthData(memberId);
+    const { selectedDate, userMonthData, isLoading, handleMonthClick, handleDateClick, indicatorMap } = useMonth(memberId);
     const { handleSubmitDayScore } = useSubmitTodayScore();
     const { handleRoutineSubmit, handleRoutineRemove, handleRoutineToggle, userRoutineData } = useRoutine(memberId, format(selectedDate, "yyyy-MM-dd"), indicatorMap);
 
