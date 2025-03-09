@@ -18,7 +18,7 @@ export const postRoutine = async (routineData: { memberId: number; date: string;
     return reponse.data.result;
 };
 
-export const removeRoutine = async (routineData: { memberId: number; date: string; routineType: string; name: string }) => {
+export const removeRoutine = async (routineData: { memberId: number; date: string; routineType: string; routineId: number; name: string }) => {
     const response = await axiosInstance.post("/api/routine/remove", routineData, {
         headers: {
             Authorization: `Bearer ${TempToken}`,
