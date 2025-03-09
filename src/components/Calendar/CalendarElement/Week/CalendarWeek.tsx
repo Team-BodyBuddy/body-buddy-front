@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./Styles";
 import { format, isSameMonth, isToday } from "date-fns";
 import CalendarDate from "../Date/CalendarDate";
-import { MonthData } from "../../../../entity/CalendarEntity";
+import { defaultCalendarEntry, MonthData } from "../../../../entity/CalendarEntity";
 
 interface WeekRowProps {
     week: Date[];
@@ -19,11 +19,11 @@ const CalendarWeek: React.FC<WeekRowProps> = ({ week, currentDate, calendarData,
 
                 // 해당 날짜가 calendarData에 있는지 확인
                 const calendarEntry = calendarData.find((entry) => entry.date === formattedDate);
-                const hasIndicator = !!calendarEntry; // 존재하면 true
+
                 // 선택된 날짜인지 확인
                 const isSelected = isSameMonth(day, currentDate) && format(day, "yyyy-MM-dd") === format(currentDate, "yyyy-MM-dd");
 
-                return <CalendarDate key={index} day={day} isCurrentMonth={isSameMonth(day, currentDate)} isToday={isToday(day)} isSelected={isSelected} indicatorType={calendarEntry?.indicatorType || ""} hasIndicator={hasIndicator} onClick={onDateClick} currentDate={currentDate} />;
+                return <CalendarDate key={index} day={day} isCurrentMonth={isSameMonth(day, currentDate)} isToday={isToday(day)} isSelected={isSelected} calendarEntry={calendarEntry || defaultCalendarEntry} onClick={onDateClick} currentDate={currentDate} />;
             })}
         </S.WeekRow>
     );
