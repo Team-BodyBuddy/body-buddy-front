@@ -52,9 +52,9 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
       }
     }
 
-    // 확인용
-    console.log("Password:", password);
-    console.log("Confirm Password:", confirmPassword);
+    // // 확인용
+    // console.log("Password:", password);
+    // console.log("Confirm Password:", confirmPassword);
   }, [
     password,
     confirmPassword,

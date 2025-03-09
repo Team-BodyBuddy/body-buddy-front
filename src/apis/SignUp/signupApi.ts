@@ -45,3 +45,48 @@ export const TrainerSignUp = async (data: {
 };
 
 export {};
+
+// 유저 회원가입
+export const UserSignUp = async (data: {
+  loginId: string;
+  password: string;
+  confirmPassword: string;
+  nickname: string;
+  realName: string;
+  gender: string;
+  birthday: string;
+  height: number;
+  weight: number;
+  region: string;
+  gymId: number;
+}) => {
+  try {
+    const response = await axiosInstance.post(
+      "https://body-buddy.aoimiu.com/auth/members/signup",
+      {
+        loginId: data.loginId,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+        nickname: data.nickname,
+        realName: data.realName,
+        gender: data.gender,
+        birthday: data.birthday,
+        height: data.height,
+        weight: data.weight,
+        region: data.region,
+        gymId: data.gymId,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${TempToken}`,
+        },
+      }
+    );
+    return response.data.result;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export {};

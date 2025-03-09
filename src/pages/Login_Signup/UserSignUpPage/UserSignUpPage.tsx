@@ -1,5 +1,5 @@
 //유저 회원가입 페이지
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./Styles";
 import BackButton from "../../../components/BackButton/BackButton";
 import SelectBox from "../../../components/SignUpPage/SelectBox/SelectBox";
@@ -10,18 +10,107 @@ import CheckButton from "../../../components/SignUpPage/CheckButton/CheckButton"
 import PageLink from "../../../components/SignUpPage/PageLink/PageLink";
 import PasswordInput from "../../../components/SignUpPage/PasswordInput/PasswordInput";
 import NextButton from "../../../components/SignUpPage/NextButton/NextButton";
+import { mockGyms, mockRegions } from "../../../apis/gyms/mocks";
+import { UserSignUp } from "../../../apis/SignUp/signupApi";
 
 const UserSignUpPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const [selectedGender, setSelectedGender] = useState("m");
+  //   성별
+  // 닉네임
+  // 생일
+  // 이름
+  // 아이디
+  // 비밀번호
+  // 비번확인
+  // 사는곳
+  // 체육관 목록선택
+  // 키
+  // 몸무게
+
+  const [selectedGender, setSelectedGender] = useState("MALE");
+  const [nickname, setNickname] = useState("");
   const [selectedYear, setSelectedYear] = useState("1990");
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedDate, setSelectedDate] = useState("1");
-  const [selectedCity, setSelectedCity] = useState("지역");
-  const [selectedGym, setSelectedGym] = useState("Gym 선택");
+  const [selectedCity, setSelectedCity] = useState("GANGNAM");
+  const [selectedGym, setSelectedGym] = useState("");
+  const [realName, setRealName] = useState("");
+  const [id, setId] = useState("");
+  const [gymId, setgymId] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [gymOptions, setGymOptions] = useState<
+    { value: string; label: string }[]
+  >([]);
+
+  // 지역 선택 시 지역에 따른 gym들 목록에 표시
+  useEffect(() => {
+    const filteredGyms = mockGyms
+      .filter((gym) => gym.region === selectedCity)
+      .map((gym) => ({ value: gym.name, label: gym.name, id: gym.id }));
+
+    setGymOptions(filteredGyms);
+
+    if (filteredGyms.length > 0) {
+      setSelectedGym(filteredGyms[0].value);
+      setgymId(filteredGyms[0].id.toString());
+    } else {
+      setSelectedGym("");
+      setgymId(""); // gym이 없을 경우 초기화
+    }
+  }, [selectedCity]);
+
+  // selectedGym이 변경될 때 gymId도 업데이트
+  useEffect(() => {
+    const selected = mockGyms.find((gym) => gym.name === selectedGym);
+    if (selected) {
+      setgymId(selected.id.toString());
+    }
+  }, [selectedGym]);
+
+  // 헬스장 관련 api도 있음
+  // {
+  //   "loginId": "string",
+  //   "password": "NA%@8d2D58&L",
+  //   "confirmPassword": "string",
+  //   "realName": "string",
+  //   "gender": "MALE",
+  //   "birthday": "2025-03-07",
+  //   "height": 0.1,
+  //   "weight": 0.1,
+  //   "region": "GANGNAM",
+  //   "gymId": 9007199254740991
+  // }
+
+  // 서버로 보내는 api 정보들, 자료형 맞게 변환 필요
+  const UserBirthday = `${selectedYear}-${String(selectedMonth).padStart(
+    2,
+    "0"
+  )}-${String(selectedDate).padStart(2, "0")}`;
+  const UserHeight = Number(height);
+  const UserWeight = Number(weight);
+  const GymID = Number(gymId);
+  //   console.log("UserBirthday 타입:", typeof UserBirthday);
+  //   console.log("UserHeight 타입:", typeof UserHeight);
+  //   console.log("UserWeight 타입:", typeof UserWeight);
+  //   console.log("GymID 타입:", typeof GymID);
+
+  console.log("====================================");
+  console.log("성별 = " + selectedGender);
+  console.log("닉네임 = " + nickname);
+  console.log("생년월일(yyyy-mm-dd) 모두 출력 = " + UserBirthday);
+  console.log("이름 = " + realName);
+  console.log("ID = " + id);
+  console.log("region = " + selectedCity);
+  console.log("gymName = " + selectedGym);
+  console.log("gymId = " + gymId);
+  console.log("키 = " + height);
+  console.log("몸무게 = " + weight);
+  console.log("Password:", password);
+  console.log("Confirm Password:", confirmPassword);
 
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGender(e.target.value);
@@ -41,15 +130,59 @@ const UserSignUpPage: React.FC = () => {
 
   const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(e.target.value);
+    setSelectedGym("");
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRealName(e.target.value);
+  };
+
+  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
   };
 
   const handleGymChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGym(e.target.value);
   };
 
+  const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHeight(e.target.value);
+  };
+
+  const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setWeight(e.target.value);
+  };
+
+  const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNickname(e.target.value);
+  };
+
+  const handleSignUp = async () => {
+    try {
+      const result = await UserSignUp({
+        loginId: id,
+        password: password,
+        confirmPassword: confirmPassword,
+        nickname: nickname,
+        realName: realName,
+        gender: selectedGender,
+        birthday: UserBirthday,
+        height: UserHeight,
+        weight: UserWeight,
+        region: selectedCity,
+        gymId: GymID,
+      });
+      console.log("SignUp Result:", result);
+      // 회원가입 성공 시 처리
+    } catch (error) {
+      console.error("SignUp Error:", error);
+      // 회원가입 실패 시 처리
+    }
+  };
+
   const genderOptions = [
-    { value: "m", label: "남성" },
-    { value: "f", label: "여성" },
+    { value: "MALE", label: "남성" },
+    { value: "FEMALE", label: "여성" },
   ];
   const yearOptions = [
     { value: "1990", label: "1990" },
@@ -121,29 +254,10 @@ const UserSignUpPage: React.FC = () => {
     { value: "30", label: "30" },
     { value: "31", label: "31" },
   ];
-  const cityOptions = [
-    { value: "서울특별시", label: "서울특별시" },
-    { value: "인천광역시", label: "인천광역시" },
-    { value: "대전광역시", label: "대전광역시" },
-    { value: "대구광역시", label: "대구광역시" },
-    { value: "울산광역시", label: "울산광역시" },
-    { value: "부산광역시", label: "부산광역시" },
-    { value: "광주광역시", label: "광주광역시" },
-    { value: "세종특별자치시", label: "세종특별자치시" },
-    { value: "경기도", label: "경기도" },
-    { value: "충청도", label: "충청도" },
-    { value: "강원도", label: "강원도" },
-    { value: "전라도", label: "전라도" },
-    { value: "경상도", label: "경상도" },
-    { value: "제주도", label: "제주도" },
-  ];
-  const gymOptions = [
-    { value: "Gym1", label: "Gym1" },
-    { value: "Gym2", label: "Gym2" },
-    { value: "Gym3", label: "Gym3" },
-    { value: "Gym4", label: "Gym4" },
-    { value: "Gym5", label: "Gym5" },
-  ];
+  const cityOptions = mockRegions.map((region) => ({
+    value: region,
+    label: region,
+  }));
 
   // 닉네임 사용 가능한지 확인, (임시로 설정) 강아지: 사용불가능한 닉네임
   const checkNicknameAvailability = async (nickname: string) => {
@@ -208,6 +322,8 @@ const UserSignUpPage: React.FC = () => {
             <S.Box>
               <NicknameInput
                 checkNicknameAvailability={checkNicknameAvailability}
+                nickname={nickname}
+                setNickname={setNickname}
               />
             </S.Box>
           </S.Content>
@@ -250,7 +366,11 @@ const UserSignUpPage: React.FC = () => {
             이름 <S.Star>*</S.Star>
           </S.Header>
           <S.Content>
-            <UserInfoInput $width={"312px"} />
+            <UserInfoInput
+              $width={"312px"}
+              value={realName}
+              onChange={handleNameChange}
+            />
           </S.Content>
         </S.Detail4>
       </S.Container1>
@@ -261,7 +381,12 @@ const UserSignUpPage: React.FC = () => {
             ID <S.Star>*</S.Star>
           </S.Header>
           <S.Content>
-            <UserInfoInput $width={"312px"} placeholder={"6-12자 영문"} />
+            <UserInfoInput
+              $width={"312px"}
+              placeholder={"6-12자 영문"}
+              value={id}
+              onChange={handleIdChange}
+            />
           </S.Content>
         </S.Detail1>
 
@@ -308,18 +433,29 @@ const UserSignUpPage: React.FC = () => {
         <S.Detail2>
           <S.Header>키/몸무게</S.Header>
           <S.ContentWrapper>
-            <UserInfoInput $width={"151px"} placeholder={"172cm"} />
-            <UserInfoInput $width={"151px"} placeholder={"57kg"} />
+            <UserInfoInput
+              $width={"151px"}
+              placeholder={"172cm"}
+              value={height}
+              onChange={handleHeightChange}
+            />
+            <UserInfoInput
+              $width={"151px"}
+              placeholder={"57kg"}
+              value={weight}
+              onChange={handleWeightChange}
+            />
           </S.ContentWrapper>
         </S.Detail2>
 
         <S.NextContainer>
-          <NextButton
+          <NextButton onClick={handleSignUp} $bgcolor="#00B4EA">
+            {/* <NextButton
             onClick={() => {
               navigate("/loading");
             }}
             $bgcolor="#40AD00"
-          >
+          > */}
             다음
           </NextButton>
         </S.NextContainer>
