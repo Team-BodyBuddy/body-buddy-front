@@ -5,7 +5,7 @@ import { RoutineItem } from "../../entity/RoutineEntity";
 
 interface TodoData {
     data: RoutineItem;
-    onRemove: (routineData: { memberId: number; date: string; routineType: string; name: string }) => void;
+    onRemove: (routineData: { memberId: number; date: string; routineType: string; routineId: number; name: string }) => void;
     onToggle: (routineId: number) => void;
 }
 
@@ -17,6 +17,7 @@ const TodoElement: React.FC<{ data: TodoData }> = ({ data }) => {
             memberId: data.data.memberId,
             date: data.data.date,
             routineType: data.data.type,
+            routineId: data.data.id,
             name: data.data.name,
         };
         console.log(routineData);

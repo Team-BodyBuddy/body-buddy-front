@@ -132,7 +132,7 @@ export const useRoutine = (memberId: number, date: string, indicatorMap: Record<
         },
     });
 
-    const handleRoutineRemove = (routineData: { memberId: number; date: string; routineType: string; name: string }) => {
+    const handleRoutineRemove = (routineData: { memberId: number; date: string; routineType: string; routineId: number; name: string }) => {
         removeRoutineMutation.mutate(routineData);
     };
 
