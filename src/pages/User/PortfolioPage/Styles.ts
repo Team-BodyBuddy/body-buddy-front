@@ -5,13 +5,14 @@ export const DetailContainer = styled.div`
     flex-direction: column;
     padding: 20px;
     margin: 15px 0 10px;
+    overflow-y: auto; 
 `;
 
 export const ProfileHeader = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 9px;
+    gap: 0.625rem;
 `;
 
 export const ClickableItem = styled.div`
@@ -19,7 +20,7 @@ export const ClickableItem = styled.div`
     color: #333;
     cursor: pointer;
     &:hover {
-        color: #007bff; /* Hover 시 색상 변화 */
+        color: #007bff; 
         text-decoration: underline;
     }
 `;

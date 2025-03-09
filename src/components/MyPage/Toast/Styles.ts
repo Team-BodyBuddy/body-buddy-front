@@ -22,16 +22,17 @@ const slideDown = keyframes`
 export const Overlay = styled.div<{ isVisible: boolean }>`
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 적용
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     display: ${({ isVisible }) => (isVisible ? "block" : "none")};
 `;
 
 export const ToastContainer = styled.div<{ isVisible: boolean }>`
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     transform: translateX(-50%);
     background-color: ${COLORS.Green};
     border-radius: 14px 14px 0 0;
@@ -39,9 +40,18 @@ export const ToastContainer = styled.div<{ isVisible: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 292px;
+    justify-content: center; /* 내부 요소 정렬 */
+    width: 90%; /* 부모 크기에 맞춤 */
+    max-width: 400px; /* 최대 크기 제한 */
+    height: 250px; /* 너무 크지 않도록 조정 */
+    padding: 20px;
+    box-sizing: border-box; /* 패딩 포함 크기 조정 */
     animation: ${({ isVisible }) => (isVisible ? slideUp : slideDown)} 0.5s forwards;
+
+    @media (max-width: 400px) {
+        width: 95%;
+        height: 230px;
+    }
 `;
 
 export const Input = styled.input`

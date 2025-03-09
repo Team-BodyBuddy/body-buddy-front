@@ -14,17 +14,20 @@ export const BadgeContainer = styled.div`
     height: 98px;
     border-radius: 11px;
     background-color: #efefef;
-    padding: 40px;
+    padding: 10px;
     margin: 10px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow-x: auto; 
+    white-space: nowrap; 
 `;
 
 export const BadgeWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 0.625rem;
+    min-width: max-content;
 `;
 
 export const BadgeItem = styled.div`
@@ -32,6 +35,7 @@ export const BadgeItem = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    flex-shrink: 0;
 `;
 
 export const BadgeIcon = styled.div`

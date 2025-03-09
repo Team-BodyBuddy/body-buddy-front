@@ -1,36 +1,28 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useTrainers } from "../../react-query/query/bodyBuddy/useProfileQuery";
 import * as S from "./Styles";
 
 interface ListSectionProps {
-  onListItemClick: () => void;
+  onListItemClick: (trainerId: number) => void; 
 }
 
 const ListSection: React.FC<ListSectionProps> = ({ onListItemClick }) => {
-    const navigate = useNavigate();
+    const [gymId] = useState(1); 
+    const { data: trainers, isLoading, isError } = useTrainers(gymId); 
 
-    const handleProfileClick = (profile: { name: string; age: number; gender: string }) => {
-        navigate("/portfolio", { state: profile }); // 상태 전달
-    };
+    if (isLoading) return <p>로딩 중...</p>;
+    if (isError || !trainers) return <p>트레이너 목록을 불러올 수 없습니다.</p>;
 
     return (
         <S.ListContainer>
-            {Array.from({ length: 15 }).map((_, index) => {
-                const profile = {
-                    name: `김건강${index + 1}`,
-                    age: 27,
-                    gender: "남",
-                };
-
-                return (
-                    <S.ListItem key={index} onClick={() => handleProfileClick(profile)}>
-                        <S.ProfileImage />
-                        <S.ProfileText>
-                            {profile.name}({profile.age}세, {profile.gender})
-                        </S.ProfileText>
-                    </S.ListItem>
-                );
-            })}
+            {trainers.map((trainer) => (
+                <S.ListItem key={trainer.id} onClick={() => onListItemClick(trainer.id)}> 
+                    <S.ProfileImage />
+                    <S.ProfileText>
+                        {trainer.realName} ({trainer.age}세)
+                    </S.ProfileText>
+                </S.ListItem>
+            ))}
         </S.ListContainer>
     );
 };
