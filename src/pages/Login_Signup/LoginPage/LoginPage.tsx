@@ -19,19 +19,32 @@ const LoginPage: React.FC = () => {
   console.log("Password:", password);
 
   const handleLogin = async () => {
-    console.log("로그인 버튼");
-    try {
-      const result = await Login(loginId, password);
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-    }
+    console.log("로그인 버튼 클릭");
 
-    // if (id === userId && password === userPassword) {
-    //     navigate("/loading");
-    // } else {
-    //     setErrorMessage("*아이디 또는 비밀번호가 일치하지 않습니다.");
-    // }
+    try {
+      // 로그인 API 호출
+      const result = await Login(loginId, password);
+
+      // 서버 응답에서 토큰 추출
+      const accessToken = result?.accessToken;
+      const refreshToken = result?.refreshToken;
+
+      if (accessToken && refreshToken) {
+        // 토큰을 localStorage에 저장
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+
+        console.log("로그인 성공! 토큰 저장 완료");
+
+        // 로그인 후 페이지 이동 (예: 홈 화면)
+        navigate("/loading");
+      } else {
+        setErrorMessage("로그인 실패: 토큰을 받을 수 없습니다.");
+      }
+    } catch (error) {
+      console.error("로그인 에러:", error);
+      setErrorMessage("*아이디 또는 비밀번호가 일치하지 않습니다.");
+    }
   };
 
   return (
