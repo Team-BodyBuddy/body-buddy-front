@@ -12,5 +12,5 @@ export const postDayScore = async (memberId: number, date: string, status: "BAD"
             },
         }
     );
-    return reponse.data;
+    return reponse.data.result;
 };
