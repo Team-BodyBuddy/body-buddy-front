@@ -172,10 +172,10 @@ const UserSignUpPage: React.FC = () => {
         region: selectedCity,
         gymId: GymID,
       });
-      console.log("SignUp Result:", result);
+      console.log("회원가입 성공");
       // 회원가입 성공 시 처리
     } catch (error) {
-      console.error("SignUp Error:", error);
+      console.error("SignUp Error:");
       // 회원가입 실패 시 처리
     }
   };
@@ -449,7 +449,7 @@ const UserSignUpPage: React.FC = () => {
         </S.Detail2>
 
         <S.NextContainer>
-          <NextButton onClick={handleSignUp} $bgcolor="#00B4EA">
+          <NextButton onClick={handleSignUp} $bgcolor="#40AD00">
             {/* <NextButton
             onClick={() => {
               navigate("/loading");

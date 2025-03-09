@@ -17,26 +17,18 @@ export const TrainerSignUp = async (data: {
   gymId: number;
 }) => {
   try {
-    const response = await axiosInstance.post(
-      "/auth/trainers/signup",
-      {
-        loginId: data.loginId,
-        password: data.password,
-        confirmPassword: data.confirmPassword,
-        realName: data.realName,
-        gender: data.gender,
-        birthday: data.birthday,
-        height: data.height,
-        weight: data.weight,
-        region: data.region,
-        gymId: data.gymId,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${TempToken}`,
-        },
-      }
-    );
+    const response = await axiosInstance.post("/api/auth/trainers/signup", {
+      loginId: data.loginId,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+      realName: data.realName,
+      gender: data.gender,
+      birthday: data.birthday,
+      height: data.height,
+      weight: data.weight,
+      region: data.region,
+      gymId: data.gymId,
+    });
     return response.data.result;
   } catch (error) {
     console.log(error);
@@ -61,27 +53,19 @@ export const UserSignUp = async (data: {
   gymId: number;
 }) => {
   try {
-    const response = await axiosInstance.post(
-      "/auth/members/signup",
-      {
-        loginId: data.loginId,
-        password: data.password,
-        confirmPassword: data.confirmPassword,
-        nickname: data.nickname,
-        realName: data.realName,
-        gender: data.gender,
-        birthday: data.birthday,
-        height: data.height,
-        weight: data.weight,
-        region: data.region,
-        gymId: data.gymId,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${TempToken}`,
-        },
-      }
-    );
+    const response = await axiosInstance.post("/api/auth/members/signup", {
+      loginId: data.loginId,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+      nickname: data.nickname,
+      realName: data.realName,
+      gender: data.gender,
+      birthday: data.birthday,
+      height: data.height,
+      weight: data.weight,
+      region: data.region,
+      gymId: data.gymId,
+    });
     return response.data.result;
   } catch (error) {
     console.log(error);

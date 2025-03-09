@@ -153,7 +153,7 @@ const TrainerSignUpPage: React.FC = () => {
         region: selectedCity,
         gymId: GymID,
       });
-      console.log("SignUp Result:", result);
+      console.log("회원가입 성공");
       // 회원가입 성공 시 처리
     } catch (error) {
       console.error("SignUp Error:", error);

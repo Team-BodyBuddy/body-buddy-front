@@ -34,7 +34,10 @@ const LoginPage: React.FC = () => {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
 
-        console.log("로그인 성공! 토큰 저장 완료");
+        //로그인 id 로컬스토리지 저장
+        localStorage.setItem("loginId", loginId);
+
+        console.log("로그인 성공! 토큰, 로그인 아이디 저장 완료");
 
         // 로그인 후 페이지 이동 (예: 홈 화면)
         navigate("/loading");
